@@ -4,13 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PortLog
+namespace Dominio
 {
-    class Program
+    public class Persistente
     {
-        static void Main(string[] args)
-        {
-
-        }
     }
 }

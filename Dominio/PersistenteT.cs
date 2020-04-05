@@ -4,13 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PortLog
+namespace Dominio
 {
-    class Program
+    public abstract class Persistente<T> : Persistente
     {
-        static void Main(string[] args)
-        {
+        public abstract List<T> TraerTodo();
 
-        }
     }
 }
