@@ -8,14 +8,23 @@ namespace Dominio.Clases
 {
     public class Cliente
     {
-        public string rut { get; set; }
 
-        public string nombre { get; set; }
 
-        public Cliente(string rut, string nombre)
+        public int Id { get; set; }
+
+        public string Rut { get; set; }
+
+        public string Nombre { get; set; }
+
+        public int Antiguedad { get; set; }
+
+        public Cliente(int id, string rut, string nombre, int antiguedad)
         {
-            this.rut = rut;
-            this.nombre = nombre;
+            Id = id;
+            Rut = rut;
+            Nombre = nombre;
+            Antiguedad = antiguedad;
         }
+
     }
 }

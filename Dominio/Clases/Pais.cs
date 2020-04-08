@@ -8,16 +8,12 @@ namespace Dominio.Clases
 {
     public class Pais
     {
+        public int Id { get; set; }
+
+        public string CodPais { get; set; }
+
+        public string Nombre { get; set; }
+
         
-
-        public string codPais { get; set; }
-
-        public string nombre { get; set; }
-
-        public Pais(string codPais, string nombre)
-        {
-            this.codPais = codPais;
-            this.nombre = nombre;
-        }
     }
 }
