@@ -6,24 +6,21 @@ using System.Threading.Tasks;
 
 namespace Dominio.Clases
 {
-    class Usuario
+    public class Usuario
     {
-        
 
-        public int Id { get; set; }
 
-        public string CI { get; set; }
+        public string ci { get; set; }
 
-        public string Password { get; set; }
+        public string password { get; set; }
 
-        public string Rol { get; set; }
+        public string rol { get; set; }
 
-        public Usuario(int id, string cI, string password, string rol)
+        public Usuario(string ci, string password, string rol)
         {
-            Id = id;
-            CI = cI;
-            Password = password;
-            Rol = rol;
+            this.ci = ci;
+            this.password = password;
+            this.rol = rol;
         }
 
     }

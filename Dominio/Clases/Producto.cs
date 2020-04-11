@@ -10,20 +10,17 @@ namespace Dominio.Clases
     {
 
 
-        public int Id { get; set; }
+        public int codigo { get; set; }
 
-        public int Codigo { get; set; }
+        public string nombre { get; set; }
 
-        public string Nombre { get; set; }
+        public decimal peso { get; set; }
 
-        public decimal Peso { get; set; }
-
-        public Producto(int id, int codigo, string nombre, decimal peso)//SI LOS PRODUCTOS SON PRE CARGADOS BORRAR!!!
+        public Producto(int codigo, string nombre, decimal peso)
         {
-            Id = id;
-            Codigo = codigo;
-            Nombre = nombre;
-            Peso = peso;
+            this.codigo = codigo;
+            this.nombre = nombre;
+            this.peso = peso;
         }
 
     }
