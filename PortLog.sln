@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PortLog", "PortLog\PortLog.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dominio", "Dominio\Dominio.csproj", "{3AEFA665-F005-40E8-AA5C-E10591CFC25B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Servicio", "Servicio\Servicio.csproj", "{DD95CD89-8702-43BC-A0BC-FA5C9769496D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{3AEFA665-F005-40E8-AA5C-E10591CFC25B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3AEFA665-F005-40E8-AA5C-E10591CFC25B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3AEFA665-F005-40E8-AA5C-E10591CFC25B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DD95CD89-8702-43BC-A0BC-FA5C9769496D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DD95CD89-8702-43BC-A0BC-FA5C9769496D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DD95CD89-8702-43BC-A0BC-FA5C9769496D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DD95CD89-8702-43BC-A0BC-FA5C9769496D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

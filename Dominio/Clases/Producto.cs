@@ -10,17 +10,17 @@ namespace Dominio.Clases
     {
 
 
-        public int codigo { get; set; }
+        public int Codigo { get; set; }
 
-        public string nombre { get; set; }
+        public string Nombre { get; set; }
 
-        public decimal peso { get; set; }
+        public decimal Peso { get; set; }
 
         public Producto(int codigo, string nombre, decimal peso)
         {
-            this.codigo = codigo;
-            this.nombre = nombre;
-            this.peso = peso;
+            this.Codigo = codigo;
+            this.Nombre = nombre;
+            this.Peso = peso;
         }
 
     }

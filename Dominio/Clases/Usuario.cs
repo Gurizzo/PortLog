@@ -10,17 +10,17 @@ namespace Dominio.Clases
     {
 
 
-        public string ci { get; set; }
+        public string CI { get; set; }
 
-        public string password { get; set; }
+        public string Password { get; set; }
 
-        public string rol { get; set; }
+        public string Rol { get; set; }
 
         public Usuario(string ci, string password, string rol)
         {
-            this.ci = ci;
-            this.password = password;
-            this.rol = rol;
+            this.CI = ci;
+            this.Password = password;
+            this.Rol = rol;
         }
 
     }
