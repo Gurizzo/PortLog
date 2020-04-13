@@ -34,5 +34,10 @@ namespace Dominio.Repositorio
         {
             throw new NotImplementedException();
         }
+
+        public bool Validar(Importacion obj)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

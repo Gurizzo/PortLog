@@ -34,5 +34,10 @@ namespace Dominio.Repositorio
         {
             throw new NotImplementedException();
         }
+
+        public bool Validar(Pais obj)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

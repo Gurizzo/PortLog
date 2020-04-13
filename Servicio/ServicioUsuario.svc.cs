@@ -4,6 +4,7 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
+using Dominio.Clases;
 using Dominio.Interfaces;
 using Dominio.Repositorio;
 using Servicio.DTO;
@@ -14,6 +15,7 @@ namespace Servicio
     // NOTA: para iniciar el Cliente de prueba WCF para probar este servicio, seleccione ServicioUsuario.svc o ServicioUsuario.svc.cs en el Explorador de soluciones e inicie la depuración.
     public class ServicioUsuario : IServicioUsuario
     {
+        
         IRepoUsuario repo = new RepositorioUsuario();
 
         public bool AltaUsuario(UsuarioDTO usuario)
@@ -39,6 +41,25 @@ namespace Servicio
         public List<UsuarioDTO> TraerTodos()
         {
             throw new NotImplementedException();
+        }
+
+        public UsuarioDTO Validar(string ci, string password)
+        {
+            UsuarioDTO usuario = new UsuarioDTO();
+            
+            foreach(Usuario u in repo.Todos())
+            {
+                if( u.CI==ci && u.Password == password)
+                {
+                    
+                    usuario.CI = u.CI;
+                    usuario.Password = u.Password;
+                    usuario.Rol = u.Rol;
+                }
+            }
+            return usuario;
+            
+            
         }
     }
 }

@@ -34,5 +34,21 @@ namespace Dominio.Repositorio
         {
             throw new NotImplementedException();
         }
+
+        public bool Validar(Usuario obj)
+        {
+            Usuario u = new Usuario();
+
+
+            if (Validar(obj))
+            {
+
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
     }
 }

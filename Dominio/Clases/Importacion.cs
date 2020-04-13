@@ -10,6 +10,8 @@ namespace Dominio.Clases
     {
 
 
+        public int Id { get; set; }
+
         public DateTime FchIngreso { get; set; }
 
         public DateTime FchSalida { get; set; }
@@ -24,15 +26,16 @@ namespace Dominio.Clases
 
         public Pais Pais { get; set; }
 
-        public Importacion(DateTime fchIngreso, DateTime fchSalida, Producto producto, int cantidad, int descuento, Cliente cliente, Pais pais)
+        public Importacion(int id, DateTime fchIngreso, DateTime fchSalida, Producto producto, int cantidad, int descuento, Cliente cliente, Pais pais)
         {
-            this.FchIngreso = fchIngreso;
-            this.FchSalida = fchSalida;
-            this.Producto = producto;
-            this.Cantidad = cantidad;
-            this.Descuento = descuento;
-            this.Cliente = cliente;
-            this.Pais = pais;
+            Id = id;
+            FchIngreso = fchIngreso;
+            FchSalida = fchSalida;
+            Producto = producto;
+            Cantidad = cantidad;
+            Descuento = descuento;
+            Cliente = cliente;
+            Pais = pais;
         }
 
         public int CalcularCosto()

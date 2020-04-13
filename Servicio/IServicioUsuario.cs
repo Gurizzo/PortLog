@@ -6,6 +6,7 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
 
+
 namespace Servicio
 {
     // NOTA: puede usar el comando "Rename" del menú "Refactorizar" para cambiar el nombre de interfaz "IServicioUsuario" en el código y en el archivo de configuración a la vez.
@@ -26,5 +27,9 @@ namespace Servicio
 
         [OperationContract]
         UsuarioDTO BuscarUsuario(int usuarioId);
+
+        [OperationContract]
+        UsuarioDTO Validar(string ci,string password);
+
     }
 }

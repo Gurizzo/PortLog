@@ -19,13 +19,13 @@ namespace Dominio
             }
 
 
-        }//Recordar agregar la referencia
-
-
+        }
         public abstract bool Modificar();
         public abstract bool Eliminar();
         public abstract bool Leer();
         public abstract bool Guardar();
+
+
 
         public SqlConnection ObtenerConexion()
         {
@@ -33,7 +33,7 @@ namespace Dominio
             return (string.IsNullOrEmpty(StringConexion) ? null : new SqlConnection(StringConexion));
         }
 
-        public SqlDataReader EjecutarQuery(SqlConnection con,string text,CommandType tipo, List<SqlParameter> parametros)
+        public SqlDataReader EjecutarQuery(SqlConnection con, string text, CommandType tipo, List<SqlParameter> parametros)
         {
             SqlDataReader reader = null;
 
@@ -41,32 +41,31 @@ namespace Dominio
             {
                 SqlCommand comando = new SqlCommand(text, con);
                 comando.CommandType = tipo;
-                if (parametros != null)
-                {
-                    comando.Parameters.AddRange(parametros.ToArray());
-                }
-                if (con!=null && con.State!=ConnectionState.Open)
-                {
-                    con.Open();
-
-                }
+                if (parametros != null) comando.Parameters.AddRange(parametros.ToArray());
+                if (con != null && con.State != ConnectionState.Open) con.Open();
                 reader = comando.ExecuteReader();
             }
             catch
             {
                 throw;
             }
+
             return reader;
         }
 
-        public int EjecutarNoQuery(SqlConnection con,string text,CommandType tipo, List<SqlParameter> parametros)
+        public int EjecutarNoQuery(SqlConnection con, string text,
+            CommandType tipo, List<SqlParameter> parametros)
         {
+
             return this.EjecutarNoQuery(con, text, tipo, parametros, null);
         }
 
-        public int EjecutarNoQuery(SqlConnection con,string text,CommandType tipo,List<SqlParameter>parametros,SqlTransaction trans)
+        public int EjecutarNoQuery(SqlConnection con, string text,
+            CommandType tipo, List<SqlParameter> parametros,
+            SqlTransaction trans)
         {
             int afectadas = -1;
+
             try
             {
                 SqlCommand comando = new SqlCommand(text, con);
@@ -76,23 +75,17 @@ namespace Dominio
                 }
                 else
                 {
-                    if(con!=null && con.State != ConnectionState.Open)
-                    {
-                        con.Open();
-                    }
-                    
+                    if (con != null && con.State != ConnectionState.Open) con.Open();
                 }
                 comando.CommandType = tipo;
-                if (parametros != null)
-                {
-                    comando.Parameters.AddRange(parametros.ToArray());
-                }
+                if (parametros != null) comando.Parameters.AddRange(parametros.ToArray());
                 afectadas = comando.ExecuteNonQuery();
             }
             catch
             {
                 throw;
             }
+
             return afectadas;
         }
 
