@@ -25,6 +25,7 @@ namespace MVC.Controllers
 
             if(ci!="" && password != "")
             {
+                
                 u.CI = ci;
                 u.Password = password;
                 
@@ -41,9 +42,10 @@ namespace MVC.Controllers
             UsuarioDTO usuarioDto = usuario.Validar(u.CI, u.Password);
             if (usuarioDto!=null)
             {
-
-                Session["Rol"] = u.Rol;
+                
+                Session["Rol"] = usuarioDto.Rol;
             }
+            
 
 
             return RedirectToAction("prueba");//Redirigir a donde corresponda

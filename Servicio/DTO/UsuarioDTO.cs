@@ -10,6 +10,9 @@ namespace Servicio.DTO
     public class UsuarioDTO
     {
         [DataMember]
+        public int Id { get; set; }
+
+        [DataMember]
         public string CI { get; set; }
 
         [DataMember]
@@ -17,5 +20,7 @@ namespace Servicio.DTO
 
         [DataMember]
         public string Rol { get; set; }
+
+
     }
 }

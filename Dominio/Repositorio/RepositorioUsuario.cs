@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Dominio.Repositorio
 {
-    public class RepositorioUsuario : IRepoUsuario
+    public class RepositorioUsuario : IRepoUsuario<Usuario>
     {
         public bool Alta(Usuario obj)
         {
@@ -34,21 +34,23 @@ namespace Dominio.Repositorio
         {
             throw new NotImplementedException();
         }
+        
 
         public bool Validar(Usuario obj)
         {
-            Usuario u = new Usuario();
+            throw new NotImplementedException();
+        }
 
-
-            if (Validar(obj))
+        public Usuario ValidarLogin(string ci, string password)
+        {
+            Usuario u = new Usuario
             {
+                CI = ci,
+                Password = password
+            };
+            u = u.Validar(u);
 
-                return false;
-            }
-            else
-            {
-                return true;
-            }
+            return u;
         }
     }
 }

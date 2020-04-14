@@ -9,6 +9,6 @@ namespace Dominio.Interfaces
 {
     public interface IRepoUsuario:IRepositorio<Usuario>
     {
-
+        Usuario ValidarLogin(string ci, string password);
     }
 }

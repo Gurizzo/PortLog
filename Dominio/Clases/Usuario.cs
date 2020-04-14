@@ -104,9 +104,10 @@ namespace Dominio.Clases
             throw new NotImplementedException();
         }
 
-        public override bool Validar(Usuario obj)
+        public override Usuario Validar(Usuario obj)
         {
-            Boolean existe = false;
+            Usuario usuario = new Usuario();
+            
 
             SqlConnection con = null;
             SqlDataReader reader = null;
@@ -114,16 +115,19 @@ namespace Dominio.Clases
             try
             {
                 con = this.ObtenerConexion();
-                reader = this.EjecutarQuery(con, "select * from USUARIO where ci=" + obj.CI + " and pass=" + obj.Password + "", CommandType.Text, null);
-
+                reader = this.EjecutarQuery(con, "select * from USUARIO where ci='"+obj.CI+"'and pass='"+obj.Password+"'", CommandType.Text, null);
+                
                 while (reader.Read())
                 {
-                    if (reader.HasRows)
-                    {
-                        existe = true;
-                    }
 
+                    usuario.Id = reader.GetInt32(reader.GetOrdinal("id"));
+                    usuario.CI = reader["ci"].ToString();
+                    usuario.Password = reader["pass"].ToString();
+                    usuario.Rol = reader["rol"].ToString();
+                    
+                    
 
+                    
                 }
 
             }
@@ -137,7 +141,7 @@ namespace Dominio.Clases
                 if (reader != null) reader.Close();
             }
 
-            return existe;
+            return usuario;
         }
     }
 

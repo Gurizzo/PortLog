@@ -16,18 +16,22 @@ ROL VARCHAR(20)NOT NULL
 )
 
 
-CREATE TABLE PERSONA(
+CREATE TABLE CLIENTE(
 Id int IDENTITY(1,1) NOT NULL PRIMARY KEY,
 RUT VARCHAR(60)NOT NULL UNIQUE,
 NOMBRE VARCHAR(60)NOT NULL,
 ANTIGUEDAD int NOT NULL
 )
 
+
 CREATE TABLE PRODUCTO(
 Id int IDENTITY(1,1) NOT NULL PRIMARY KEY,
 CODIGO INT NOT NULL UNIQUE,
 NOMBRE VARCHAR(60)NOT NULL,
-PESO DECIMAL NOT NULL
+PESO DECIMAL NOT NULL,
+CLIENTEID INT NOT NULL
+FOREIGN KEY(CLIENTEID) REFERENCES CLIENTE(ID)
+
 )
 
 CREATE TABLE IMPORTACION(
@@ -40,6 +44,265 @@ PERSONAID INT NOT NULL,
 PAISID INT NOT NULL,
 FOREIGN KEY (PAISID) REFERENCES Pais(Id),
 FOREIGN KEY (PRODUCTOID) REFERENCES PRODUCTO(Id),
-FOREIGN KEY (PERSONAID) REFERENCES PERSONA(Id)
+FOREIGN KEY (PERSONAID) REFERENCES CLIENTE(Id)
 
 )
+
+/*ALTA PAISES*/
+
+INSERT INTO PAIS VALUES ( 'AF', 'Afghanistan');
+INSERT INTO PAIS VALUES ( 'AL', 'Albania');
+INSERT INTO PAIS VALUES ( 'DZ', 'Algeria');
+INSERT INTO PAIS VALUES ( 'DS', 'American Samoa');
+INSERT INTO PAIS VALUES ( 'AD', 'Andorra');
+INSERT INTO PAIS VALUES ( 'AO', 'Angola');
+INSERT INTO PAIS VALUES ( 'AI', 'Anguilla');
+INSERT INTO PAIS VALUES ( 'AQ', 'Antarctica');
+INSERT INTO PAIS VALUES ( 'AG', 'Antigua and Barbuda');
+INSERT INTO PAIS VALUES ( 'AR', 'Argentina');
+INSERT INTO PAIS VALUES ( 'AM', 'Armenia');
+INSERT INTO PAIS VALUES ( 'AW', 'Aruba');
+INSERT INTO PAIS VALUES ( 'AU', 'Australia');
+INSERT INTO PAIS VALUES ( 'AT', 'Austria');
+INSERT INTO PAIS VALUES ( 'AZ', 'Azerbaijan');
+INSERT INTO PAIS VALUES ( 'BS', 'Bahamas');
+INSERT INTO PAIS VALUES ( 'BH', 'Bahrain');
+INSERT INTO PAIS VALUES ( 'BD', 'Bangladesh');
+INSERT INTO PAIS VALUES ( 'BB', 'Barbados');
+INSERT INTO PAIS VALUES ( 'BY', 'Belarus');
+INSERT INTO PAIS VALUES ( 'BE', 'Belgium');
+INSERT INTO PAIS VALUES ( 'BZ', 'Belize');
+INSERT INTO PAIS VALUES ( 'BJ', 'Benin');
+INSERT INTO PAIS VALUES ( 'BM', 'Bermuda');
+INSERT INTO PAIS VALUES ( 'BT', 'Bhutan');
+INSERT INTO PAIS VALUES ( 'BO', 'Bolivia');
+INSERT INTO PAIS VALUES ( 'BA', 'Bosnia and Herzegovina');
+INSERT INTO PAIS VALUES ( 'BW', 'Botswana');
+INSERT INTO PAIS VALUES ( 'BV', 'Bouvet Island');
+INSERT INTO PAIS VALUES ( 'BR', 'Brazil');
+INSERT INTO PAIS VALUES ( 'IO', 'British Indian Ocean Territory');
+INSERT INTO PAIS VALUES ( 'BN', 'Brunei Darussalam');
+INSERT INTO PAIS VALUES ( 'BG', 'Bulgaria');
+INSERT INTO PAIS VALUES ( 'BF', 'Burkina Faso');
+INSERT INTO PAIS VALUES ( 'BI', 'Burundi');
+INSERT INTO PAIS VALUES ( 'KH', 'Cambodia');
+INSERT INTO PAIS VALUES ( 'CM', 'Cameroon');
+INSERT INTO PAIS VALUES ( 'CA', 'Canada');
+INSERT INTO PAIS VALUES ( 'CV', 'Cape Verde');
+INSERT INTO PAIS VALUES ( 'KY', 'Cayman Islands');
+INSERT INTO PAIS VALUES ( 'CF', 'Central African Republic');
+INSERT INTO PAIS VALUES ( 'TD', 'Chad');
+INSERT INTO PAIS VALUES ( 'CL', 'Chile');
+INSERT INTO PAIS VALUES ( 'CN', 'China');
+INSERT INTO PAIS VALUES ( 'CX', 'Christmas Island');
+INSERT INTO PAIS VALUES ( 'CC', 'Cocos (Keeling) Islands');
+INSERT INTO PAIS VALUES ( 'CO', 'Colombia');
+INSERT INTO PAIS VALUES ( 'KM', 'Comoros');
+INSERT INTO PAIS VALUES ( 'CD', 'Democratic Republic of the Congo');
+INSERT INTO PAIS VALUES ( 'CG', 'Republic of Congo');
+INSERT INTO PAIS VALUES ( 'CK', 'Cook Islands');
+INSERT INTO PAIS VALUES ( 'CR', 'Costa Rica');
+INSERT INTO PAIS VALUES ( 'HR', 'Croatia (Hrvatska)');
+INSERT INTO PAIS VALUES ( 'CU', 'Cuba');
+INSERT INTO PAIS VALUES ( 'CY', 'Cyprus');
+INSERT INTO PAIS VALUES ( 'CZ', 'Czech Republic');
+INSERT INTO PAIS VALUES ( 'DK', 'Denmark');
+INSERT INTO PAIS VALUES ( 'DJ', 'Djibouti');
+INSERT INTO PAIS VALUES ( 'DM', 'Dominica');
+INSERT INTO PAIS VALUES ( 'DO', 'Dominican Republic');
+INSERT INTO PAIS VALUES ( 'TP', 'East Timor');
+INSERT INTO PAIS VALUES ( 'EC', 'Ecuador');
+INSERT INTO PAIS VALUES ( 'EG', 'Egypt');
+INSERT INTO PAIS VALUES ( 'SV', 'El Salvador');
+INSERT INTO PAIS VALUES ( 'GQ', 'Equatorial Guinea');
+INSERT INTO PAIS VALUES ( 'ER', 'Eritrea');
+INSERT INTO PAIS VALUES ( 'EE', 'Estonia');
+INSERT INTO PAIS VALUES ( 'ET', 'Ethiopia');
+INSERT INTO PAIS VALUES ( 'FK', 'Falkland Islands (Malvinas)');
+INSERT INTO PAIS VALUES ( 'FO', 'Faroe Islands');
+INSERT INTO PAIS VALUES ( 'FJ', 'Fiji');
+INSERT INTO PAIS VALUES ( 'FI', 'Finland');
+INSERT INTO PAIS VALUES ( 'FR', 'France');
+INSERT INTO PAIS VALUES ( 'FX', 'France, Metropolitan');
+INSERT INTO PAIS VALUES ( 'GF', 'French Guiana');
+INSERT INTO PAIS VALUES ( 'PF', 'French Polynesia');
+INSERT INTO PAIS VALUES ( 'TF', 'French Southern Territories');
+INSERT INTO PAIS VALUES ( 'GA', 'Gabon');
+INSERT INTO PAIS VALUES ( 'GM', 'Gambia');
+INSERT INTO PAIS VALUES ( 'GE', 'Georgia');
+INSERT INTO PAIS VALUES ( 'DE', 'Germany');
+INSERT INTO PAIS VALUES ( 'GH', 'Ghana');
+INSERT INTO PAIS VALUES ( 'GI', 'Gibraltar');
+INSERT INTO PAIS VALUES ( 'GK', 'Guernsey');
+INSERT INTO PAIS VALUES ( 'GR', 'Greece');
+INSERT INTO PAIS VALUES ( 'GL', 'Greenland');
+INSERT INTO PAIS VALUES ( 'GD', 'Grenada');
+INSERT INTO PAIS VALUES ( 'GP', 'Guadeloupe');
+INSERT INTO PAIS VALUES ( 'GU', 'Guam');
+INSERT INTO PAIS VALUES ( 'GT', 'Guatemala');
+INSERT INTO PAIS VALUES ( 'GN', 'Guinea');
+INSERT INTO PAIS VALUES ( 'GW', 'Guinea-Bissau');
+INSERT INTO PAIS VALUES ( 'GY', 'Guyana');
+INSERT INTO PAIS VALUES ( 'HT', 'Haiti');
+INSERT INTO PAIS VALUES ( 'HM', 'Heard and Mc Donald Islands');
+INSERT INTO PAIS VALUES ( 'HN', 'Honduras');
+INSERT INTO PAIS VALUES ( 'HK', 'Hong Kong');
+INSERT INTO PAIS VALUES ( 'HU', 'Hungary');
+INSERT INTO PAIS VALUES ( 'IS', 'Iceland');
+INSERT INTO PAIS VALUES ( 'IN', 'India');
+INSERT INTO PAIS VALUES ( 'IM', 'Isle of Man');
+INSERT INTO PAIS VALUES ( 'ID', 'Indonesia');
+INSERT INTO PAIS VALUES ( 'IR', 'Iran (Islamic Republic of)');
+INSERT INTO PAIS VALUES ( 'IQ', 'Iraq');
+INSERT INTO PAIS VALUES ( 'IE', 'Ireland');
+INSERT INTO PAIS VALUES ( 'IL', 'Israel');
+INSERT INTO PAIS VALUES ( 'IT', 'Italy');
+INSERT INTO PAIS VALUES ( 'CI', 'Ivory Coast');
+INSERT INTO PAIS VALUES ( 'JE', 'Jersey');
+INSERT INTO PAIS VALUES ( 'JM', 'Jamaica');
+INSERT INTO PAIS VALUES ( 'JP', 'Japan');
+INSERT INTO PAIS VALUES ( 'JO', 'Jordan');
+INSERT INTO PAIS VALUES ( 'KZ', 'Kazakhstan');
+INSERT INTO PAIS VALUES ( 'KE', 'Kenya');
+INSERT INTO PAIS VALUES ( 'KI', 'Kiribati');
+INSERT INTO PAIS VALUES ( 'KP', 'Korea, Democratic People''s Republic of');
+INSERT INTO PAIS VALUES ( 'KR', 'Korea, Republic of');
+INSERT INTO PAIS VALUES ( 'XK', 'Kosovo');
+INSERT INTO PAIS VALUES ( 'KW', 'Kuwait');
+INSERT INTO PAIS VALUES ( 'KG', 'Kyrgyzstan');
+INSERT INTO PAIS VALUES ( 'LA', 'Lao People''s Democratic Republic');
+INSERT INTO PAIS VALUES ( 'LV', 'Latvia');
+INSERT INTO PAIS VALUES ( 'LB', 'Lebanon');
+INSERT INTO PAIS VALUES ( 'LS', 'Lesotho');
+INSERT INTO PAIS VALUES ( 'LR', 'Liberia');
+INSERT INTO PAIS VALUES ( 'LY', 'Libyan Arab Jamahiriya');
+INSERT INTO PAIS VALUES ( 'LI', 'Liechtenstein');
+INSERT INTO PAIS VALUES ( 'LT', 'Lithuania');
+INSERT INTO PAIS VALUES ( 'LU', 'Luxembourg');
+INSERT INTO PAIS VALUES ( 'MO', 'Macau');
+INSERT INTO PAIS VALUES ( 'MK', 'North Macedonia');
+INSERT INTO PAIS VALUES ( 'MG', 'Madagascar');
+INSERT INTO PAIS VALUES ( 'MW', 'Malawi');
+INSERT INTO PAIS VALUES ( 'MY', 'Malaysia');
+INSERT INTO PAIS VALUES ( 'MV', 'Maldives');
+INSERT INTO PAIS VALUES ( 'ML', 'Mali');
+INSERT INTO PAIS VALUES ( 'MT', 'Malta');
+INSERT INTO PAIS VALUES ( 'MH', 'Marshall Islands');
+INSERT INTO PAIS VALUES ( 'MQ', 'Martinique');
+INSERT INTO PAIS VALUES ( 'MR', 'Mauritania');
+INSERT INTO PAIS VALUES ( 'MU', 'Mauritius');
+INSERT INTO PAIS VALUES ( 'TY', 'Mayotte');
+INSERT INTO PAIS VALUES ( 'MX', 'Mexico');
+INSERT INTO PAIS VALUES ( 'FM', 'Micronesia, Federated States of');
+INSERT INTO PAIS VALUES ( 'MD', 'Moldova, Republic of');
+INSERT INTO PAIS VALUES ( 'MC', 'Monaco');
+INSERT INTO PAIS VALUES ( 'MN', 'Mongolia');
+INSERT INTO PAIS VALUES ( 'ME', 'Montenegro');
+INSERT INTO PAIS VALUES ( 'MS', 'Montserrat');
+INSERT INTO PAIS VALUES ( 'MA', 'Morocco');
+INSERT INTO PAIS VALUES ( 'MZ', 'Mozambique');
+INSERT INTO PAIS VALUES ( 'MM', 'Myanmar');
+INSERT INTO PAIS VALUES ( 'NA', 'Namibia');
+INSERT INTO PAIS VALUES ( 'NR', 'Nauru');
+INSERT INTO PAIS VALUES ( 'NP', 'Nepal');
+INSERT INTO PAIS VALUES ( 'NL', 'Netherlands');
+INSERT INTO PAIS VALUES ( 'AN', 'Netherlands Antilles');
+INSERT INTO PAIS VALUES ( 'NC', 'New Caledonia');
+INSERT INTO PAIS VALUES ( 'NZ', 'New Zealand');
+INSERT INTO PAIS VALUES ( 'NI', 'Nicaragua');
+INSERT INTO PAIS VALUES ( 'NE', 'Niger');
+INSERT INTO PAIS VALUES ( 'NG', 'Nigeria');
+INSERT INTO PAIS VALUES ( 'NU', 'Niue');
+INSERT INTO PAIS VALUES ( 'NF', 'Norfolk Island');
+INSERT INTO PAIS VALUES ( 'MP', 'Northern Mariana Islands');
+INSERT INTO PAIS VALUES ( 'NO', 'Norway');
+INSERT INTO PAIS VALUES ( 'OM', 'Oman');
+INSERT INTO PAIS VALUES ( 'PK', 'Pakistan');
+INSERT INTO PAIS VALUES ( 'PW', 'Palau');
+INSERT INTO PAIS VALUES ( 'PS', 'Palestine');
+INSERT INTO PAIS VALUES ( 'PA', 'Panama');
+INSERT INTO PAIS VALUES ( 'PG', 'Papua New Guinea');
+INSERT INTO PAIS VALUES ( 'PY', 'Paraguay');
+INSERT INTO PAIS VALUES ( 'PE', 'Peru');
+INSERT INTO PAIS VALUES ( 'PH', 'Philippines');
+INSERT INTO PAIS VALUES ( 'PN', 'Pitcairn');
+INSERT INTO PAIS VALUES ( 'PL', 'Poland');
+INSERT INTO PAIS VALUES ( 'PT', 'Portugal');
+INSERT INTO PAIS VALUES ( 'PR', 'Puerto Rico');
+INSERT INTO PAIS VALUES ( 'QA', 'Qatar');
+INSERT INTO PAIS VALUES ( 'RE', 'Reunion');
+INSERT INTO PAIS VALUES ( 'RO', 'Romania');
+INSERT INTO PAIS VALUES ( 'RU', 'Russian Federation');
+INSERT INTO PAIS VALUES ( 'RW', 'Rwanda');
+INSERT INTO PAIS VALUES ( 'KN', 'Saint Kitts and Nevis');
+INSERT INTO PAIS VALUES ( 'LC', 'Saint Lucia');
+INSERT INTO PAIS VALUES ( 'VC', 'Saint Vincent and the Grenadines');
+INSERT INTO PAIS VALUES ( 'WS', 'Samoa');
+INSERT INTO PAIS VALUES ( 'SM', 'San Marino');
+INSERT INTO PAIS VALUES ( 'ST', 'Sao Tome and Principe');
+INSERT INTO PAIS VALUES ( 'SA', 'Saudi Arabia');
+INSERT INTO PAIS VALUES ( 'SN', 'Senegal');
+INSERT INTO PAIS VALUES ( 'RS', 'Serbia');
+INSERT INTO PAIS VALUES ( 'SC', 'Seychelles');
+INSERT INTO PAIS VALUES ( 'SL', 'Sierra Leone');
+INSERT INTO PAIS VALUES ( 'SG', 'Singapore');
+INSERT INTO PAIS VALUES ( 'SK', 'Slovakia');
+INSERT INTO PAIS VALUES ( 'SI', 'Slovenia');
+INSERT INTO PAIS VALUES ( 'SB', 'Solomon Islands');
+INSERT INTO PAIS VALUES ( 'SO', 'Somalia');
+INSERT INTO PAIS VALUES ( 'ZA', 'South Africa');
+INSERT INTO PAIS VALUES ( 'GS', 'South Georgia South Sandwich Islands');
+INSERT INTO PAIS VALUES ( 'SS', 'South Sudan');
+INSERT INTO PAIS VALUES ( 'ES', 'Spain');
+INSERT INTO PAIS VALUES ( 'LK', 'Sri Lanka');
+INSERT INTO PAIS VALUES ( 'SH', 'St. Helena');
+INSERT INTO PAIS VALUES ( 'PM', 'St. Pierre and Miquelon');
+INSERT INTO PAIS VALUES ( 'SD', 'Sudan');
+INSERT INTO PAIS VALUES ( 'SR', 'Suriname');
+INSERT INTO PAIS VALUES ( 'SJ', 'Svalbard and Jan Mayen Islands');
+INSERT INTO PAIS VALUES ( 'SZ', 'Swaziland');
+INSERT INTO PAIS VALUES ( 'SE', 'Sweden');
+INSERT INTO PAIS VALUES ( 'CH', 'Switzerland');
+INSERT INTO PAIS VALUES ( 'SY', 'Syrian Arab Republic');
+INSERT INTO PAIS VALUES ( 'TW', 'Taiwan');
+INSERT INTO PAIS VALUES ( 'TJ', 'Tajikistan');
+INSERT INTO PAIS VALUES ( 'TZ', 'Tanzania, United Republic of');
+INSERT INTO PAIS VALUES ( 'TH', 'Thailand');
+INSERT INTO PAIS VALUES ( 'TG', 'Togo');
+INSERT INTO PAIS VALUES ( 'TK', 'Tokelau');
+INSERT INTO PAIS VALUES ( 'TO', 'Tonga');
+INSERT INTO PAIS VALUES ( 'TT', 'Trinidad and Tobago');
+INSERT INTO PAIS VALUES ( 'TN', 'Tunisia');
+INSERT INTO PAIS VALUES ( 'TR', 'Turkey');
+INSERT INTO PAIS VALUES ( 'TM', 'Turkmenistan');
+INSERT INTO PAIS VALUES ( 'TC', 'Turks and Caicos Islands');
+INSERT INTO PAIS VALUES ( 'TV', 'Tuvalu');
+INSERT INTO PAIS VALUES ( 'UG', 'Uganda');
+INSERT INTO PAIS VALUES ( 'UA', 'Ukraine');
+INSERT INTO PAIS VALUES ( 'AE', 'United Arab Emirates');
+INSERT INTO PAIS VALUES ( 'GB', 'United Kingdom');
+INSERT INTO PAIS VALUES ( 'US', 'United States');
+INSERT INTO PAIS VALUES ( 'UM', 'United States minor outlying islands');
+INSERT INTO PAIS VALUES ( 'UY', 'Uruguay');
+INSERT INTO PAIS VALUES ( 'UZ', 'Uzbekistan');
+INSERT INTO PAIS VALUES ( 'VU', 'Vanuatu');
+INSERT INTO PAIS VALUES ( 'VA', 'Vatican City State');
+INSERT INTO PAIS VALUES ( 'VE', 'Venezuela');
+INSERT INTO PAIS VALUES ( 'VN', 'Vietnam');
+INSERT INTO PAIS VALUES ( 'VG', 'Virgin Islands (British)');
+INSERT INTO PAIS VALUES ( 'VI', 'Virgin Islands (U.S.)');
+INSERT INTO PAIS VALUES ( 'WF', 'Wallis and Futuna Islands');
+INSERT INTO PAIS VALUES ( 'EH', 'Western Sahara');
+INSERT INTO PAIS VALUES ( 'YE', 'Yemen');
+INSERT INTO PAIS VALUES ( 'ZM', 'Zambia');
+INSERT INTO PAIS VALUES ( 'ZW', 'Zimbabwe');
+
+/*CREACION DE USUARIOS*/
+INSERT INTO USUARIO VALUES('1','uno','admin')
+INSERT INTO USUARIO VALUES('3','3','prueba')
+
+select * from USUARIO
+
+select * from USUARIO where ci='1' and pass='uno'
+
+select * from USUARIO where ci='1' and pass='3'

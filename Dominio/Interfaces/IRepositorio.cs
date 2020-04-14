@@ -13,6 +13,7 @@ namespace Dominio.Interfaces
         bool Modificar(T obj);
         List<T> Todos();
         T BuscarPorId(int id);
+        
 
     }
 }

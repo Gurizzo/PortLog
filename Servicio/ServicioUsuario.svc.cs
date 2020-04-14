@@ -46,17 +46,21 @@ namespace Servicio
         public UsuarioDTO Validar(string ci, string password)
         {
             UsuarioDTO usuario = new UsuarioDTO();
+
+            Usuario u = repo.ValidarLogin(ci, password);
             
-            foreach(Usuario u in repo.Todos())
-            {
-                if( u.CI==ci && u.Password == password)
+                if( u.CI!=null)
                 {
-                    
+                    usuario.Id = u.Id;
                     usuario.CI = u.CI;
                     usuario.Password = u.Password;
                     usuario.Rol = u.Rol;
-                }
             }
+            else
+            {
+                usuario = null;
+            }
+            
             return usuario;
             
             

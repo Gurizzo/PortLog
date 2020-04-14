@@ -16,19 +16,24 @@ namespace Dominio.Clases
 
         public string Nombre { get; set; }
 
+        public int  Antiguedad { get; set; }
+
         public List<Producto> Productos { get; set; }
 
-        public Cliente(int id, string rut, string nombre)
-        {
-            Id = id;
-            Rut = rut;
-            Nombre = nombre;
-        }
+
 
         public Cliente()
         {
 
         }
 
+        public Cliente(int id, string rut, string nombre, int antiguedad, List<Producto> productos)
+        {
+            Id = id;
+            Rut = rut;
+            Nombre = nombre;
+            Antiguedad = antiguedad;
+            Productos = productos;
+        }
     }
 }

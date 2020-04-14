@@ -18,19 +18,23 @@ namespace Dominio.Clases
 
         public decimal Peso { get; set; }
 
-        public Producto(int id, int codigo, string nombre, decimal peso)
-        {
-            Id = id;
-            Codigo = codigo;
-            Nombre = nombre;
-            Peso = peso;
-        }
+        public Cliente Cliente { get; set; }
+
+
 
         public Producto()
         {
 
         }
 
+        public Producto(int id, int codigo, string nombre, decimal peso, Cliente cliente)
+        {
+            Id = id;
+            Codigo = codigo;
+            Nombre = nombre;
+            Peso = peso;
+            Cliente = cliente;
+        }
 
         public override List<Producto> TraerTodo()
         {
@@ -62,7 +66,7 @@ namespace Dominio.Clases
             throw new NotImplementedException();
         }
 
-        public override bool Validar(Producto obj)
+        public override Producto Validar(Producto obj)
         {
             throw new NotImplementedException();
         }
