@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Dominio.Clases
 {
-    public class Usuario:Persistente<Usuario>
+    public class Usuario
     {
         public int Id { get; set; }
 
@@ -18,7 +18,7 @@ namespace Dominio.Clases
 
         public string Rol { get; set; }
 
-         
+
 
 
         public Usuario()
@@ -33,6 +33,7 @@ namespace Dominio.Clases
             Rol = rol;
         }
 
+        /*
         public override List<Usuario> TraerTodo()
         {
             List<Usuario> lista = new List<Usuario>();
@@ -42,7 +43,7 @@ namespace Dominio.Clases
             try
             {
                 con = ObtenerConexion();
-                reader = EjecutarQuery(con, "select * from USUARIO", CommandType.Text, null);
+                //reader = EjecutarQuery(con, "select * from USUARIO", CommandType.Text, null);
 
                 while (reader.Read())
                 {
@@ -75,74 +76,16 @@ namespace Dominio.Clases
 
             }
             return lista;
-        }
+        }*/
 
-
-
-        public override bool Modificar()
+        public bool validar()
         {
-            throw new NotImplementedException();
-        }
-
-        public override bool Eliminar()
-        {
-            throw new NotImplementedException();
-        }
-
-        public override bool Leer()
-        {
-            throw new NotImplementedException();
-        }
-
-        public override bool Guardar()
-        {
-            throw new NotImplementedException();
-        }
-
-        public override Usuario BuscarPorId()
-        {
-            throw new NotImplementedException();
-        }
-
-        public override Usuario Validar(Usuario obj)
-        {
-            Usuario usuario = new Usuario();
-            
-
-            SqlConnection con = null;
-            SqlDataReader reader = null;
-
-            try
+            if (!string.IsNullOrEmpty(CI) && !string.IsNullOrEmpty(Password) && !string.IsNullOrEmpty(Rol))
             {
-                con = this.ObtenerConexion();
-                reader = this.EjecutarQuery(con, "select * from USUARIO where ci='"+obj.CI+"'and pass='"+obj.Password+"'", CommandType.Text, null);
-                
-                while (reader.Read())
-                {
-
-                    usuario.Id = reader.GetInt32(reader.GetOrdinal("id"));
-                    usuario.CI = reader["ci"].ToString();
-                    usuario.Password = reader["pass"].ToString();
-                    usuario.Rol = reader["rol"].ToString();
-                    
-                    
-
-                    
-                }
-
+                return true;
             }
-            catch
-            {
-                throw;
-            }
-            finally
-            {
-                if (con != null && con.State == ConnectionState.Open) con.Close();
-                if (reader != null) reader.Close();
-            }
-
-            return usuario;
+            return false;
         }
+
     }
-
 }

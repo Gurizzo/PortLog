@@ -33,13 +33,14 @@ namespace Dominio
             return (string.IsNullOrEmpty(StringConexion) ? null : new SqlConnection(StringConexion));
         }
 
-        public SqlDataReader EjecutarQuery(SqlConnection con, string text, CommandType tipo, List<SqlParameter> parametros)
+        public SqlDataReader EjecutarQuery(SqlConnection con, SqlCommand comando, CommandType tipo, List<SqlParameter> parametros)
         {
             SqlDataReader reader = null;
 
             try
             {
-                SqlCommand comando = new SqlCommand(text, con);
+
+                //SqlCommand comando = new SqlCommand(text, con);
                 comando.CommandType = tipo;
                 if (parametros != null) comando.Parameters.AddRange(parametros.ToArray());
                 if (con != null && con.State != ConnectionState.Open) con.Open();
@@ -53,14 +54,14 @@ namespace Dominio
             return reader;
         }
 
-        public int EjecutarNoQuery(SqlConnection con, string text,
+        public int EjecutarNoQuery(SqlConnection con, SqlCommand comando,
             CommandType tipo, List<SqlParameter> parametros)
         {
 
-            return this.EjecutarNoQuery(con, text, tipo, parametros, null);
+            return this.EjecutarNoQuery(con, comando, tipo, parametros, null);
         }
 
-        public int EjecutarNoQuery(SqlConnection con, string text,
+        public int EjecutarNoQuery(SqlConnection con, SqlCommand comando,
             CommandType tipo, List<SqlParameter> parametros,
             SqlTransaction trans)
         {
@@ -68,7 +69,7 @@ namespace Dominio
 
             try
             {
-                SqlCommand comando = new SqlCommand(text, con);
+                //SqlCommand comando = new SqlCommand(text, con);
                 if (trans != null)
                 {
                     comando.Transaction = trans;

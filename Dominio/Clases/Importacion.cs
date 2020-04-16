@@ -26,7 +26,9 @@ namespace Dominio.Clases
 
         public Pais Pais { get; set; }
 
-        public Importacion(int id, DateTime fchIngreso, DateTime fchSalida, Producto producto, int cantidad, int descuento, Cliente cliente, Pais pais)
+        public bool Enviado { get; set; }
+
+        public Importacion(int id, DateTime fchIngreso, DateTime fchSalida, Producto producto, int cantidad, int descuento, Cliente cliente, Pais pais, bool enviado)
         {
             Id = id;
             FchIngreso = fchIngreso;
@@ -36,11 +38,10 @@ namespace Dominio.Clases
             Descuento = descuento;
             Cliente = cliente;
             Pais = pais;
+            Enviado = enviado;
         }
 
-        public int CalcularCosto()
-        {
-            return 0;//Implementar
-        }
+
+
     }
 }

@@ -20,6 +20,7 @@ namespace Dominio.Clases
 
         public List<Producto> Productos { get; set; }
 
+        public List<Importacion> Importaciones { get; set; }
 
 
         public Cliente()
@@ -27,13 +28,19 @@ namespace Dominio.Clases
 
         }
 
-        public Cliente(int id, string rut, string nombre, int antiguedad, List<Producto> productos)
+        public Cliente(int id, string rut, string nombre, int antiguedad, List<Producto> productos, List<Importacion> importaciones)
         {
             Id = id;
             Rut = rut;
             Nombre = nombre;
             Antiguedad = antiguedad;
             Productos = productos;
+            Importaciones = importaciones;
+        }
+
+        public int CalcularCosto()
+        {
+            return 0;//Implementar
         }
     }
 }

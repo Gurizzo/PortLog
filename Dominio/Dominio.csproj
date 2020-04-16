@@ -56,6 +56,7 @@
     <Compile Include="Persistente.cs" />
     <Compile Include="PersistenteT.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositorio\IRepoUsuario.cs" />
     <Compile Include="Repositorio\RepositorioCliente.cs" />
     <Compile Include="Repositorio\RepositorioImportacion.cs" />
     <Compile Include="Repositorio\RepositorioPais.cs" />

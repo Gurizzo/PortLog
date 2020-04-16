@@ -15,8 +15,7 @@ namespace Servicio
     // NOTA: para iniciar el Cliente de prueba WCF para probar este servicio, seleccione ServicioUsuario.svc o ServicioUsuario.svc.cs en el Explorador de soluciones e inicie la depuración.
     public class ServicioUsuario : IServicioUsuario
     {
-        
-        IRepoUsuario repo = new RepositorioUsuario();
+        RepositorioUsuario Repo = new RepositorioUsuario();
 
         public bool AltaUsuario(UsuarioDTO usuario)
         {
@@ -46,8 +45,13 @@ namespace Servicio
         public UsuarioDTO Validar(string ci, string password)
         {
             UsuarioDTO usuario = new UsuarioDTO();
+            Usuario u = new Usuario
+            {
+                CI = ci,
+                Password = password
+            };
 
-            Usuario u = repo.ValidarLogin(ci, password);
+            u = Repo.Validar(u);
             
                 if( u.CI!=null)
                 {
