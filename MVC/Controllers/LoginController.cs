@@ -41,11 +41,11 @@ namespace MVC.Controllers
 
             UsuarioDTO usuarioDto = usuario.Validar(u.CI, u.Password);
             if (usuarioDto!=null)
-            {
+            {//Caso exitoso de login
                 
                 Session["Rol"] = usuarioDto.Rol;
             }
-            
+            //Caso de error al logear.
 
 
             return RedirectToAction("prueba");//Redirigir a donde corresponda
