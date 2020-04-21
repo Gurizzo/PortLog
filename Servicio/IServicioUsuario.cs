@@ -29,7 +29,7 @@ namespace Servicio
         UsuarioDTO BuscarUsuario(int usuarioId);
 
         [OperationContract]
-        UsuarioDTO Validar(string ci,string password);
+        UsuarioDTO Logear(string ci,string password);
 
     }
 }

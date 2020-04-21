@@ -78,7 +78,7 @@ namespace Dominio.Clases
             return lista;
         }*/
 
-        public bool validar()
+        public bool Validar()
         {
             if (!string.IsNullOrEmpty(CI) && !string.IsNullOrEmpty(Password) && !string.IsNullOrEmpty(Rol))
             {

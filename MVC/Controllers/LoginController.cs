@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using MVC.ViewModels.Usuario;
 using System.Web.Mvc;
 
 
@@ -19,30 +20,26 @@ namespace MVC.Controllers
         }
 
         [HttpGet]
-        public ActionResult Login(string ci,string password)
+        public ActionResult Login()
         {
-            Usuario u = new Usuario();
+            //Dibujo la vista
+            
+            ViewModelLogin u = new ViewModelLogin();
 
-            if(ci!="" && password != "")
-            {
-                
-                u.CI = ci;
-                u.Password = password;
-                
-            }
 
             return View(u);
         }
 
         [HttpPost]
-        public ActionResult Login(Usuario u)
+        public ActionResult Login(ViewModelLogin u)
         {
+
             ServicioUsuario usuario = new ServicioUsuario();
 
-            UsuarioDTO usuarioDto = usuario.Validar(u.CI, u.Password);
-            if (usuarioDto!=null)
+            UsuarioDTO usuarioDto = usuario.Logear(u.CI, u.Password);
+            if (usuarioDto != null)
             {//Caso exitoso de login
-                
+
                 Session["Rol"] = usuarioDto.Rol;
             }
             //Caso de error al logear.
@@ -50,5 +47,25 @@ namespace MVC.Controllers
 
             return RedirectToAction("prueba");//Redirigir a donde corresponda
         }
+
+        [HttpGet]
+        public ActionResult Create()
+        {
+            //Dibujo la vista
+            ViewModelUsuario u = new ViewModelUsuario();
+            return View(u);
+        }
+
+        [HttpPost]
+        public ActionResult Create(ViewModelUsuario u)
+        {
+            if (u.Password == u.Password2)
+            {
+                //Contraseña escrita bien 2 veces.
+
+            }
+            return View();
+        }
     }
+    
 }

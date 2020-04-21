@@ -42,7 +42,7 @@ namespace Servicio
             throw new NotImplementedException();
         }
 
-        public UsuarioDTO Validar(string ci, string password)
+        public UsuarioDTO Logear(string ci, string password)
         {
             UsuarioDTO usuario = new UsuarioDTO();
             Usuario u = new Usuario
