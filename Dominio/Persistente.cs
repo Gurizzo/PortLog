@@ -9,7 +9,7 @@ using System.Data.SqlClient;
 
 namespace Dominio
 {
-    public abstract class Persistente
+    public  class Persistente
     {
         private static string StringConexion
         {
@@ -20,10 +20,7 @@ namespace Dominio
 
 
         }
-        public abstract bool Modificar();
-        public abstract bool Eliminar();
-        public abstract bool Leer();
-        public abstract bool Guardar();
+       
 
 
 
@@ -89,6 +86,7 @@ namespace Dominio
 
             return afectadas;
         }
-
+       
     }
+    
 }

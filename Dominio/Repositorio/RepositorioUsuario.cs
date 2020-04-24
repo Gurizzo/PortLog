@@ -10,54 +10,51 @@ using System.Threading.Tasks;
 
 namespace Dominio.Repositorio
 {
-    public class RepositorioUsuario : Persistente<Usuario>
+    public class RepositorioUsuario : IRepoUsuario
     {
-        public override Usuario BuscarPorId()
+        public bool Alta(Usuario obj)
         {
             throw new NotImplementedException();
         }
 
-        public override bool Eliminar()
+        public bool Baja(Usuario obj)
         {
             throw new NotImplementedException();
         }
 
-        public override bool Guardar()
+        public Usuario BuscarPorId(int id)
         {
             throw new NotImplementedException();
         }
 
-        public override bool Leer()
+        public bool Modificar(Usuario obj)
         {
             throw new NotImplementedException();
         }
 
-        public override bool Modificar()
+        public List<Usuario> Todos()
         {
             throw new NotImplementedException();
         }
 
-        public override List<Usuario> TraerTodo()
-        {
-            throw new NotImplementedException();
-        }
-
-        public override Usuario Validar(Usuario obj)
+        public Usuario ValidarLogin(string ci, string password)
         {
             Usuario usuario = new Usuario();
 
+            Persistente persistente = new Persistente();
+            
 
             SqlConnection con = null;
             SqlDataReader reader = null;
 
             try
             {
-                con = this.ObtenerConexion();
+                con = persistente.ObtenerConexion();
                 SqlCommand comando = new SqlCommand("select * from USUARIO where ci=@ci and pass=@pass", con);
-                comando.Parameters.Add(new SqlParameter("@ci", obj.CI));
-                comando.Parameters.Add(new SqlParameter("@pass", obj.Password));
+                comando.Parameters.Add(new SqlParameter("@ci", ci));
+                comando.Parameters.Add(new SqlParameter("@pass", password));
 
-                reader = this.EjecutarQuery(con, comando, CommandType.Text, null);
+                reader = persistente.EjecutarQuery(con, comando, CommandType.Text, null);
 
                 while (reader.Read())
                 {
@@ -86,4 +83,6 @@ namespace Dominio.Repositorio
             return usuario;
         }
     }
-}
+
+ }
+

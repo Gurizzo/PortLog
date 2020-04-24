@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="ServicioUsuario" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost:56442/ServicioUsuario.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:56442/ServicioUsuario.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:56442/ServicioUsuario.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Servicio.DTO" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IServicioUsuario_AltaUsuario_InputMessage">
+    <wsdl:part name="parameters" element="tns:AltaUsuario" />
+  </wsdl:message>
+  <wsdl:message name="IServicioUsuario_AltaUsuario_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AltaUsuarioResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicioUsuario_BajaUsuario_InputMessage">
+    <wsdl:part name="parameters" element="tns:BajaUsuario" />
+  </wsdl:message>
+  <wsdl:message name="IServicioUsuario_BajaUsuario_OutputMessage">
+    <wsdl:part name="parameters" element="tns:BajaUsuarioResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicioUsuario_ModificarUsuario_InputMessage">
+    <wsdl:part name="parameters" element="tns:ModificarUsuario" />
+  </wsdl:message>
+  <wsdl:message name="IServicioUsuario_ModificarUsuario_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ModificarUsuarioResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicioUsuario_TraerTodos_InputMessage">
+    <wsdl:part name="parameters" element="tns:TraerTodos" />
+  </wsdl:message>
+  <wsdl:message name="IServicioUsuario_TraerTodos_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TraerTodosResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicioUsuario_BuscarUsuario_InputMessage">
+    <wsdl:part name="parameters" element="tns:BuscarUsuario" />
+  </wsdl:message>
+  <wsdl:message name="IServicioUsuario_BuscarUsuario_OutputMessage">
+    <wsdl:part name="parameters" element="tns:BuscarUsuarioResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicioUsuario_Logear_InputMessage">
+    <wsdl:part name="parameters" element="tns:Logear" />
+  </wsdl:message>
+  <wsdl:message name="IServicioUsuario_Logear_OutputMessage">
+    <wsdl:part name="parameters" element="tns:LogearResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IServicioUsuario">
+    <wsdl:operation name="AltaUsuario">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicioUsuario/AltaUsuario" message="tns:IServicioUsuario_AltaUsuario_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicioUsuario/AltaUsuarioResponse" message="tns:IServicioUsuario_AltaUsuario_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="BajaUsuario">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicioUsuario/BajaUsuario" message="tns:IServicioUsuario_BajaUsuario_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicioUsuario/BajaUsuarioResponse" message="tns:IServicioUsuario_BajaUsuario_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ModificarUsuario">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicioUsuario/ModificarUsuario" message="tns:IServicioUsuario_ModificarUsuario_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicioUsuario/ModificarUsuarioResponse" message="tns:IServicioUsuario_ModificarUsuario_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TraerTodos">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicioUsuario/TraerTodos" message="tns:IServicioUsuario_TraerTodos_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicioUsuario/TraerTodosResponse" message="tns:IServicioUsuario_TraerTodos_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="BuscarUsuario">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicioUsuario/BuscarUsuario" message="tns:IServicioUsuario_BuscarUsuario_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicioUsuario/BuscarUsuarioResponse" message="tns:IServicioUsuario_BuscarUsuario_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Logear">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicioUsuario/Logear" message="tns:IServicioUsuario_Logear_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicioUsuario/LogearResponse" message="tns:IServicioUsuario_Logear_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IServicioUsuario" type="tns:IServicioUsuario">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="AltaUsuario">
+      <soap:operation soapAction="http://tempuri.org/IServicioUsuario/AltaUsuario" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BajaUsuario">
+      <soap:operation soapAction="http://tempuri.org/IServicioUsuario/BajaUsuario" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ModificarUsuario">
+      <soap:operation soapAction="http://tempuri.org/IServicioUsuario/ModificarUsuario" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraerTodos">
+      <soap:operation soapAction="http://tempuri.org/IServicioUsuario/TraerTodos" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BuscarUsuario">
+      <soap:operation soapAction="http://tempuri.org/IServicioUsuario/BuscarUsuario" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Logear">
+      <soap:operation soapAction="http://tempuri.org/IServicioUsuario/Logear" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ServicioUsuario">
+    <wsdl:port name="BasicHttpBinding_IServicioUsuario" binding="tns:BasicHttpBinding_IServicioUsuario">
+      <soap:address location="http://localhost:56442/ServicioUsuario.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

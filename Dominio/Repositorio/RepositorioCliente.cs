@@ -2,6 +2,7 @@
 using Dominio.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,6 +11,8 @@ namespace Dominio.Repositorio
 {
     public class RepositorioCliente : IRepoCliente
     {
+        
+        
         public bool Alta(Cliente obj)
         {
             throw new NotImplementedException();
@@ -32,6 +35,10 @@ namespace Dominio.Repositorio
 
         public List<Cliente> Todos()
         {
+            Persistente persistente = new Persistente();
+            persistente.ObtenerConexion();
+
+
             throw new NotImplementedException();
         }
 

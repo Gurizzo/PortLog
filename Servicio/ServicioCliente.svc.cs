@@ -14,7 +14,7 @@ namespace Servicio
     // NOTA: para iniciar el Cliente de prueba WCF para probar este servicio, seleccione ServicioCliente.svc o ServicioCliente.svc.cs en el Explorador de soluciones e inicie la depuración.
     public class ServicioCliente : IServicioCliente
     {
-        IRepoCliente repo = new RepositorioCliente();
+        RepositorioCliente Repo = new RepositorioCliente();
 
         public bool AltaCliente(ClienteDTO cliente)
         {

@@ -10,6 +10,6 @@ namespace Dominio
     {
         public abstract List<T> TraerTodo();
         public abstract T BuscarPorId();
-        public abstract T Validar(T obj);
+        
     }
 }

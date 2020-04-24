@@ -10,6 +10,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Servicio", "Servicio\Servicio.csproj", "{DD95CD89-8702-43BC-A0BC-FA5C9769496D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVC", "MVC\MVC.csproj", "{C28975F7-5E26-46CC-AAC2-962EC85AB66C}"
+	ProjectSection(ProjectDependencies) = postProject
+		{DD95CD89-8702-43BC-A0BC-FA5C9769496D} = {DD95CD89-8702-43BC-A0BC-FA5C9769496D}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

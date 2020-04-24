@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Dominio.Clases
 {
-    public class Producto:Persistente<Producto>
+    public class Producto
     {
 
 
@@ -36,39 +36,8 @@ namespace Dominio.Clases
             Cliente = cliente;
         }
 
-        public override List<Producto> TraerTodo()
-        {
-            throw new NotImplementedException();
-        }
+        
 
-        public override Producto BuscarPorId()
-        {
-            throw new NotImplementedException();
-        }
-
-        public override bool Modificar()
-        {
-            throw new NotImplementedException();
-        }
-
-        public override bool Eliminar()
-        {
-            throw new NotImplementedException();
-        }
-
-        public override bool Leer()
-        {
-            throw new NotImplementedException();
-        }
-
-        public override bool Guardar()
-        {
-            throw new NotImplementedException();
-        }
-
-        public override Producto Validar(Producto obj)
-        {
-            throw new NotImplementedException();
-        }
+        
     }
 }

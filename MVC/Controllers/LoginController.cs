@@ -1,10 +1,9 @@
 ﻿using Dominio.Clases;
-using Servicio;
-using Servicio.DTO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using MVC.ServiceReferenceUsuario;
 using MVC.ViewModels.Usuario;
 using System.Web.Mvc;
 
@@ -29,23 +28,30 @@ namespace MVC.Controllers
 
             return View(u);
         }
+        
 
         [HttpPost]
         public ActionResult Login(ViewModelLogin u)
         {
 
-            ServicioUsuario usuario = new ServicioUsuario();
-
+            ServicioUsuarioClient usuario = new ServicioUsuarioClient();
+            usuario.Open();
             UsuarioDTO usuarioDto = usuario.Logear(u.CI, u.Password);
+            usuario.Close();
             if (usuarioDto != null)
             {//Caso exitoso de login
-
                 Session["Rol"] = usuarioDto.Rol;
+                if (usuarioDto.Rol == "admin")
+                {
+                    return RedirectToAction("admin");//Redirigir a donde corresponda admin
+                }
+                return RedirectToAction("almacen");//Redirigir a donde corresponda almacen
+
             }
             //Caso de error al logear.
 
 
-            return RedirectToAction("prueba");//Redirigir a donde corresponda
+            return View(u);//Redirigir a donde corresponda
         }
 
         [HttpGet]
@@ -60,8 +66,13 @@ namespace MVC.Controllers
         public ActionResult Create(ViewModelUsuario u)
         {
             if (u.Password == u.Password2)
-            {
-                //Contraseña escrita bien 2 veces.
+            {//Contraseña escrita bien 2 veces.
+
+                ServicioUsuarioClient proxy = new ServicioUsuarioClient();
+                proxy.Open();
+
+
+                
 
             }
             return View();

@@ -45,13 +45,10 @@ namespace Servicio
         public UsuarioDTO Logear(string ci, string password)
         {
             UsuarioDTO usuario = new UsuarioDTO();
-            Usuario u = new Usuario
-            {
-                CI = ci,
-                Password = password
-            };
+            Usuario u = new Usuario();
+            
 
-            u = Repo.Validar(u);
+            u = Repo.ValidarLogin(ci,password);
             
                 if( u.CI!=null)
                 {

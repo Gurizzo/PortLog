@@ -13,20 +13,7 @@ namespace Servicio
     [ServiceContract]
     public interface IServicioUsuario
     {
-        [OperationContract]
-        bool AltaUsuario(UsuarioDTO usuario);
 
-        [OperationContract]
-        bool BajaUsuario(int usuarioId);
-
-        [OperationContract]
-        bool ModificarUsuario(UsuarioDTO usuario);
-
-        [OperationContract]
-        List<UsuarioDTO> TraerTodos();
-
-        [OperationContract]
-        UsuarioDTO BuscarUsuario(int usuarioId);
 
         [OperationContract]
         UsuarioDTO Logear(string ci,string password);
