@@ -13,7 +13,8 @@ namespace Servicio
     [ServiceContract]
     public interface IServicioUsuario
     {
-
+        [OperationContract]
+        Boolean Alta(string cedula, string password);
 
         [OperationContract]
         UsuarioDTO Logear(string ci,string password);

@@ -8,11 +8,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace MVC.ServiceReference1 {
+namespace MVC.ServiceReferenceImportacion {
     
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference1.IServicioImportacion")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReferenceImportacion.IServicioImportacion")]
     public interface IServicioImportacion {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioImportacion/DoWork", ReplyAction="http://tempuri.org/IServicioImportacion/DoWorkResponse")]
@@ -23,12 +23,12 @@ namespace MVC.ServiceReference1 {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface IServicioImportacionChannel : MVC.ServiceReference1.IServicioImportacion, System.ServiceModel.IClientChannel {
+    public interface IServicioImportacionChannel : MVC.ServiceReferenceImportacion.IServicioImportacion, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class ServicioImportacionClient : System.ServiceModel.ClientBase<MVC.ServiceReference1.IServicioImportacion>, MVC.ServiceReference1.IServicioImportacion {
+    public partial class ServicioImportacionClient : System.ServiceModel.ClientBase<MVC.ServiceReferenceImportacion.IServicioImportacion>, MVC.ServiceReferenceImportacion.IServicioImportacion {
         
         public ServicioImportacionClient() {
         }

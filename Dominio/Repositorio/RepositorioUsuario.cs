@@ -14,7 +14,38 @@ namespace Dominio.Repositorio
     {
         public bool Alta(Usuario obj)
         {
-            throw new NotImplementedException();
+            Persistente persistente = new Persistente();
+            bool retorno = false;
+            SqlConnection con = null;
+
+            try
+            {
+                con = persistente.ObtenerConexion();
+                /*INSERT INTO USUARIO VALUES('1','uno','admin')*/
+                SqlCommand comando = new SqlCommand("INSERT INTO USUARIO VALUES(@CI, @PASSWORD, @ROL)",con);
+                List<SqlParameter> pars = new List<SqlParameter>();
+                pars.Add(new SqlParameter("@CI", obj.CI));
+                pars.Add(new SqlParameter("@PASSWORD", obj.Password));
+                pars.Add(new SqlParameter("@ROL", obj.Rol));
+
+                con.Open();
+                int filas =persistente.EjecutarNoQuery(con, comando, CommandType.Text, pars);
+                con.Close();
+
+                if (filas == 1) return true;
+                
+            }
+            catch
+            {
+                return false;
+            }
+            finally
+            {
+                if (con != null && con.State == ConnectionState.Open) con.Close();
+                
+            }
+
+            return retorno;
         }
 
         public bool Baja(Usuario obj)

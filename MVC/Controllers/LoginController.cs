@@ -45,7 +45,7 @@ namespace MVC.Controllers
                 {
                     return RedirectToAction("admin");//Redirigir a donde corresponda admin
                 }
-                return RedirectToAction("almacen");//Redirigir a donde corresponda almacen
+                return RedirectToAction("Almacen");//Redirigir a donde corresponda almacen
 
             }
             //Caso de error al logear.
@@ -70,7 +70,15 @@ namespace MVC.Controllers
 
                 ServicioUsuarioClient proxy = new ServicioUsuarioClient();
                 proxy.Open();
+                Boolean respuesta;
 
+                respuesta = proxy.Alta(u.CI, u.Password);
+
+
+                
+               
+
+                
 
                 
 

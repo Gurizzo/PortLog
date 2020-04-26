@@ -17,35 +17,32 @@ namespace Servicio
     {
         RepositorioUsuario Repo = new RepositorioUsuario();
 
-        public bool AltaUsuario(UsuarioDTO usuario)
+        public Boolean Alta(string cedula, string password)
         {
-            throw new NotImplementedException();
-        }
+            Boolean respuesta = false;
+            if(cedula!=null && password != null)
+            {
+                Usuario u = new Usuario()
+                {
+                    CI = cedula,
+                    Password = password,
+                    Rol = "Almacen"
+                };
 
-        public bool BajaUsuario(int usuarioId)
-        {
-            throw new NotImplementedException();
-        }
+                respuesta = Repo.Alta(u);
+            }
 
-        public UsuarioDTO BuscarUsuario(int usuarioId)
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool ModificarUsuario(UsuarioDTO usuario)
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<UsuarioDTO> TraerTodos()
-        {
-            throw new NotImplementedException();
+            return respuesta;
         }
 
         public UsuarioDTO Logear(string ci, string password)
         {
             UsuarioDTO usuario = new UsuarioDTO();
-            Usuario u = new Usuario();
+            Usuario u = new Usuario()
+            {
+                CI = ci,
+                Password = password
+            };
             
 
             u = Repo.ValidarLogin(ci,password);

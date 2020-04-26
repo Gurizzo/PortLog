@@ -26,7 +26,7 @@ namespace MVC.ViewModels.Importacion
         [Display(Name = "Cliente"), Required]
         public string Cliente { get; set; }
 
-        [Display(Name = "Pais"), Required]
+        [Display(Name = "Pais de destino"), Required]
         public string Pais { get; set; }
 
         [Display(Name = "Almacenado"), Required]

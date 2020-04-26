@@ -110,35 +110,11 @@ namespace MVC.ServiceReferenceUsuario {
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReferenceUsuario.IServicioUsuario")]
     public interface IServicioUsuario {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioUsuario/AltaUsuario", ReplyAction="http://tempuri.org/IServicioUsuario/AltaUsuarioResponse")]
-        bool AltaUsuario(MVC.ServiceReferenceUsuario.UsuarioDTO usuario);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioUsuario/Alta", ReplyAction="http://tempuri.org/IServicioUsuario/AltaResponse")]
+        bool Alta(string cedula, string password);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioUsuario/AltaUsuario", ReplyAction="http://tempuri.org/IServicioUsuario/AltaUsuarioResponse")]
-        System.Threading.Tasks.Task<bool> AltaUsuarioAsync(MVC.ServiceReferenceUsuario.UsuarioDTO usuario);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioUsuario/BajaUsuario", ReplyAction="http://tempuri.org/IServicioUsuario/BajaUsuarioResponse")]
-        bool BajaUsuario(int usuarioId);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioUsuario/BajaUsuario", ReplyAction="http://tempuri.org/IServicioUsuario/BajaUsuarioResponse")]
-        System.Threading.Tasks.Task<bool> BajaUsuarioAsync(int usuarioId);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioUsuario/ModificarUsuario", ReplyAction="http://tempuri.org/IServicioUsuario/ModificarUsuarioResponse")]
-        bool ModificarUsuario(MVC.ServiceReferenceUsuario.UsuarioDTO usuario);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioUsuario/ModificarUsuario", ReplyAction="http://tempuri.org/IServicioUsuario/ModificarUsuarioResponse")]
-        System.Threading.Tasks.Task<bool> ModificarUsuarioAsync(MVC.ServiceReferenceUsuario.UsuarioDTO usuario);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioUsuario/TraerTodos", ReplyAction="http://tempuri.org/IServicioUsuario/TraerTodosResponse")]
-        MVC.ServiceReferenceUsuario.UsuarioDTO[] TraerTodos();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioUsuario/TraerTodos", ReplyAction="http://tempuri.org/IServicioUsuario/TraerTodosResponse")]
-        System.Threading.Tasks.Task<MVC.ServiceReferenceUsuario.UsuarioDTO[]> TraerTodosAsync();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioUsuario/BuscarUsuario", ReplyAction="http://tempuri.org/IServicioUsuario/BuscarUsuarioResponse")]
-        MVC.ServiceReferenceUsuario.UsuarioDTO BuscarUsuario(int usuarioId);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioUsuario/BuscarUsuario", ReplyAction="http://tempuri.org/IServicioUsuario/BuscarUsuarioResponse")]
-        System.Threading.Tasks.Task<MVC.ServiceReferenceUsuario.UsuarioDTO> BuscarUsuarioAsync(int usuarioId);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioUsuario/Alta", ReplyAction="http://tempuri.org/IServicioUsuario/AltaResponse")]
+        System.Threading.Tasks.Task<bool> AltaAsync(string cedula, string password);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioUsuario/Logear", ReplyAction="http://tempuri.org/IServicioUsuario/LogearResponse")]
         MVC.ServiceReferenceUsuario.UsuarioDTO Logear(string ci, string password);
@@ -174,44 +150,12 @@ namespace MVC.ServiceReferenceUsuario {
                 base(binding, remoteAddress) {
         }
         
-        public bool AltaUsuario(MVC.ServiceReferenceUsuario.UsuarioDTO usuario) {
-            return base.Channel.AltaUsuario(usuario);
+        public bool Alta(string cedula, string password) {
+            return base.Channel.Alta(cedula, password);
         }
         
-        public System.Threading.Tasks.Task<bool> AltaUsuarioAsync(MVC.ServiceReferenceUsuario.UsuarioDTO usuario) {
-            return base.Channel.AltaUsuarioAsync(usuario);
-        }
-        
-        public bool BajaUsuario(int usuarioId) {
-            return base.Channel.BajaUsuario(usuarioId);
-        }
-        
-        public System.Threading.Tasks.Task<bool> BajaUsuarioAsync(int usuarioId) {
-            return base.Channel.BajaUsuarioAsync(usuarioId);
-        }
-        
-        public bool ModificarUsuario(MVC.ServiceReferenceUsuario.UsuarioDTO usuario) {
-            return base.Channel.ModificarUsuario(usuario);
-        }
-        
-        public System.Threading.Tasks.Task<bool> ModificarUsuarioAsync(MVC.ServiceReferenceUsuario.UsuarioDTO usuario) {
-            return base.Channel.ModificarUsuarioAsync(usuario);
-        }
-        
-        public MVC.ServiceReferenceUsuario.UsuarioDTO[] TraerTodos() {
-            return base.Channel.TraerTodos();
-        }
-        
-        public System.Threading.Tasks.Task<MVC.ServiceReferenceUsuario.UsuarioDTO[]> TraerTodosAsync() {
-            return base.Channel.TraerTodosAsync();
-        }
-        
-        public MVC.ServiceReferenceUsuario.UsuarioDTO BuscarUsuario(int usuarioId) {
-            return base.Channel.BuscarUsuario(usuarioId);
-        }
-        
-        public System.Threading.Tasks.Task<MVC.ServiceReferenceUsuario.UsuarioDTO> BuscarUsuarioAsync(int usuarioId) {
-            return base.Channel.BuscarUsuarioAsync(usuarioId);
+        public System.Threading.Tasks.Task<bool> AltaAsync(string cedula, string password) {
+            return base.Channel.AltaAsync(cedula, password);
         }
         
         public MVC.ServiceReferenceUsuario.UsuarioDTO Logear(string ci, string password) {

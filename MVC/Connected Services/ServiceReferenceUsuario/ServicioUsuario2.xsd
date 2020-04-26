@@ -9,10 +9,4 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="UsuarioDTO" nillable="true" type="tns:UsuarioDTO" />
-  <xs:complexType name="ArrayOfUsuarioDTO">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="UsuarioDTO" nillable="true" type="tns:UsuarioDTO" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOfUsuarioDTO" nillable="true" type="tns:ArrayOfUsuarioDTO" />
 </xs:schema>
