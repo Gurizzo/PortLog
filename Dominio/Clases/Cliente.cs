@@ -16,7 +16,7 @@ namespace Dominio.Clases
 
         public string Nombre { get; set; }
 
-        public int  Antiguedad { get; set; }
+        public DateTime  Antiguedad { get; set; }
 
         public List<Producto> Productos { get; set; }
 
@@ -28,7 +28,7 @@ namespace Dominio.Clases
 
         }
 
-        public Cliente(int id, string rut, string nombre, int antiguedad, List<Producto> productos, List<Importacion> importaciones)
+        public Cliente(int id, string rut, string nombre, DateTime antiguedad, List<Producto> productos, List<Importacion> importaciones)
         {
             Id = id;
             Rut = rut;
@@ -38,9 +38,10 @@ namespace Dominio.Clases
             Importaciones = importaciones;
         }
 
-        public int CalcularCosto()
+        public int Descuento()
         {
-            return 0;//Implementar
+
+            return 3;//Implementar polimorfismo
         }
     }
 }

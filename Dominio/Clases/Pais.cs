@@ -8,6 +8,10 @@ namespace Dominio.Clases
 {
     public class Pais
     {
+        public Pais()
+        {
+        }
+
         public Pais(int id, string codPais, string nombre)
         {
             Id = id;

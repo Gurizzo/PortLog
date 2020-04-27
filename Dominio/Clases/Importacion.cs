@@ -41,7 +41,8 @@ namespace Dominio.Clases
             Enviado = enviado;
         }
 
-
-
+        public Importacion()
+        {
+        }
     }
 }
