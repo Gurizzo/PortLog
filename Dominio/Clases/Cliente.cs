@@ -43,5 +43,7 @@ namespace Dominio.Clases
 
             return 3;//Implementar polimorfismo
         }
+
+        
     }
 }

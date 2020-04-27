@@ -62,10 +62,10 @@ namespace Dominio.Repositorio
                         Enviado = (bool)reader["imp.Almacenado"],
                         Cliente = new Cliente()
                         {
-                            Id=(int)reader["imp.PERSONAID"],
-                            Rut=(string)reader["cli.RUT"],
-                            Nombre=(string)reader["cli.NOMBRE"],
-                            Antiguedad=(DateTime)reader["cli.ANTIGUEDAD"]
+                            Id = (int)reader["imp.PERSONAID"],
+                            Rut = (string)reader["cli.RUT"],
+                            Nombre = (string)reader["cli.NOMBRE"],
+                            Antiguedad = (DateTime)reader["cli.ANTIGUEDAD"]
                         },
                         Pais = new Pais()
                         {
@@ -74,7 +74,8 @@ namespace Dominio.Repositorio
                             Nombre = (string)reader["pa.NombrePais"]
                         },
                         
-                        
+
+
 
 
 
