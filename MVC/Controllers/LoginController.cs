@@ -51,7 +51,7 @@ namespace MVC.Controllers
 
             }
             //Caso de error al logear.
-
+            TempData["Fail"] = "Error al conectar, verifique los datos ingresados";
 
             return View(u);//Redirigir a donde corresponda
         }

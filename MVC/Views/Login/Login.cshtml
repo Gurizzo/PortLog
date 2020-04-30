@@ -7,10 +7,10 @@
 <h2>Login</h2>
 
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>ViewModelLogin</h4>
         <hr />
@@ -37,6 +37,10 @@
             </div>
         </div>
     </div>
+    if (TempData["Fail"] != null)
+    {
+        <p class="alert alert-danger" id="dangerMessage">@TempData["Fail"]</p>
+    }
 }
 
 <div>
