@@ -14,7 +14,7 @@ namespace Servicio
     public interface IServicioUsuario
     {
         [OperationContract]
-        Boolean Alta(string cedula, string password);
+        Boolean Alta(string cedula, string password, string rol);
 
         [OperationContract]
         UsuarioDTO Logear(string ci,string password);

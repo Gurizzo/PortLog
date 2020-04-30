@@ -273,8 +273,8 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Login\Login.cshtml" />
-    <Content Include="Views\Login\Create.cshtml" />
     <Content Include="Views\Importacion\Lista.cshtml" />
+    <Content Include="Views\Login\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -111,10 +111,10 @@ namespace MVC.ServiceReferenceUsuario {
     public interface IServicioUsuario {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioUsuario/Alta", ReplyAction="http://tempuri.org/IServicioUsuario/AltaResponse")]
-        bool Alta(string cedula, string password);
+        bool Alta(string cedula, string password, string rol);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioUsuario/Alta", ReplyAction="http://tempuri.org/IServicioUsuario/AltaResponse")]
-        System.Threading.Tasks.Task<bool> AltaAsync(string cedula, string password);
+        System.Threading.Tasks.Task<bool> AltaAsync(string cedula, string password, string rol);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioUsuario/Logear", ReplyAction="http://tempuri.org/IServicioUsuario/LogearResponse")]
         MVC.ServiceReferenceUsuario.UsuarioDTO Logear(string ci, string password);
@@ -150,12 +150,12 @@ namespace MVC.ServiceReferenceUsuario {
                 base(binding, remoteAddress) {
         }
         
-        public bool Alta(string cedula, string password) {
-            return base.Channel.Alta(cedula, password);
+        public bool Alta(string cedula, string password, string rol) {
+            return base.Channel.Alta(cedula, password, rol);
         }
         
-        public System.Threading.Tasks.Task<bool> AltaAsync(string cedula, string password) {
-            return base.Channel.AltaAsync(cedula, password);
+        public System.Threading.Tasks.Task<bool> AltaAsync(string cedula, string password, string rol) {
+            return base.Channel.AltaAsync(cedula, password, rol);
         }
         
         public MVC.ServiceReferenceUsuario.UsuarioDTO Logear(string ci, string password) {

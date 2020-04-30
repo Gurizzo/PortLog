@@ -17,16 +17,16 @@ namespace Servicio
     {
         RepositorioUsuario Repo = new RepositorioUsuario();
 
-        public Boolean Alta(string cedula, string password)
+        public Boolean Alta(string cedula, string password,string rol)
         {
             Boolean respuesta = false;
-            if(cedula!=null && password != null)
+            if(cedula!=null && password != null && rol != null)
             {
                 Usuario u = new Usuario()
                 {
                     CI = cedula,
                     Password = password,
-                    Rol = "Almacen"
+                    Rol = rol
                 };
 
                 respuesta = Repo.Alta(u);

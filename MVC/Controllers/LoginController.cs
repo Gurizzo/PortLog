@@ -6,7 +6,8 @@ using System.Web;
 using MVC.ServiceReferenceUsuario;
 using MVC.ViewModels.Usuario;
 using System.Web.Mvc;
-
+using System.Web.WebPages.Html;
+using SelectListItem = System.Web.WebPages.Html.SelectListItem;
 
 namespace MVC.Controllers
 {
@@ -60,31 +61,69 @@ namespace MVC.Controllers
         {
             //Dibujo la vista
             ViewModelUsuario u = new ViewModelUsuario();
+
+            
+            ViewBag.Roles = Roles();
+
+
+
             return View(u);
+        }
+
+        private List<string> Roles()//Precargar roles
+        {
+            List<string> roles = new List<string>
+            {
+                "Almacen",
+                "Admin"
+            };
+
+            return roles;
         }
 
         [HttpPost]
         public ActionResult Create(ViewModelUsuario u)
         {
-            if (u.Password == u.Password2)
-            {//Contraseña escrita bien 2 veces.
+            ViewModelUsuario model = new ViewModelUsuario();
+            try
+            {
+                if (u.Password == u.Password2)
+                {//Contraseña escrita bien 2 veces.
+                    if(u.Password.Contains("#") || u.CI.Contains("#"))
+                    {
+                        TempData["Fail"] = "No se permite el uso del caracter #";
+                        return RedirectToAction("Create", "Login");
+                    }
+                    else
+                    {
+                        ServicioUsuarioClient proxy = new ServicioUsuarioClient();
+                        proxy.Open();
+                        Boolean respuesta;
 
-                ServicioUsuarioClient proxy = new ServicioUsuarioClient();
-                proxy.Open();
-                Boolean respuesta;
+                        respuesta = proxy.Alta(u.CI, u.Password, u.Rol);
+                        if (respuesta)
+                        {
+                            TempData["Alta"] = "Alta exitosa";
+                            return RedirectToAction("Create", "Login");
+                        }
+                        else
+                        {
+                            TempData["Fail"] = "El usuario ya existe";
+                            return RedirectToAction("Create", "Login");
+                        }
+                    }
 
-                respuesta = proxy.Alta(u.CI, u.Password);
-
-
-                
-               
-
-                
-
-                
+                }
 
             }
-            return View();
+            finally
+            {
+                
+                ViewBag.Roles = Roles();
+                
+            }
+            return View(model);
+
         }
     }
     
