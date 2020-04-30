@@ -326,3 +326,11 @@ SELECT * FROM USUARIO
 SELECT * FROM IMPORTACION
 SELECT * FROM PRODUCTO
 
+/*CONSULTA LISTAR*/
+
+  Select imp.id,imp.FCHINGRESO,imp.FCHSALIDA,imp.PRODUCTOID,imp.CANTIDAD,imp.PERSONAID,imp.PAISID,imp.ALMACENADO,
+  pa.CodPais,pa.NombrePais,
+  cli.RUT,cli.NOMBRE,cli.ANTIGUEDAD
+  from Importacion imp, Pais pa,Producto pro, CLIENTE cli
+  where imp.PaisID = pa.id and imp.PRODUCTOID = pro.id and imp.PERSONAID = cli.Id
+

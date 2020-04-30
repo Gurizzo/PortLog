@@ -3,24 +3,103 @@
   <wsdl:types>
     <xsd:schema targetNamespace="http://tempuri.org/Imports">
       <xsd:import schemaLocation="http://localhost:56442/ServicioImportacion.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:56442/ServicioImportacion.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:56442/ServicioImportacion.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Servicio.DTO" />
+      <xsd:import schemaLocation="http://localhost:56442/ServicioImportacion.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/Dominio.Clases" />
     </xsd:schema>
   </wsdl:types>
-  <wsdl:message name="IServicioImportacion_DoWork_InputMessage">
-    <wsdl:part name="parameters" element="tns:DoWork" />
+  <wsdl:message name="IServicioImportacion_AltaImportacion_InputMessage">
+    <wsdl:part name="parameters" element="tns:AltaImportacion" />
   </wsdl:message>
-  <wsdl:message name="IServicioImportacion_DoWork_OutputMessage">
-    <wsdl:part name="parameters" element="tns:DoWorkResponse" />
+  <wsdl:message name="IServicioImportacion_AltaImportacion_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AltaImportacionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicioImportacion_BajaImportacion_InputMessage">
+    <wsdl:part name="parameters" element="tns:BajaImportacion" />
+  </wsdl:message>
+  <wsdl:message name="IServicioImportacion_BajaImportacion_OutputMessage">
+    <wsdl:part name="parameters" element="tns:BajaImportacionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicioImportacion_ModificarImportacion_InputMessage">
+    <wsdl:part name="parameters" element="tns:ModificarImportacion" />
+  </wsdl:message>
+  <wsdl:message name="IServicioImportacion_ModificarImportacion_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ModificarImportacionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicioImportacion_TraerTodos_InputMessage">
+    <wsdl:part name="parameters" element="tns:TraerTodos" />
+  </wsdl:message>
+  <wsdl:message name="IServicioImportacion_TraerTodos_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TraerTodosResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicioImportacion_BuscarImportacion_InputMessage">
+    <wsdl:part name="parameters" element="tns:BuscarImportacion" />
+  </wsdl:message>
+  <wsdl:message name="IServicioImportacion_BuscarImportacion_OutputMessage">
+    <wsdl:part name="parameters" element="tns:BuscarImportacionResponse" />
   </wsdl:message>
   <wsdl:portType name="IServicioImportacion">
-    <wsdl:operation name="DoWork">
-      <wsdl:input wsaw:Action="http://tempuri.org/IServicioImportacion/DoWork" message="tns:IServicioImportacion_DoWork_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IServicioImportacion/DoWorkResponse" message="tns:IServicioImportacion_DoWork_OutputMessage" />
+    <wsdl:operation name="AltaImportacion">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicioImportacion/AltaImportacion" message="tns:IServicioImportacion_AltaImportacion_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicioImportacion/AltaImportacionResponse" message="tns:IServicioImportacion_AltaImportacion_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="BajaImportacion">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicioImportacion/BajaImportacion" message="tns:IServicioImportacion_BajaImportacion_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicioImportacion/BajaImportacionResponse" message="tns:IServicioImportacion_BajaImportacion_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ModificarImportacion">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicioImportacion/ModificarImportacion" message="tns:IServicioImportacion_ModificarImportacion_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicioImportacion/ModificarImportacionResponse" message="tns:IServicioImportacion_ModificarImportacion_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TraerTodos">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicioImportacion/TraerTodos" message="tns:IServicioImportacion_TraerTodos_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicioImportacion/TraerTodosResponse" message="tns:IServicioImportacion_TraerTodos_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="BuscarImportacion">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicioImportacion/BuscarImportacion" message="tns:IServicioImportacion_BuscarImportacion_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicioImportacion/BuscarImportacionResponse" message="tns:IServicioImportacion_BuscarImportacion_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IServicioImportacion" type="tns:IServicioImportacion">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <wsdl:operation name="DoWork">
-      <soap:operation soapAction="http://tempuri.org/IServicioImportacion/DoWork" style="document" />
+    <wsdl:operation name="AltaImportacion">
+      <soap:operation soapAction="http://tempuri.org/IServicioImportacion/AltaImportacion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BajaImportacion">
+      <soap:operation soapAction="http://tempuri.org/IServicioImportacion/BajaImportacion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ModificarImportacion">
+      <soap:operation soapAction="http://tempuri.org/IServicioImportacion/ModificarImportacion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraerTodos">
+      <soap:operation soapAction="http://tempuri.org/IServicioImportacion/TraerTodos" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BuscarImportacion">
+      <soap:operation soapAction="http://tempuri.org/IServicioImportacion/BuscarImportacion" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

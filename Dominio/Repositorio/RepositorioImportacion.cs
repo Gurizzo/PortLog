@@ -45,6 +45,7 @@ namespace Dominio.Repositorio
                 SqlCommand command = new SqlCommand(@"Select imp.id, imp.FCHINGRESO, imp.FCHSALIDA, imp.PRODUCTOID, imp.CANTIDAD, imp.PERSONAID, imp.PAISID, imp.ALMACENADO,
                   pa.CodPais, pa.NombrePais,
                   cli.RUT, cli.NOMBRE, cli.ANTIGUEDAD,
+                  pro.NOMBRE as NombreProducto,pro.CODIGO,pro.PESO
                   from Importacion imp, Pais pa, Producto pro, CLIENTE cli
                   where imp.PaisID = pa.id and imp.PRODUCTOID = pro.id and imp.PERSONAID = cli.Id", con);
                 con.Open();
@@ -55,24 +56,36 @@ namespace Dominio.Repositorio
                     Importacion importacion = new Importacion()
                     {
 
-                        Id = (int)reader["imp.id"],
-                        FchIngreso = reader.GetDateTime(3),
-                        FchSalida = reader.GetDateTime(3),
-                        Cantidad = (int)reader["imp.Cantidad"],
-                        Enviado = (bool)reader["imp.Almacenado"],
-                        Cliente = new Cliente()
-                        {
-                            Id = (int)reader["imp.PERSONAID"],
-                            Rut = (string)reader["cli.RUT"],
-                            Nombre = (string)reader["cli.NOMBRE"],
-                            Antiguedad = (DateTime)reader["cli.ANTIGUEDAD"]
-                        },
+                        Id = (int)reader["id"],
+                        FchIngreso = (DateTime)reader["FCHINGRESO"],
+                        FchSalida = (DateTime)reader["FCHSALIDA"],
+                        Cantidad = (int)reader["Cantidad"],
+                        Enviado = (bool)reader["Almacenado"],
+                        
                         Pais = new Pais()
                         {
-                            Id = (int)reader["imp.PAISID"],
-                            CodPais = (string)reader["pa.CodPais"],
-                            Nombre = (string)reader["pa.NombrePais"]
+                            Id = (int)reader["PAISID"],
+                            CodPais = (string)reader["CodPais"],
+                            Nombre = (string)reader["NombrePais"],
+
                         },
+                        Producto = new Producto
+                        {
+                            Id= (int)reader["ProductoId"],
+                            Nombre = (string)reader["NombreProducto"],
+                            Codigo= (int)reader["codigo"],
+                            Peso= (decimal)reader["peso"],
+                            Cliente  = new Cliente
+                            {
+                                Id = (int)reader["PERSONAID"],
+                                Rut = (string)reader["RUT"],
+                                Nombre = (string)reader["NOMBRE"],
+                                Antiguedad = (DateTime)reader["ANTIGUEDAD"]
+                            }
+
+                        },
+                        
+                       
                         
 
 
@@ -80,21 +93,23 @@ namespace Dominio.Repositorio
 
 
                     };
+                    importacion.Descuento = importacion.Producto.Cliente.Descuento();
+                    importaciones.Add(importacion);
                 }
 
             }
             catch (Exception)
             {
 
-                throw;
+                return null;
             }
             finally
             {
-
+                return importaciones;
             }
 
 
-            return importaciones;
+            
         }
 
         

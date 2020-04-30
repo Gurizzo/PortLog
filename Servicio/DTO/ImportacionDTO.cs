@@ -30,5 +30,8 @@ namespace Servicio.DTO
 
         [DataMember]
         public Pais Pais { get; set; }
+
+        [DataMember]
+        public bool Enviado { get; set; }
     }
 }

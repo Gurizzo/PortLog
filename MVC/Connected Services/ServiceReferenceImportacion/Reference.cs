@@ -9,17 +9,200 @@
 //------------------------------------------------------------------------------
 
 namespace MVC.ServiceReferenceImportacion {
+    using System.Runtime.Serialization;
+    using System;
     
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="ImportacionDTO", Namespace="http://schemas.datacontract.org/2004/07/Servicio.DTO")]
+    [System.SerializableAttribute()]
+    public partial class ImportacionDTO : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int CantidadField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private Dominio.Clases.Cliente ClienteField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int DescuentoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool EnviadoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime FchIngresoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime FchSalidaField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private Dominio.Clases.Pais PaisField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private Dominio.Clases.Producto ProductoField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Cantidad {
+            get {
+                return this.CantidadField;
+            }
+            set {
+                if ((this.CantidadField.Equals(value) != true)) {
+                    this.CantidadField = value;
+                    this.RaisePropertyChanged("Cantidad");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public Dominio.Clases.Cliente Cliente {
+            get {
+                return this.ClienteField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ClienteField, value) != true)) {
+                    this.ClienteField = value;
+                    this.RaisePropertyChanged("Cliente");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Descuento {
+            get {
+                return this.DescuentoField;
+            }
+            set {
+                if ((this.DescuentoField.Equals(value) != true)) {
+                    this.DescuentoField = value;
+                    this.RaisePropertyChanged("Descuento");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool Enviado {
+            get {
+                return this.EnviadoField;
+            }
+            set {
+                if ((this.EnviadoField.Equals(value) != true)) {
+                    this.EnviadoField = value;
+                    this.RaisePropertyChanged("Enviado");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime FchIngreso {
+            get {
+                return this.FchIngresoField;
+            }
+            set {
+                if ((this.FchIngresoField.Equals(value) != true)) {
+                    this.FchIngresoField = value;
+                    this.RaisePropertyChanged("FchIngreso");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime FchSalida {
+            get {
+                return this.FchSalidaField;
+            }
+            set {
+                if ((this.FchSalidaField.Equals(value) != true)) {
+                    this.FchSalidaField = value;
+                    this.RaisePropertyChanged("FchSalida");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public Dominio.Clases.Pais Pais {
+            get {
+                return this.PaisField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PaisField, value) != true)) {
+                    this.PaisField = value;
+                    this.RaisePropertyChanged("Pais");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public Dominio.Clases.Producto Producto {
+            get {
+                return this.ProductoField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ProductoField, value) != true)) {
+                    this.ProductoField = value;
+                    this.RaisePropertyChanged("Producto");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReferenceImportacion.IServicioImportacion")]
     public interface IServicioImportacion {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioImportacion/DoWork", ReplyAction="http://tempuri.org/IServicioImportacion/DoWorkResponse")]
-        void DoWork();
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioImportacion/AltaImportacion", ReplyAction="http://tempuri.org/IServicioImportacion/AltaImportacionResponse")]
+        bool AltaImportacion(MVC.ServiceReferenceImportacion.ImportacionDTO importacion);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioImportacion/DoWork", ReplyAction="http://tempuri.org/IServicioImportacion/DoWorkResponse")]
-        System.Threading.Tasks.Task DoWorkAsync();
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioImportacion/AltaImportacion", ReplyAction="http://tempuri.org/IServicioImportacion/AltaImportacionResponse")]
+        System.Threading.Tasks.Task<bool> AltaImportacionAsync(MVC.ServiceReferenceImportacion.ImportacionDTO importacion);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioImportacion/BajaImportacion", ReplyAction="http://tempuri.org/IServicioImportacion/BajaImportacionResponse")]
+        bool BajaImportacion(int importacionId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioImportacion/BajaImportacion", ReplyAction="http://tempuri.org/IServicioImportacion/BajaImportacionResponse")]
+        System.Threading.Tasks.Task<bool> BajaImportacionAsync(int importacionId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioImportacion/ModificarImportacion", ReplyAction="http://tempuri.org/IServicioImportacion/ModificarImportacionResponse")]
+        bool ModificarImportacion(MVC.ServiceReferenceImportacion.ImportacionDTO importacion);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioImportacion/ModificarImportacion", ReplyAction="http://tempuri.org/IServicioImportacion/ModificarImportacionResponse")]
+        System.Threading.Tasks.Task<bool> ModificarImportacionAsync(MVC.ServiceReferenceImportacion.ImportacionDTO importacion);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioImportacion/TraerTodos", ReplyAction="http://tempuri.org/IServicioImportacion/TraerTodosResponse")]
+        MVC.ServiceReferenceImportacion.ImportacionDTO[] TraerTodos();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioImportacion/TraerTodos", ReplyAction="http://tempuri.org/IServicioImportacion/TraerTodosResponse")]
+        System.Threading.Tasks.Task<MVC.ServiceReferenceImportacion.ImportacionDTO[]> TraerTodosAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioImportacion/BuscarImportacion", ReplyAction="http://tempuri.org/IServicioImportacion/BuscarImportacionResponse")]
+        MVC.ServiceReferenceImportacion.ImportacionDTO BuscarImportacion(int genId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioImportacion/BuscarImportacion", ReplyAction="http://tempuri.org/IServicioImportacion/BuscarImportacionResponse")]
+        System.Threading.Tasks.Task<MVC.ServiceReferenceImportacion.ImportacionDTO> BuscarImportacionAsync(int genId);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -49,12 +232,44 @@ namespace MVC.ServiceReferenceImportacion {
                 base(binding, remoteAddress) {
         }
         
-        public void DoWork() {
-            base.Channel.DoWork();
+        public bool AltaImportacion(MVC.ServiceReferenceImportacion.ImportacionDTO importacion) {
+            return base.Channel.AltaImportacion(importacion);
         }
         
-        public System.Threading.Tasks.Task DoWorkAsync() {
-            return base.Channel.DoWorkAsync();
+        public System.Threading.Tasks.Task<bool> AltaImportacionAsync(MVC.ServiceReferenceImportacion.ImportacionDTO importacion) {
+            return base.Channel.AltaImportacionAsync(importacion);
+        }
+        
+        public bool BajaImportacion(int importacionId) {
+            return base.Channel.BajaImportacion(importacionId);
+        }
+        
+        public System.Threading.Tasks.Task<bool> BajaImportacionAsync(int importacionId) {
+            return base.Channel.BajaImportacionAsync(importacionId);
+        }
+        
+        public bool ModificarImportacion(MVC.ServiceReferenceImportacion.ImportacionDTO importacion) {
+            return base.Channel.ModificarImportacion(importacion);
+        }
+        
+        public System.Threading.Tasks.Task<bool> ModificarImportacionAsync(MVC.ServiceReferenceImportacion.ImportacionDTO importacion) {
+            return base.Channel.ModificarImportacionAsync(importacion);
+        }
+        
+        public MVC.ServiceReferenceImportacion.ImportacionDTO[] TraerTodos() {
+            return base.Channel.TraerTodos();
+        }
+        
+        public System.Threading.Tasks.Task<MVC.ServiceReferenceImportacion.ImportacionDTO[]> TraerTodosAsync() {
+            return base.Channel.TraerTodosAsync();
+        }
+        
+        public MVC.ServiceReferenceImportacion.ImportacionDTO BuscarImportacion(int genId) {
+            return base.Channel.BuscarImportacion(genId);
+        }
+        
+        public System.Threading.Tasks.Task<MVC.ServiceReferenceImportacion.ImportacionDTO> BuscarImportacionAsync(int genId) {
+            return base.Channel.BuscarImportacionAsync(genId);
         }
     }
 }

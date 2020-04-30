@@ -37,6 +37,7 @@ namespace MVC.Controllers
             ServicioUsuarioClient usuario = new ServicioUsuarioClient();
             usuario.Open();
             UsuarioDTO usuarioDto = usuario.Logear(u.CI, u.Password);
+            
             usuario.Close();
             if (usuarioDto != null)
             {//Caso exitoso de login

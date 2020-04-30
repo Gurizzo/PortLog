@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="0f78d943-e21d-46ea-80cd-740ec5bad3d1" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="32b9fe4d-9da7-4ea1-b86c-72d5328ac041" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
     <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
@@ -22,9 +22,12 @@
     <MetadataSource Address="http://localhost:56442/ServicioImportacion.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="ServicioImportacion.disco" MetadataType="Disco" ID="39afab37-4bf6-4112-9e3d-182718456353" SourceId="1" SourceUrl="http://localhost:56442/ServicioImportacion.svc?disco" />
-    <MetadataFile FileName="ServicioImportacion.xsd" MetadataType="Schema" ID="84760b3b-6b5c-48cf-9d64-2de8bea83327" SourceId="1" SourceUrl="http://localhost:56442/ServicioImportacion.svc?xsd=xsd0" />
-    <MetadataFile FileName="ServicioImportacion.wsdl" MetadataType="Wsdl" ID="9159c875-0a8d-4194-9d86-c0969f07d410" SourceId="1" SourceUrl="http://localhost:56442/ServicioImportacion.svc?wsdl" />
+    <MetadataFile FileName="ServicioImportacion.wsdl" MetadataType="Wsdl" ID="a81a7aa1-1881-4f70-9e86-7df1c44f4c13" SourceId="1" SourceUrl="http://localhost:56442/ServicioImportacion.svc?wsdl" />
+    <MetadataFile FileName="ServicioImportacion.xsd" MetadataType="Schema" ID="36acc0e8-1a1f-418e-bd4f-1750b3d49c9e" SourceId="1" SourceUrl="http://localhost:56442/ServicioImportacion.svc?xsd=xsd3" />
+    <MetadataFile FileName="ServicioImportacion1.xsd" MetadataType="Schema" ID="1aa9b06e-7246-421c-bfa6-971669a21083" SourceId="1" SourceUrl="http://localhost:56442/ServicioImportacion.svc?xsd=xsd2" />
+    <MetadataFile FileName="ServicioImportacion2.xsd" MetadataType="Schema" ID="ac23ccbc-fec9-466f-8e39-47a4e2913802" SourceId="1" SourceUrl="http://localhost:56442/ServicioImportacion.svc?xsd=xsd0" />
+    <MetadataFile FileName="ServicioImportacion.disco" MetadataType="Disco" ID="7055fdff-9112-4d52-b5eb-56685ff2c80a" SourceId="1" SourceUrl="http://localhost:56442/ServicioImportacion.svc?disco" />
+    <MetadataFile FileName="ServicioImportacion3.xsd" MetadataType="Schema" ID="a966dc13-0dff-4b6c-ab83-78019a5135da" SourceId="1" SourceUrl="http://localhost:56442/ServicioImportacion.svc?xsd=xsd1" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
