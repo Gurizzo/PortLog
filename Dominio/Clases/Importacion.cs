@@ -22,6 +22,8 @@ namespace Dominio.Clases
 
         public int Descuento { get; set; }
 
+        public decimal Precio { get; set; }
+
         public Pais Pais { get; set; }
 
         public bool Enviado { get; set; }
@@ -32,7 +34,7 @@ namespace Dominio.Clases
         {
         }
 
-        public Importacion(int id, DateTime fchIngreso, DateTime fchSalida, Producto producto, int cantidad, int descuento, Pais pais, bool enviado)
+        public Importacion(int id, DateTime fchIngreso, DateTime fchSalida, Producto producto, int cantidad, int descuento, decimal precio, Pais pais, bool enviado)
         {
             Id = id;
             FchIngreso = fchIngreso;
@@ -40,6 +42,7 @@ namespace Dominio.Clases
             Producto = producto;
             Cantidad = cantidad;
             Descuento = descuento;
+            Precio = precio;
             Pais = pais;
             Enviado = enviado;
         }

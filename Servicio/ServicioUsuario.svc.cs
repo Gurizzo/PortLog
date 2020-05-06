@@ -28,8 +28,11 @@ namespace Servicio
                     Password = password,
                     Rol = rol
                 };
-
-                respuesta = Repo.Alta(u);
+                if (u.Validar())
+                {
+                    respuesta = Repo.Alta(u);
+                }
+                
             }
 
             return respuesta;

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Dominio.Clases;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
@@ -10,9 +11,21 @@ namespace Servicio.DTO
     public class ClienteDTO
     {
         [DataMember]
+        public int Id { get; set; }
+
+        [DataMember]
         public string Rut { get; set; }
 
         [DataMember]
         public string Nombre { get; set; }
+
+        [DataMember]
+        public DateTime Antiguedad { get; set; }
+
+        [DataMember]
+        public List<Producto> Productos { get; set; }
+
+        [DataMember]
+        public List<Importacion> Importaciones { get; set; }
     }
 }

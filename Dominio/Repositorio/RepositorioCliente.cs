@@ -2,6 +2,7 @@
 using Dominio.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -36,10 +37,42 @@ namespace Dominio.Repositorio
         public List<Cliente> Todos()
         {
             Persistente persistente = new Persistente();
-            persistente.ObtenerConexion();
+            List<Cliente> clientes = new List<Cliente>();
+            SqlConnection con = null;
+            SqlDataReader reader = null;
+
+            try
+            {
+                con = persistente.ObtenerConexion();
+                SqlCommand sqlCommand = new SqlCommand("SELECT * FROM CLIENTE", con);
+                con.Open();
+                reader = persistente.EjecutarQuery(con,sqlCommand,CommandType.Text,null );
+
+                while (reader.Read())
+                {
+                    Cliente cliente = new Cliente()
+                    {
+                        Id=(int)reader["id"],
+                        Antiguedad=(DateTime)reader["Antiguedad"],
+                        Nombre=(string)reader["Nombre"],
+                        Rut=(string)reader["Rut"]
+                    };
+                    clientes.Add(cliente);
+                }
 
 
-            throw new NotImplementedException();
+            }
+            catch
+            {
+
+            }
+            finally
+            {
+                con.Close();
+            }
+
+
+            return clientes;
         }
 
         public bool Validar(Cliente obj)

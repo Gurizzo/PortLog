@@ -105,7 +105,7 @@ namespace Dominio.Repositorio
             }
             finally
             {
-                
+                con.Close();
             }
 
             return importaciones;

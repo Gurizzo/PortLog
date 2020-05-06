@@ -23,7 +23,19 @@ namespace MVC.ServiceReferenceCliente {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime AntiguedadField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private Dominio.Clases.Importacion[] ImportacionesField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string NombreField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private Dominio.Clases.Producto[] ProductosField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string RutField;
@@ -39,6 +51,45 @@ namespace MVC.ServiceReferenceCliente {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime Antiguedad {
+            get {
+                return this.AntiguedadField;
+            }
+            set {
+                if ((this.AntiguedadField.Equals(value) != true)) {
+                    this.AntiguedadField = value;
+                    this.RaisePropertyChanged("Antiguedad");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Id {
+            get {
+                return this.IdField;
+            }
+            set {
+                if ((this.IdField.Equals(value) != true)) {
+                    this.IdField = value;
+                    this.RaisePropertyChanged("Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public Dominio.Clases.Importacion[] Importaciones {
+            get {
+                return this.ImportacionesField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ImportacionesField, value) != true)) {
+                    this.ImportacionesField = value;
+                    this.RaisePropertyChanged("Importaciones");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public string Nombre {
             get {
                 return this.NombreField;
@@ -47,6 +98,19 @@ namespace MVC.ServiceReferenceCliente {
                 if ((object.ReferenceEquals(this.NombreField, value) != true)) {
                     this.NombreField = value;
                     this.RaisePropertyChanged("Nombre");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public Dominio.Clases.Producto[] Productos {
+            get {
+                return this.ProductosField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ProductosField, value) != true)) {
+                    this.ProductosField = value;
+                    this.RaisePropertyChanged("Productos");
                 }
             }
         }

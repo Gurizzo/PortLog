@@ -20,6 +20,9 @@ namespace Dominio.Clases
 
         public Cliente Cliente { get; set; }
 
+        public decimal Precio { get; set; }
+
+        public List<Importacion> Importaciones { get; set; }
 
 
         public Producto()
@@ -27,17 +30,15 @@ namespace Dominio.Clases
 
         }
 
-        public Producto(int id, int codigo, string nombre, decimal peso, Cliente cliente)
+        public Producto(int id, int codigo, string nombre, decimal peso, Cliente cliente, decimal precio, List<Importacion> importaciones)
         {
             Id = id;
             Codigo = codigo;
             Nombre = nombre;
             Peso = peso;
             Cliente = cliente;
+            Precio = precio;
+            Importaciones = importaciones;
         }
-
-        
-
-        
     }
 }

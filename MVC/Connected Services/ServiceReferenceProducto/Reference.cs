@@ -29,7 +29,7 @@ namespace MVC.ServiceReferenceProducto {
         private string NombreField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private decimal PesoField;
+        private int StockField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -68,14 +68,14 @@ namespace MVC.ServiceReferenceProducto {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public decimal Peso {
+        public int Stock {
             get {
-                return this.PesoField;
+                return this.StockField;
             }
             set {
-                if ((this.PesoField.Equals(value) != true)) {
-                    this.PesoField = value;
-                    this.RaisePropertyChanged("Peso");
+                if ((this.StockField.Equals(value) != true)) {
+                    this.StockField = value;
+                    this.RaisePropertyChanged("Stock");
                 }
             }
         }

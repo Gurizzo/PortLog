@@ -4,6 +4,7 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
+using Dominio.Clases;
 using Dominio.Interfaces;
 using Dominio.Repositorio;
 using Servicio.DTO;
@@ -38,7 +39,24 @@ namespace Servicio
 
         public List<ClienteDTO> TraerTodos()
         {
-            throw new NotImplementedException();
+            List<ClienteDTO> dTOs = new List<ClienteDTO>();
+            var clientes = Repo.Todos();
+
+            foreach (Cliente c in clientes)
+            {
+                ClienteDTO dTO = new ClienteDTO()
+                {
+                    Rut = c.Rut,
+                    Nombre = c.Nombre,
+                    Antiguedad= c.Antiguedad
+                    
+                };
+                dTOs.Add(dTO);
+            }
+
+
+
+            return dTOs;
         }
     }
 }

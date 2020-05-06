@@ -16,6 +16,6 @@ namespace Servicio.DTO
         public string Nombre { get; set; }
 
         [DataMember]
-        public decimal Peso { get; set; }
+        public int Stock { get; set; }
     }
 }

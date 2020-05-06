@@ -4,6 +4,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace Dominio.Clases
@@ -80,9 +81,33 @@ namespace Dominio.Clases
 
         public bool Validar()
         {
+
+
+            Regex pass = new Regex(@"^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,16}$",
+            RegexOptions.Compiled | RegexOptions.IgnoreCase);
+
+
             if (!string.IsNullOrEmpty(CI) && !string.IsNullOrEmpty(Password) && !string.IsNullOrEmpty(Rol))
             {
-                return true;
+                if(this.CI.Length>=7 & this.CI.Length <= 8)
+                {
+                    if(!this.CI.Contains("#") && !this.Password.Contains("#"))
+                    {
+                         if (!Regex.Match(this.CI, @"^[0 - 9] *$").Success)
+                            {
+                            if (pass.IsMatch(this.Password))
+                            {
+                                
+                                
+                                    return true;
+                            }
+                            
+                        }
+                        
+                    }
+                   
+                }
+                
             }
             return false;
         }

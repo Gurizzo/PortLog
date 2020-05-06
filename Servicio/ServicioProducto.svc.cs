@@ -4,6 +4,7 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
+using Dominio.Clases;
 using Dominio.Interfaces;
 using Dominio.Repositorio;
 using Servicio.DTO;
@@ -14,7 +15,7 @@ namespace Servicio
     // NOTA: para iniciar el Cliente de prueba WCF para probar este servicio, seleccione ServicioProducto.svc o ServicioProducto.svc.cs en el Explorador de soluciones e inicie la depuración.
     public class ServicioProducto : IServicioProducto
     {
-        IRepoProducto repo = new RepositorioProducto();
+        IRepoProducto Repo = new RepositorioProducto();
 
         public bool AltaProducto(ProductoDTO producto)
         {
@@ -38,7 +39,22 @@ namespace Servicio
 
         public List<ProductoDTO> TraerTodos()
         {
-            throw new NotImplementedException();
+            List<ProductoDTO> dTOs = new List<ProductoDTO>();
+
+            var Productos = Repo.Todos();
+
+            foreach (Producto p in Productos)
+            {
+                ProductoDTO dTO = new ProductoDTO()
+                {
+                    Codigo= p.Codigo,
+                    Nombre= p.Nombre,
+                    Stock = p.Importaciones[0].Cantidad
+                };
+                dTOs.Add(dTO);
+            }
+
+            return dTOs;
         }
     }
 }

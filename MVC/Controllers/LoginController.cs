@@ -62,7 +62,7 @@ namespace MVC.Controllers
             //Dibujo la vista
             ViewModelUsuario u = new ViewModelUsuario();
 
-            
+
             ViewBag.Roles = Roles();
 
 
@@ -75,7 +75,8 @@ namespace MVC.Controllers
             List<string> roles = new List<string>
             {
                 "Almacen",
-                "Admin"
+                "Admin",
+                
             };
 
             return roles;
@@ -99,8 +100,10 @@ namespace MVC.Controllers
                         ServicioUsuarioClient proxy = new ServicioUsuarioClient();
                         proxy.Open();
                         Boolean respuesta;
-
+                        
                         respuesta = proxy.Alta(u.CI, u.Password, u.Rol);
+
+                        proxy.Close();
                         if (respuesta)
                         {
                             TempData["Alta"] = "Alta exitosa";
