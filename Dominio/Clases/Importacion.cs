@@ -20,8 +20,6 @@ namespace Dominio.Clases
 
         public int Cantidad { get; set; }
 
-        public int Descuento { get; set; }
-
         public decimal Precio { get; set; }
 
         public Pais Pais { get; set; }
@@ -34,17 +32,27 @@ namespace Dominio.Clases
         {
         }
 
-        public Importacion(int id, DateTime fchIngreso, DateTime fchSalida, Producto producto, int cantidad, int descuento, decimal precio, Pais pais, bool enviado)
+        public Importacion(int id, DateTime fchIngreso, DateTime fchSalida, Producto producto, int cantidad, decimal precio, Pais pais, bool enviado)
         {
             Id = id;
             FchIngreso = fchIngreso;
             FchSalida = fchSalida;
             Producto = producto;
             Cantidad = cantidad;
-            Descuento = descuento;
             Precio = precio;
             Pais = pais;
             Enviado = enviado;
         }
+
+
+        public int CalcularDias()
+        {
+            
+                return (this.FchIngreso - this.FchSalida).Days;
+            
+        }
+            
+        
+
     }
 }

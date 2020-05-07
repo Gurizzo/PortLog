@@ -29,6 +29,11 @@ namespace Dominio.Repositorio
             throw new NotImplementedException();
         }
 
+        public List<Importacion> Ganancia(int id)
+        {
+            throw new NotImplementedException();
+        }
+
         public bool Modificar(Cliente obj)
         {
             throw new NotImplementedException();

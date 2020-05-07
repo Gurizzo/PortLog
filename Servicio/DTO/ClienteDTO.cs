@@ -25,7 +25,6 @@ namespace Servicio.DTO
         [DataMember]
         public List<Producto> Productos { get; set; }
 
-        [DataMember]
-        public List<Importacion> Importaciones { get; set; }
+        
     }
 }

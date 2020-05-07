@@ -11,9 +11,11 @@ namespace MVC.ViewModels.Importacion
         
 
         [Display(Name = "Ingreso"), Required]
+        [DataType(DataType.Date)]
         public DateTime FchIngreso { get; set; }
 
         [Display(Name = "Salida estimada"), Required]
+        [DataType(DataType.Date)]
         public DateTime FchSalida { get; set; }
 
         [Display(Name = "Producto"), Required]

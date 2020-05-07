@@ -32,6 +32,52 @@ namespace Servicio
             throw new NotImplementedException();
         }
 
+
+        public decimal CalcularGanancia(int id)
+        {
+                decimal ganancia = 0;
+
+                decimal descuento = 0;
+
+                var importaciones = Repo.Ganancia(id);
+
+
+
+                foreach (Importacion i in importaciones)
+                {
+                    if (!i.Enviado)
+                    {//Esta en deposito
+                        if (i.FchSalida >= DateTime.Today)
+                        {//Si la fecha de salida es mayor a hoy
+                            ganancia += i.Precio * i.Cantidad * i.CalcularDias();
+                        }
+                        else
+                        {//La fecha es menor a hoy y no se importo
+                            ganancia += i.Precio * i.Cantidad * (i.FchIngreso - DateTime.Today).Days;
+                        }
+
+                    }
+                    else
+                    {//si ya se envio
+                        ganancia += i.Precio * i.Cantidad * i.CalcularDias();
+                    }
+
+                }
+                if (importaciones[0].Producto.Cliente.Descuento())
+                {//Mejor asegurar 
+                    descuento = 10 / 100 * ganancia;
+                }
+
+
+
+
+
+
+
+                return (ganancia - descuento) * 2 / 100;
+        }
+        
+
         public bool ModificarCliente(ClienteDTO cliente)
         {
             throw new NotImplementedException();

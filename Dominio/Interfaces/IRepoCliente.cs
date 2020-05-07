@@ -9,6 +9,6 @@ namespace Dominio.Interfaces
 {
     public interface IRepoCliente:IRepositorio<Cliente>
     {
-        
+        List<Importacion> Ganancia(int id);
     }
 }

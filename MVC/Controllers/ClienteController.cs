@@ -19,7 +19,14 @@ namespace MVC.Controllers
         // GET: Cliente/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            
+            ServicioClienteClient proxy = new ServicioClienteClient();
+            ViewModelClienteGanancia vm = new ViewModelClienteGanancia()
+            {
+                Previcion = proxy.CalcularGanancia(id)
+            };
+            
+            return View(vm);
         }
 
         public ActionResult List()
@@ -36,6 +43,7 @@ namespace MVC.Controllers
                 {
                     ViewModelClienteList obj = new ViewModelClienteList()
                     {
+                        Id=dTO.Id,
                         Antiguedad= dTO.Antiguedad,
                         Nombre= dTO.Nombre,
                         Rut=dTO.Rut

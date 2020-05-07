@@ -26,5 +26,8 @@ namespace Servicio
 
         [OperationContract]
         ClienteDTO BuscarCliente(int clienteId);
+
+        [OperationContract]
+        decimal CalcularGanancia(int id);
     }
 }

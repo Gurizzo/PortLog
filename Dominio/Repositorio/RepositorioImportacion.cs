@@ -93,7 +93,7 @@ namespace Dominio.Repositorio
 
 
                     };
-                    importacion.Descuento = importacion.Producto.Cliente.Descuento();
+                    //importacion.Descuento = importacion.Producto.Cliente.Descuento();
                     importaciones.Add(importacion);
                 }
 

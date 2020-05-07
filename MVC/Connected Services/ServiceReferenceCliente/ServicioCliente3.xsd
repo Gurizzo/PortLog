@@ -5,9 +5,8 @@
     <xs:sequence>
       <xs:element minOccurs="0" name="Antiguedad" type="xs:dateTime" />
       <xs:element minOccurs="0" name="Id" type="xs:int" />
-      <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/Dominio.Clases" minOccurs="0" name="Importaciones" nillable="true" type="q1:ArrayOfImportacion" />
       <xs:element minOccurs="0" name="Nombre" nillable="true" type="xs:string" />
-      <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/Dominio.Clases" minOccurs="0" name="Productos" nillable="true" type="q2:ArrayOfProducto" />
+      <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/Dominio.Clases" minOccurs="0" name="Productos" nillable="true" type="q1:ArrayOfProducto" />
       <xs:element minOccurs="0" name="Rut" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>

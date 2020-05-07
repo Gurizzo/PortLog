@@ -29,9 +29,6 @@ namespace MVC.ServiceReferenceCliente {
         private int IdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private Dominio.Clases.Importacion[] ImportacionesField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string NombreField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -72,19 +69,6 @@ namespace MVC.ServiceReferenceCliente {
                 if ((this.IdField.Equals(value) != true)) {
                     this.IdField = value;
                     this.RaisePropertyChanged("Id");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public Dominio.Clases.Importacion[] Importaciones {
-            get {
-                return this.ImportacionesField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.ImportacionesField, value) != true)) {
-                    this.ImportacionesField = value;
-                    this.RaisePropertyChanged("Importaciones");
                 }
             }
         }
@@ -171,6 +155,12 @@ namespace MVC.ServiceReferenceCliente {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioCliente/BuscarCliente", ReplyAction="http://tempuri.org/IServicioCliente/BuscarClienteResponse")]
         System.Threading.Tasks.Task<MVC.ServiceReferenceCliente.ClienteDTO> BuscarClienteAsync(int clienteId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioCliente/CalcularGanancia", ReplyAction="http://tempuri.org/IServicioCliente/CalcularGananciaResponse")]
+        decimal CalcularGanancia(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioCliente/CalcularGanancia", ReplyAction="http://tempuri.org/IServicioCliente/CalcularGananciaResponse")]
+        System.Threading.Tasks.Task<decimal> CalcularGananciaAsync(int id);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -238,6 +228,14 @@ namespace MVC.ServiceReferenceCliente {
         
         public System.Threading.Tasks.Task<MVC.ServiceReferenceCliente.ClienteDTO> BuscarClienteAsync(int clienteId) {
             return base.Channel.BuscarClienteAsync(clienteId);
+        }
+        
+        public decimal CalcularGanancia(int id) {
+            return base.Channel.CalcularGanancia(id);
+        }
+        
+        public System.Threading.Tasks.Task<decimal> CalcularGananciaAsync(int id) {
+            return base.Channel.CalcularGananciaAsync(id);
         }
     }
 }

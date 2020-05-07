@@ -8,6 +8,9 @@ namespace MVC.ViewModels.Cliente
 {
     public class ViewModelClienteList
     {
+        
+        public int Id { get; set; }
+
         [Display(Name = "RUT")]
         public string Rut { get; set; }
 

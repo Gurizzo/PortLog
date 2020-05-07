@@ -20,7 +20,7 @@ namespace Dominio.Clases
 
         public List<Producto> Productos { get; set; }
 
-        public List<Importacion> Importaciones { get; set; }
+
 
 
         public Cliente()
@@ -28,20 +28,32 @@ namespace Dominio.Clases
 
         }
 
-        public Cliente(int id, string rut, string nombre, DateTime antiguedad, List<Producto> productos, List<Importacion> importaciones)
+        public Cliente(int id, string rut, string nombre, DateTime antiguedad, List<Producto> productos)
         {
             Id = id;
             Rut = rut;
             Nombre = nombre;
             Antiguedad = antiguedad;
             Productos = productos;
-            Importaciones = importaciones;
         }
 
-        public int Descuento()
+        public bool Descuento()
         {
-
-            return 3;//Implementar polimorfismo
+            if(this.Antiguedad.Year< DateTime.Now.Year)
+            {
+                if (this.Antiguedad.Month >= DateTime.Now.Month)
+                {
+                    if (this.Antiguedad.Month == DateTime.Now.Month && this.Antiguedad.Day >= DateTime.Now.Day)
+                    {
+                        if(DateTime.Now.Year - this.Antiguedad.Year >= 5)
+                        {
+                            return true;
+                        }
+                    }
+                }
+            }
+            
+            return false;//Devuelve si corresponde o no descuento.
         }
 
         

@@ -38,6 +38,12 @@
   <wsdl:message name="IServicioCliente_BuscarCliente_OutputMessage">
     <wsdl:part name="parameters" element="tns:BuscarClienteResponse" />
   </wsdl:message>
+  <wsdl:message name="IServicioCliente_CalcularGanancia_InputMessage">
+    <wsdl:part name="parameters" element="tns:CalcularGanancia" />
+  </wsdl:message>
+  <wsdl:message name="IServicioCliente_CalcularGanancia_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CalcularGananciaResponse" />
+  </wsdl:message>
   <wsdl:portType name="IServicioCliente">
     <wsdl:operation name="AltaCliente">
       <wsdl:input wsaw:Action="http://tempuri.org/IServicioCliente/AltaCliente" message="tns:IServicioCliente_AltaCliente_InputMessage" />
@@ -58,6 +64,10 @@
     <wsdl:operation name="BuscarCliente">
       <wsdl:input wsaw:Action="http://tempuri.org/IServicioCliente/BuscarCliente" message="tns:IServicioCliente_BuscarCliente_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IServicioCliente/BuscarClienteResponse" message="tns:IServicioCliente_BuscarCliente_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CalcularGanancia">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicioCliente/CalcularGanancia" message="tns:IServicioCliente_CalcularGanancia_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicioCliente/CalcularGananciaResponse" message="tns:IServicioCliente_CalcularGanancia_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IServicioCliente" type="tns:IServicioCliente">
@@ -100,6 +110,15 @@
     </wsdl:operation>
     <wsdl:operation name="BuscarCliente">
       <soap:operation soapAction="http://tempuri.org/IServicioCliente/BuscarCliente" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CalcularGanancia">
+      <soap:operation soapAction="http://tempuri.org/IServicioCliente/CalcularGanancia" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
