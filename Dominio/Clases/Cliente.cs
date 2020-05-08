@@ -41,12 +41,13 @@ namespace Dominio.Clases
         {
             if(this.Antiguedad.Year< DateTime.Now.Year)
             {
-                if (this.Antiguedad.Month >= DateTime.Now.Month)
+                if (this.Antiguedad.Month <= DateTime.Now.Month)
                 {
-                    if (this.Antiguedad.Month == DateTime.Now.Month && this.Antiguedad.Day >= DateTime.Now.Day)
+                    if (this.Antiguedad.Month == DateTime.Now.Month && this.Antiguedad.Day <= DateTime.Now.Day)
                     {
                         if(DateTime.Now.Year - this.Antiguedad.Year >= 5)
                         {
+                            
                             return true;
                         }
                     }

@@ -49,7 +49,6 @@ namespace Servicio
                     {
                         Producto = i.Producto,
                         Cantidad = i.Cantidad,
-                        Cliente = i.Producto.Cliente,
                         FchIngreso = i.FchIngreso,
                         FchSalida = i.FchSalida,
                         Pais = i.Pais,

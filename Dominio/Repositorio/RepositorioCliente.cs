@@ -31,7 +31,56 @@ namespace Dominio.Repositorio
 
         public List<Importacion> Ganancia(int id)
         {
-            throw new NotImplementedException();
+            Persistente persistente = new Persistente();
+            List<Importacion> importaciones = new List<Importacion>();
+            SqlConnection con = null;
+            SqlDataReader reader = null;
+            try
+            {
+                con = persistente.ObtenerConexion();
+                SqlCommand sqlCommand = new SqlCommand(@"SELECT * FROM IMPORTACION,CLIENTE WHERE PERSONAID=CLIENTE.Id and CLIENTE.Id=@ID", con);
+                
+                sqlCommand.Parameters.Add(new SqlParameter("@ID", id));
+                con.Open();
+                reader = persistente.EjecutarQuery(con, sqlCommand, CommandType.Text, null);
+
+                while (reader.Read())
+                {
+                    Importacion importacion = new Importacion()
+                    {
+                        Id= (int)reader["id"],
+                        FchIngreso=(DateTime)reader["FCHINGRESO"],
+                        FchSalida=(DateTime)reader["FchSalida"],
+                        Precio=(decimal)reader["Precio"],
+                        Cantidad=(int)reader["Cantidad"],
+                        Producto = new Producto()
+                        {
+                            Id=(int)reader["ProductoID"],
+                            Cliente= new Cliente()
+                            {
+                                
+                                Antiguedad=(DateTime)reader["Antiguedad"],
+                                Rut=(string)reader["Rut"],
+                                Nombre=(string)reader["Nombre"],
+                                
+                            }
+                        },
+                        
+                    };
+                    importaciones.Add(importacion);
+                }
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally
+            {
+                con.Close();
+            }
+            return importaciones;
         }
 
         public bool Modificar(Cliente obj)

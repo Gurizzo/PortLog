@@ -26,9 +26,6 @@ namespace Servicio.DTO
         public int Descuento { get; set; }
 
         [DataMember]
-        public Cliente Cliente { get; set; }
-
-        [DataMember]
         public Pais Pais { get; set; }
 
         [DataMember]

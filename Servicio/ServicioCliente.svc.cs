@@ -53,7 +53,7 @@ namespace Servicio
                         }
                         else
                         {//La fecha es menor a hoy y no se importo
-                            ganancia += i.Precio * i.Cantidad * (i.FchIngreso - DateTime.Today).Days;
+                            ganancia += i.Precio * i.Cantidad * ( DateTime.Today- i.FchIngreso).Days;
                         }
 
                     }
@@ -92,6 +92,7 @@ namespace Servicio
             {
                 ClienteDTO dTO = new ClienteDTO()
                 {
+                    Id= c.Id,
                     Rut = c.Rut,
                     Nombre = c.Nombre,
                     Antiguedad= c.Antiguedad

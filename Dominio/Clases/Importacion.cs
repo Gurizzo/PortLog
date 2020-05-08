@@ -48,7 +48,7 @@ namespace Dominio.Clases
         public int CalcularDias()
         {
             
-                return (this.FchIngreso - this.FchSalida).Days;
+                return (this.FchSalida - this.FchIngreso ).Days;
             
         }
             
