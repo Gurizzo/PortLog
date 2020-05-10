@@ -26,5 +26,8 @@ namespace Servicio
 
         [OperationContract]
         ImportacionDTO BuscarImportacion(int genId);
+
+        [OperationContract]
+        ProductoDTO TraerDatos(int codigo);
     }
 }

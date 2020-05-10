@@ -24,7 +24,7 @@ namespace Dominio.Clases
 
         public Pais Pais { get; set; }
 
-        public bool Enviado { get; set; }
+        public bool Almacenado { get; set; }
 
 
 
@@ -41,7 +41,7 @@ namespace Dominio.Clases
             Cantidad = cantidad;
             Precio = precio;
             Pais = pais;
-            Enviado = enviado;
+            Almacenado = enviado;
         }
 
 

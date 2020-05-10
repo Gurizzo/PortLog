@@ -14,7 +14,44 @@ namespace Dominio.Repositorio
     {
         public bool Alta(Importacion obj)
         {
-            throw new NotImplementedException();
+            Persistente persistente = new Persistente();
+            bool retorno = false;
+            SqlConnection con = null;
+
+            try
+            {
+                con = persistente.ObtenerConexion();
+                SqlCommand sqlCommand = new SqlCommand(@"INSERT INTO IMPORTACION VALUES(@FCHENTRADA,@FCHSALIDA,@PRODUCTOID,@PRECIO,@CANTIDAD,@PERSONAID,@PAISID,@ALMACENADO)", con);
+                List<SqlParameter> sqlParameters = new List<SqlParameter>()
+                {
+                    new SqlParameter("@FCHENTRADA", obj.FchIngreso),
+                    new SqlParameter("@FCHSALIDA", obj.FchSalida),
+                    new SqlParameter("@PRODUCTOID", obj.Producto.Id),
+                    new SqlParameter("@PRECIO", obj.Producto.Precio),
+                    new SqlParameter("@CANTIDAD", obj.Cantidad),
+                    new SqlParameter("@PERSONAID", obj.Producto.Cliente.Id),
+                    new SqlParameter("@PAISID", obj.Pais.Id),
+                    new SqlParameter("@ALMACENADO", obj.Almacenado),
+
+                };
+                con.Open();
+                int filas = persistente.EjecutarNoQuery(con, sqlCommand, CommandType.Text, sqlParameters);
+                con.Close();
+
+
+
+            }
+            catch
+            {
+                return false;
+            }
+            finally
+            {
+
+            }
+
+
+            return true;
         }
 
         public bool Baja(Importacion obj)
@@ -60,7 +97,7 @@ namespace Dominio.Repositorio
                         FchIngreso = (DateTime)reader["FCHINGRESO"],
                         FchSalida = (DateTime)reader["FCHSALIDA"],
                         Cantidad = (int)reader["Cantidad"],
-                        Enviado = (bool)reader["Almacenado"],
+                        Almacenado = (bool)reader["Almacenado"],
                         
                         Pais = new Pais()
                         {

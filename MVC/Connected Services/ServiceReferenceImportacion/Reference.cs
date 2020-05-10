@@ -26,12 +26,6 @@ namespace MVC.ServiceReferenceImportacion {
         private int CantidadField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private Dominio.Clases.Cliente ClienteField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int DescuentoField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private bool EnviadoField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -65,32 +59,6 @@ namespace MVC.ServiceReferenceImportacion {
                 if ((this.CantidadField.Equals(value) != true)) {
                     this.CantidadField = value;
                     this.RaisePropertyChanged("Cantidad");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public Dominio.Clases.Cliente Cliente {
-            get {
-                return this.ClienteField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.ClienteField, value) != true)) {
-                    this.ClienteField = value;
-                    this.RaisePropertyChanged("Cliente");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int Descuento {
-            get {
-                return this.DescuentoField;
-            }
-            set {
-                if ((this.DescuentoField.Equals(value) != true)) {
-                    this.DescuentoField = value;
-                    this.RaisePropertyChanged("Descuento");
                 }
             }
         }
@@ -170,6 +138,147 @@ namespace MVC.ServiceReferenceImportacion {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="ProductoDTO", Namespace="http://schemas.datacontract.org/2004/07/Servicio.DTO")]
+    [System.SerializableAttribute()]
+    public partial class ProductoDTO : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private Dominio.Clases.Cliente ClienteField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int CodigoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string NombreField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private decimal PesoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private decimal PrecioField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int StockField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public Dominio.Clases.Cliente Cliente {
+            get {
+                return this.ClienteField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ClienteField, value) != true)) {
+                    this.ClienteField = value;
+                    this.RaisePropertyChanged("Cliente");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Codigo {
+            get {
+                return this.CodigoField;
+            }
+            set {
+                if ((this.CodigoField.Equals(value) != true)) {
+                    this.CodigoField = value;
+                    this.RaisePropertyChanged("Codigo");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Id {
+            get {
+                return this.IdField;
+            }
+            set {
+                if ((this.IdField.Equals(value) != true)) {
+                    this.IdField = value;
+                    this.RaisePropertyChanged("Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Nombre {
+            get {
+                return this.NombreField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.NombreField, value) != true)) {
+                    this.NombreField = value;
+                    this.RaisePropertyChanged("Nombre");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public decimal Peso {
+            get {
+                return this.PesoField;
+            }
+            set {
+                if ((this.PesoField.Equals(value) != true)) {
+                    this.PesoField = value;
+                    this.RaisePropertyChanged("Peso");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public decimal Precio {
+            get {
+                return this.PrecioField;
+            }
+            set {
+                if ((this.PrecioField.Equals(value) != true)) {
+                    this.PrecioField = value;
+                    this.RaisePropertyChanged("Precio");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Stock {
+            get {
+                return this.StockField;
+            }
+            set {
+                if ((this.StockField.Equals(value) != true)) {
+                    this.StockField = value;
+                    this.RaisePropertyChanged("Stock");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReferenceImportacion.IServicioImportacion")]
     public interface IServicioImportacion {
@@ -203,6 +312,12 @@ namespace MVC.ServiceReferenceImportacion {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioImportacion/BuscarImportacion", ReplyAction="http://tempuri.org/IServicioImportacion/BuscarImportacionResponse")]
         System.Threading.Tasks.Task<MVC.ServiceReferenceImportacion.ImportacionDTO> BuscarImportacionAsync(int genId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioImportacion/TraerDatos", ReplyAction="http://tempuri.org/IServicioImportacion/TraerDatosResponse")]
+        MVC.ServiceReferenceImportacion.ProductoDTO TraerDatos(int codigo);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioImportacion/TraerDatos", ReplyAction="http://tempuri.org/IServicioImportacion/TraerDatosResponse")]
+        System.Threading.Tasks.Task<MVC.ServiceReferenceImportacion.ProductoDTO> TraerDatosAsync(int codigo);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -270,6 +385,14 @@ namespace MVC.ServiceReferenceImportacion {
         
         public System.Threading.Tasks.Task<MVC.ServiceReferenceImportacion.ImportacionDTO> BuscarImportacionAsync(int genId) {
             return base.Channel.BuscarImportacionAsync(genId);
+        }
+        
+        public MVC.ServiceReferenceImportacion.ProductoDTO TraerDatos(int codigo) {
+            return base.Channel.TraerDatos(codigo);
+        }
+        
+        public System.Threading.Tasks.Task<MVC.ServiceReferenceImportacion.ProductoDTO> TraerDatosAsync(int codigo) {
+            return base.Channel.TraerDatosAsync(codigo);
         }
     }
 }

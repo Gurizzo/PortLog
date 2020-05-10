@@ -1,4 +1,5 @@
 ﻿using Dominio;
+using Dominio.Clases;
 using Dominio.Interfaces;
 using Dominio.Repositorio;
 using Servicio.DTO;
@@ -15,7 +16,7 @@ namespace Servicio
     // NOTA: para iniciar el Cliente de prueba WCF para probar este servicio, seleccione ServicioPais.svc o ServicioPais.svc.cs en el Explorador de soluciones e inicie la depuración.
     public class ServicioPais : IServicioPais
     {
-        IRepoPais repo = new RepositorioPais();
+        RepositorioPais Repo = new RepositorioPais();
 
         public PaisDTO BuscarPais(int paisId)
         {
@@ -24,7 +25,20 @@ namespace Servicio
 
         public List<PaisDTO> TraerTodos()
         {
-            throw new NotImplementedException();
+            List<PaisDTO> dTOs = new List<PaisDTO>();
+            var list=Repo.Todos();
+
+            foreach (Pais p in list)
+            {
+                PaisDTO dTO = new PaisDTO()
+                {
+                    CodPais=p.CodPais,
+                    IdPais=p.Id,
+                    NombrePais=p.Nombre
+                };
+                dTOs.Add(dTO);
+            }
+            return dTOs;
         }
     }
 }

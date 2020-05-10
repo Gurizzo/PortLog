@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using MVC.ServiceReferenceImportacion;
 using System.Web.Mvc;
+using MVC.ServiceReferencePais;
 
 namespace MVC.Controllers
 {
@@ -44,9 +45,98 @@ namespace MVC.Controllers
         }
 
         [HttpGet]
-        public ActionResult Create()
+        public ActionResult Create(int codigo)
         {
-            return View();
+
+            
+            ServicioImportacionClient proxy = new ServicioImportacionClient();
+            proxy.Open();
+            var datos = proxy.TraerDatos(codigo);
+            ViewModelImportacionAlta viewModel = new ViewModelImportacionAlta()
+            {
+                Cliente = datos.Cliente.Nombre,
+                Nombre = datos.Nombre,
+                Codigo = codigo,
+                idCliente = datos.Cliente.Id,
+                idProducto = datos.Id,
+                Peso = datos.Peso,
+                Precio = datos.Precio
+            };
+
+            ViewBag.Paises = Paises();
+
+
+            return View(viewModel);
+        }
+
+        private List<SelectListItem> Paises()
+        {
+            List<SelectListItem> paiseslistItems = new List<SelectListItem>();
+
+            ServicioPaisClient proxy = new ServicioPaisClient();
+                proxy.Open();
+                var paises = proxy.TraerTodos().ToList();
+
+            foreach (PaisDTO pais in paises)
+            {
+                paiseslistItems.Add(new SelectListItem
+                {
+                    Text = pais.NombrePais,
+                    Value = pais.IdPais.ToString()
+                });
+            }
+
+            return paiseslistItems;
+        }
+
+        [HttpPost]
+        public ActionResult Create(ViewModelImportacionAlta vm)
+        {
+            if (vm.FchSalida <= DateTime.Today)
+            {
+                //No capo
+            }
+            else
+            {
+                ServicioImportacionClient proxy = new ServicioImportacionClient();
+                var datos = proxy.TraerDatos(vm.Codigo);
+                ImportacionDTO dTO = new ImportacionDTO()
+                {
+                    Cantidad = vm.Cantidad,
+                    Enviado = false,
+                    FchIngreso = DateTime.Today,
+                    FchSalida = vm.FchSalida,
+                    Pais = new Dominio.Clases.Pais
+                    {
+                        Id = Int32.Parse(vm.Pais)
+                    },
+                    Producto = new Dominio.Clases.Producto
+                    {
+                        Id = datos.Id,
+                        Peso = datos.Peso,
+                        Precio = datos.Precio,
+                        Cliente = new Dominio.Clases.Cliente
+                        {
+                            Id = datos.Cliente.Id
+                        }
+                    },
+
+
+
+                };
+                if (proxy.AltaImportacion(dTO))
+                {
+                    //ENTRO
+                    return RedirectToAction("Lista");
+                }
+                else
+                {
+                    //PUES NO
+                }
+            }
+            
+
+            return RedirectToAction("Lista");
         }
 
     }

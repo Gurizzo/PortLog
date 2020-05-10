@@ -38,6 +38,12 @@
   <wsdl:message name="IServicioImportacion_BuscarImportacion_OutputMessage">
     <wsdl:part name="parameters" element="tns:BuscarImportacionResponse" />
   </wsdl:message>
+  <wsdl:message name="IServicioImportacion_TraerDatos_InputMessage">
+    <wsdl:part name="parameters" element="tns:TraerDatos" />
+  </wsdl:message>
+  <wsdl:message name="IServicioImportacion_TraerDatos_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TraerDatosResponse" />
+  </wsdl:message>
   <wsdl:portType name="IServicioImportacion">
     <wsdl:operation name="AltaImportacion">
       <wsdl:input wsaw:Action="http://tempuri.org/IServicioImportacion/AltaImportacion" message="tns:IServicioImportacion_AltaImportacion_InputMessage" />
@@ -58,6 +64,10 @@
     <wsdl:operation name="BuscarImportacion">
       <wsdl:input wsaw:Action="http://tempuri.org/IServicioImportacion/BuscarImportacion" message="tns:IServicioImportacion_BuscarImportacion_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IServicioImportacion/BuscarImportacionResponse" message="tns:IServicioImportacion_BuscarImportacion_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TraerDatos">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicioImportacion/TraerDatos" message="tns:IServicioImportacion_TraerDatos_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicioImportacion/TraerDatosResponse" message="tns:IServicioImportacion_TraerDatos_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IServicioImportacion" type="tns:IServicioImportacion">
@@ -100,6 +110,15 @@
     </wsdl:operation>
     <wsdl:operation name="BuscarImportacion">
       <soap:operation soapAction="http://tempuri.org/IServicioImportacion/BuscarImportacion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraerDatos">
+      <soap:operation soapAction="http://tempuri.org/IServicioImportacion/TraerDatos" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

@@ -22,6 +22,54 @@ namespace Dominio.Repositorio
             throw new NotImplementedException();
         }
 
+        public Producto BuscarPorCodigo(int Codigo)
+        {
+            Persistente persistente = new Persistente();
+            Producto producto = new Producto();
+            SqlConnection con = null;
+            SqlDataReader reader = null;
+            try
+            {
+                con = persistente.ObtenerConexion();
+                SqlCommand command = new SqlCommand(@"select p.Id as idProducto,p.NOMBRE as NombrePreoducto,p.PESO,p.PRECIO,
+                c.Id as idCliente,c.NOMBRE as NombreCliente 
+                from Producto p,CLIENTE c 
+                where p.CODIGO=@Codigo",con);
+                command.Parameters.Add(new SqlParameter("@Codigo", Codigo));
+
+                con.Open();
+                reader = persistente.EjecutarQuery(con, command, CommandType.Text,null);
+
+                while (reader.Read())
+                {
+                    Producto p = new Producto
+                    {
+                         Id=(int)reader["idProducto"],
+                         Nombre=(string)reader["NombrePreoducto"],
+                         Peso=(Decimal)reader["Peso"],
+                         Precio=(Decimal)reader["Precio"],
+                         Cliente = new Cliente()
+                         {
+                             Nombre=(string)reader["NombreCliente"],
+                             Id=(int)reader["idCliente"]
+                         }
+                    };
+                    producto = p;
+                }
+
+            }
+            catch
+            {
+
+            }
+            finally
+            {
+                con.Close();
+            }
+            return producto;
+            
+        }
+
         public Producto BuscarPorId(int id)
         {
             throw new NotImplementedException();
@@ -38,14 +86,16 @@ namespace Dominio.Repositorio
             List<Producto> productos = new List<Producto>();
             SqlConnection con = null;
             SqlDataReader reader = null;
-
+            /*SqlCommand command = new SqlCommand(@"SELECT P.CODIGO,P.NOMBRE,SUM(I.CANTIDAD)AS CANTIDAD
+                FROM PRODUCTO P, IMPORTACION I 
+                WHERE P.Id = I.PRODUCTOID 
+                GROUP BY P.CODIGO,P.NOMBRE", con);*/
             try
             {
                 con = persistente.ObtenerConexion();
-                SqlCommand command = new SqlCommand(@"SELECT P.CODIGO,P.NOMBRE,SUM(I.CANTIDAD)AS CANTIDAD
-                FROM PRODUCTO P, IMPORTACION I 
-                WHERE P.Id = I.PRODUCTOID 
-                GROUP BY i.CANTIDAD,P.CODIGO,P.NOMBRE", con);
+                SqlCommand command = new SqlCommand(@"  select  P.CODIGO, P.NOMBRE,SUM(i.CANTIDAD) AS CANTIDAD 
+                from PRODUCTO p, IMPORTACION i, CLIENTE c 
+                where   P.CLIENTEID = c.Id  GROUP BY P.CODIGO,P.NOMBRE", con);/*ES HORRIBLE*/
                 con.Open();
                 reader = persistente.EjecutarQuery(con, command, CommandType.Text, null);
 

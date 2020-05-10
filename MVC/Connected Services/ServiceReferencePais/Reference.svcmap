@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="3c82d17e-3979-436a-922a-89eb21f9b4e0" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:56442/ServicioPais.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="ServicioPais.disco" MetadataType="Disco" ID="76f3da7a-7006-4b15-bf44-84b732802056" SourceId="1" SourceUrl="http://localhost:56442/ServicioPais.svc?disco" />
+    <MetadataFile FileName="ServicioPais.xsd" MetadataType="Schema" ID="34354273-a98c-4c00-99c7-7d84e2b93bd3" SourceId="1" SourceUrl="http://localhost:56442/ServicioPais.svc?xsd=xsd2" />
+    <MetadataFile FileName="ServicioPais1.xsd" MetadataType="Schema" ID="966e37c7-7127-479f-994b-c3f62bf700c3" SourceId="1" SourceUrl="http://localhost:56442/ServicioPais.svc?xsd=xsd0" />
+    <MetadataFile FileName="ServicioPais.wsdl" MetadataType="Wsdl" ID="d566fc35-3a35-4f2e-bdad-302f34059b63" SourceId="1" SourceUrl="http://localhost:56442/ServicioPais.svc?wsdl" />
+    <MetadataFile FileName="ServicioPais2.xsd" MetadataType="Schema" ID="6f4b3e6e-65ea-4b93-b562-4d1f19f72dde" SourceId="1" SourceUrl="http://localhost:56442/ServicioPais.svc?xsd=xsd1" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

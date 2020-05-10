@@ -18,7 +18,24 @@ namespace Servicio
 
         public bool AltaImportacion(ImportacionDTO importacion)
         {
-            throw new NotImplementedException();
+
+            Importacion i = new Importacion()
+            {
+                Cantidad = importacion.Cantidad,
+                Almacenado =true,
+                Precio = importacion.Producto.Precio,
+                FchIngreso = DateTime.Today,
+                FchSalida = importacion.FchSalida,
+                Producto = importacion.Producto,
+                Pais = importacion.Pais
+                
+                
+                
+            };
+            
+            
+
+            return Repo.Alta(i);
         }
 
         public bool BajaImportacion(int importacionId)
@@ -34,6 +51,27 @@ namespace Servicio
         public bool ModificarImportacion(ImportacionDTO importacion)
         {
             throw new NotImplementedException();
+        }
+
+        public ProductoDTO TraerDatos(int codigo)
+        {
+            RepositorioProducto Repo = new RepositorioProducto();
+            
+            var producto = Repo.BuscarPorCodigo(codigo);
+
+            ProductoDTO dTO = new ProductoDTO()
+            {
+                Cliente = producto.Cliente,
+                Id=producto.Id,
+                Nombre=producto.Nombre,
+                Peso=producto.Peso,
+                Precio=producto.Precio,
+                
+
+            };
+
+
+            return dTO;
         }
 
         public List<ImportacionDTO> TraerTodos()
@@ -52,7 +90,7 @@ namespace Servicio
                         FchIngreso = i.FchIngreso,
                         FchSalida = i.FchSalida,
                         Pais = i.Pais,
-                        Enviado = i.Enviado
+                        Enviado = i.Almacenado
                     };
                     importacionDTO.Add(dto);
                 }

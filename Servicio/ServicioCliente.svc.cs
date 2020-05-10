@@ -45,7 +45,7 @@ namespace Servicio
 
                 foreach (Importacion i in importaciones)
                 {
-                    if (!i.Enviado)
+                    if (!i.Almacenado)
                     {//Esta en deposito
                         if (i.FchSalida >= DateTime.Today)
                         {//Si la fecha de salida es mayor a hoy
