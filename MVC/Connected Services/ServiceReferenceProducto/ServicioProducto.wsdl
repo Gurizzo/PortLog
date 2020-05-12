@@ -37,6 +37,12 @@
   <wsdl:message name="IServicioProducto_BuscarProducto_OutputMessage">
     <wsdl:part name="parameters" element="tns:BuscarProductoResponse" />
   </wsdl:message>
+  <wsdl:message name="IServicioProducto_TraerTodosStock_InputMessage">
+    <wsdl:part name="parameters" element="tns:TraerTodosStock" />
+  </wsdl:message>
+  <wsdl:message name="IServicioProducto_TraerTodosStock_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TraerTodosStockResponse" />
+  </wsdl:message>
   <wsdl:portType name="IServicioProducto">
     <wsdl:operation name="AltaProducto">
       <wsdl:input wsaw:Action="http://tempuri.org/IServicioProducto/AltaProducto" message="tns:IServicioProducto_AltaProducto_InputMessage" />
@@ -57,6 +63,10 @@
     <wsdl:operation name="BuscarProducto">
       <wsdl:input wsaw:Action="http://tempuri.org/IServicioProducto/BuscarProducto" message="tns:IServicioProducto_BuscarProducto_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IServicioProducto/BuscarProductoResponse" message="tns:IServicioProducto_BuscarProducto_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TraerTodosStock">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicioProducto/TraerTodosStock" message="tns:IServicioProducto_TraerTodosStock_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicioProducto/TraerTodosStockResponse" message="tns:IServicioProducto_TraerTodosStock_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IServicioProducto" type="tns:IServicioProducto">
@@ -99,6 +109,15 @@
     </wsdl:operation>
     <wsdl:operation name="BuscarProducto">
       <soap:operation soapAction="http://tempuri.org/IServicioProducto/BuscarProducto" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraerTodosStock">
+      <soap:operation soapAction="http://tempuri.org/IServicioProducto/TraerTodosStock" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

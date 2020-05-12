@@ -22,7 +22,7 @@ namespace MVC.Controllers
             List<ProductoDTO> dTOs = new List<ProductoDTO>();
             ServicioProductoClient proxy = new ServicioProductoClient();
             proxy.Open();
-            dTOs = proxy.TraerTodos().ToList();
+            dTOs = proxy.TraerTodosStock().ToList();
 
             foreach (ProductoDTO d in dTOs)
             {

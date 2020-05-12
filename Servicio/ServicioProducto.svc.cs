@@ -39,6 +39,11 @@ namespace Servicio
 
         public List<ProductoDTO> TraerTodos()
         {
+            throw new NotImplementedException();
+        }
+
+        public List<ProductoDTO> TraerTodosStock()
+        {
             List<ProductoDTO> dTOs = new List<ProductoDTO>();
 
             var Productos = Repo.TodosConStock();
@@ -55,12 +60,6 @@ namespace Servicio
             }
 
             return dTOs;
-            
-        }
-
-        public List<ProductoDTO> TraerTodosStock()
-        {
-            throw new NotImplementedException();
         }
     }
 }

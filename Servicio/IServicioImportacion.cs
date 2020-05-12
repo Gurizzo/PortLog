@@ -29,5 +29,9 @@ namespace Servicio
 
         [OperationContract]
         ProductoDTO TraerDatos(int codigo);
+
+
+
+
     }
 }

@@ -98,8 +98,8 @@ namespace Dominio.Repositorio
                 SqlCommand command = new SqlCommand(@"SELECT P.CODIGO, P.NOMBRE, sum(i.CANTIDAD) as cantidad
                 FROM PRODUCTO p
                 LEFT JOIN IMPORTACION i
-                ON p.Id=i.PRODUCTOID
-                group BY p.CODIGO,p.NOMBRE", con);/*ES HORRIBLE*/
+                ON p.Id=i.PRODUCTOID and i.ALMACENADO=1
+                group BY p.CODIGO,p.NOMBRE", con);/*ES HER-MO-SO*/
                 con.Open();
                 reader = persistente.EjecutarQuery(con, command, CommandType.Text, null);
 

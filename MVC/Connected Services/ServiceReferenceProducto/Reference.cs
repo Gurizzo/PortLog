@@ -296,6 +296,12 @@ namespace MVC.ServiceReferenceProducto {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioProducto/BuscarProducto", ReplyAction="http://tempuri.org/IServicioProducto/BuscarProductoResponse")]
         System.Threading.Tasks.Task<MVC.ServiceReferenceProducto.ProductoDTO> BuscarProductoAsync(int productoId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioProducto/TraerTodosStock", ReplyAction="http://tempuri.org/IServicioProducto/TraerTodosStockResponse")]
+        MVC.ServiceReferenceProducto.ProductoDTO[] TraerTodosStock();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioProducto/TraerTodosStock", ReplyAction="http://tempuri.org/IServicioProducto/TraerTodosStockResponse")]
+        System.Threading.Tasks.Task<MVC.ServiceReferenceProducto.ProductoDTO[]> TraerTodosStockAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -363,6 +369,14 @@ namespace MVC.ServiceReferenceProducto {
         
         public System.Threading.Tasks.Task<MVC.ServiceReferenceProducto.ProductoDTO> BuscarProductoAsync(int productoId) {
             return base.Channel.BuscarProductoAsync(productoId);
+        }
+        
+        public MVC.ServiceReferenceProducto.ProductoDTO[] TraerTodosStock() {
+            return base.Channel.TraerTodosStock();
+        }
+        
+        public System.Threading.Tasks.Task<MVC.ServiceReferenceProducto.ProductoDTO[]> TraerTodosStockAsync() {
+            return base.Channel.TraerTodosStockAsync();
         }
     }
 }

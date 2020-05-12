@@ -26,5 +26,11 @@ namespace Servicio
 
         [OperationContract]
         ProductoDTO BuscarProducto(int productoId);
+
+
+        [OperationContract]
+        List<ProductoDTO> TraerTodosStock();
+
+
     }
 }
