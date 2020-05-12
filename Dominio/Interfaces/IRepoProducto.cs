@@ -10,6 +10,6 @@ namespace Dominio.Interfaces
     public interface IRepoProducto:IRepositorio<Producto>
     {
          Producto BuscarPorCodigo(int Codigo);
-        
+        List<Producto> TodosConStock();
     }
 }

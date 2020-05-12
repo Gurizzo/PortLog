@@ -23,6 +23,7 @@
             @Html.LabelFor(model => model.Codigo, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DisplayFor(model => model.Codigo)
+                @Html.HiddenFor(m => m.Codigo)
             </div>
         </div>
 
@@ -30,6 +31,7 @@
             @Html.LabelFor(model => model.Nombre, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DisplayFor(model => model.Nombre)
+                
                 @Html.ValidationMessageFor(model => model.Nombre, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -45,6 +47,7 @@
             @Html.LabelFor(model => model.Cliente, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DisplayFor(model => model.Cliente)
+                @Html.HiddenFor(m => m.Cliente)
             </div>
         </div>
 

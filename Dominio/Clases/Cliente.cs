@@ -37,24 +37,12 @@ namespace Dominio.Clases
             Productos = productos;
         }
 
-        public bool Descuento()
+        public int Descuento()
         {
-            if(this.Antiguedad.Year< DateTime.Now.Year)
-            {
-                if (this.Antiguedad.Month <= DateTime.Now.Month)
-                {
-                    if (this.Antiguedad.Month == DateTime.Now.Month && this.Antiguedad.Day <= DateTime.Now.Day)
-                    {
-                        if(DateTime.Now.Year - this.Antiguedad.Year >= 5)
-                        {
-                            
-                            return true;
-                        }
-                    }
-                }
-            }
+
+            return DateTime.Today.AddTicks(-this.Antiguedad.Ticks).Year - 1;
+
             
-            return false;//Devuelve si corresponde o no descuento.
         }
 
         

@@ -35,10 +35,10 @@ namespace MVC.ServiceReferenceImportacion {
         private System.DateTime FchSalidaField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private Dominio.Clases.Pais PaisField;
+        private MVC.ServiceReferenceImportacion.PaisDTO PaisField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private Dominio.Clases.Producto ProductoField;
+        private MVC.ServiceReferenceImportacion.ProductoDTO ProductoField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -103,7 +103,7 @@ namespace MVC.ServiceReferenceImportacion {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public Dominio.Clases.Pais Pais {
+        public MVC.ServiceReferenceImportacion.PaisDTO Pais {
             get {
                 return this.PaisField;
             }
@@ -116,7 +116,7 @@ namespace MVC.ServiceReferenceImportacion {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public Dominio.Clases.Producto Producto {
+        public MVC.ServiceReferenceImportacion.ProductoDTO Producto {
             get {
                 return this.ProductoField;
             }
@@ -124,6 +124,83 @@ namespace MVC.ServiceReferenceImportacion {
                 if ((object.ReferenceEquals(this.ProductoField, value) != true)) {
                     this.ProductoField = value;
                     this.RaisePropertyChanged("Producto");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="PaisDTO", Namespace="http://schemas.datacontract.org/2004/07/Servicio.DTO")]
+    [System.SerializableAttribute()]
+    public partial class PaisDTO : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string CodPaisField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IdPaisField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string NombrePaisField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string CodPais {
+            get {
+                return this.CodPaisField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CodPaisField, value) != true)) {
+                    this.CodPaisField = value;
+                    this.RaisePropertyChanged("CodPais");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int IdPais {
+            get {
+                return this.IdPaisField;
+            }
+            set {
+                if ((this.IdPaisField.Equals(value) != true)) {
+                    this.IdPaisField = value;
+                    this.RaisePropertyChanged("IdPais");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string NombrePais {
+            get {
+                return this.NombrePaisField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.NombrePaisField, value) != true)) {
+                    this.NombrePaisField = value;
+                    this.RaisePropertyChanged("NombrePais");
                 }
             }
         }
@@ -148,7 +225,7 @@ namespace MVC.ServiceReferenceImportacion {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private Dominio.Clases.Cliente ClienteField;
+        private MVC.ServiceReferenceImportacion.ClienteDTO ClienteField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int CodigoField;
@@ -179,7 +256,7 @@ namespace MVC.ServiceReferenceImportacion {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public Dominio.Clases.Cliente Cliente {
+        public MVC.ServiceReferenceImportacion.ClienteDTO Cliente {
             get {
                 return this.ClienteField;
             }
@@ -265,6 +342,115 @@ namespace MVC.ServiceReferenceImportacion {
                 if ((this.StockField.Equals(value) != true)) {
                     this.StockField = value;
                     this.RaisePropertyChanged("Stock");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="ClienteDTO", Namespace="http://schemas.datacontract.org/2004/07/Servicio.DTO")]
+    [System.SerializableAttribute()]
+    public partial class ClienteDTO : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime AntiguedadField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string NombreField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private MVC.ServiceReferenceImportacion.ProductoDTO[] ProductosField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string RutField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime Antiguedad {
+            get {
+                return this.AntiguedadField;
+            }
+            set {
+                if ((this.AntiguedadField.Equals(value) != true)) {
+                    this.AntiguedadField = value;
+                    this.RaisePropertyChanged("Antiguedad");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Id {
+            get {
+                return this.IdField;
+            }
+            set {
+                if ((this.IdField.Equals(value) != true)) {
+                    this.IdField = value;
+                    this.RaisePropertyChanged("Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Nombre {
+            get {
+                return this.NombreField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.NombreField, value) != true)) {
+                    this.NombreField = value;
+                    this.RaisePropertyChanged("Nombre");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public MVC.ServiceReferenceImportacion.ProductoDTO[] Productos {
+            get {
+                return this.ProductosField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ProductosField, value) != true)) {
+                    this.ProductosField = value;
+                    this.RaisePropertyChanged("Productos");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Rut {
+            get {
+                return this.RutField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.RutField, value) != true)) {
+                    this.RutField = value;
+                    this.RaisePropertyChanged("Rut");
                 }
             }
         }

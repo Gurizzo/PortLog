@@ -6,6 +6,7 @@ using System.Web;
 using MVC.ServiceReferenceImportacion;
 using System.Web.Mvc;
 using MVC.ServiceReferencePais;
+using PaisDTO = MVC.ServiceReferenceImportacion.PaisDTO;
 
 namespace MVC.Controllers
 {
@@ -35,7 +36,7 @@ namespace MVC.Controllers
                     Enviado = i.Enviado,
                     FchIngreso= i.FchIngreso,
                     FchSalida = i.FchSalida,
-                    Pais= i.Pais.Nombre,
+                    Pais= i.Pais.NombrePais,
                     Producto = i.Producto.Nombre
                 };
                 vm.Add(v);
@@ -77,7 +78,8 @@ namespace MVC.Controllers
                 proxy.Open();
                 var paises = proxy.TraerTodos().ToList();
 
-            foreach (PaisDTO pais in paises)
+            foreach (ServiceReferencePais.PaisDTO pais in paises)
+
             {
                 paiseslistItems.Add(new SelectListItem
                 {
@@ -92,7 +94,7 @@ namespace MVC.Controllers
         [HttpPost]
         public ActionResult Create(ViewModelImportacionAlta vm)
         {
-            if (vm.FchSalida <= DateTime.Today)
+           if (vm.FchSalida <= DateTime.Today)
             {
                 //No capo
             }
@@ -106,22 +108,23 @@ namespace MVC.Controllers
                     Enviado = false,
                     FchIngreso = DateTime.Today,
                     FchSalida = vm.FchSalida,
-                    Pais = new Dominio.Clases.Pais
+                    Pais = new PaisDTO()
                     {
-                        Id = Int32.Parse(vm.Pais)
+                        IdPais= Int32.Parse(vm.Pais)
                     },
-                    Producto = new Dominio.Clases.Producto
+                    
+                    Producto = new ProductoDTO()
                     {
                         Id = datos.Id,
                         Peso = datos.Peso,
                         Precio = datos.Precio,
-                        Cliente = new Dominio.Clases.Cliente
+                        Cliente =  new ClienteDTO
                         {
                             Id = datos.Cliente.Id
                         }
                     },
 
-
+    
 
                 };
                 if (proxy.AltaImportacion(dTO))

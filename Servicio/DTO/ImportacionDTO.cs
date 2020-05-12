@@ -17,14 +17,14 @@ namespace Servicio.DTO
         public DateTime FchSalida { get; set; }
 
         [DataMember]
-        public Producto Producto { get; set; }
+        public ProductoDTO Producto { get; set; }
 
         [DataMember]
         public int Cantidad { get; set; }
 
 
         [DataMember]
-        public Pais Pais { get; set; }
+        public PaisDTO Pais { get; set; }
 
         [DataMember]
         public bool Enviado { get; set; }

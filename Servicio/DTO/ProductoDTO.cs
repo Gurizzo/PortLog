@@ -26,7 +26,7 @@ namespace Servicio.DTO
         public decimal Peso { get; set; }
 
         [DataMember]
-        public Cliente Cliente { get; set; }
+        public ClienteDTO Cliente { get; set; }
 
         [DataMember]
         public decimal Precio { get; set; }

@@ -15,7 +15,7 @@ namespace Dominio.Repositorio
         public bool Alta(Importacion obj)
         {
             Persistente persistente = new Persistente();
-            bool retorno = false;
+            
             SqlConnection con = null;
 
             try

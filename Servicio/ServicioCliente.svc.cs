@@ -63,9 +63,9 @@ namespace Servicio
                     }
 
                 }
-                if (importaciones[0].Producto.Cliente.Descuento())
+                if (importaciones[0].Producto.Cliente.Descuento()>=Repo.TraerTope())
                 {//Mejor asegurar 
-                    descuento = 10 / 100 * ganancia;
+                    descuento = Repo.TraerDescuento() / 100 * ganancia;
                 }
 
 
@@ -74,7 +74,7 @@ namespace Servicio
 
 
 
-                return (ganancia - descuento) * 2 / 100;
+                return (ganancia - descuento) * Repo.PorcenGanancia() / 100;
         }
         
 

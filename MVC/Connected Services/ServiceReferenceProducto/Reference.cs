@@ -23,10 +23,22 @@ namespace MVC.ServiceReferenceProducto {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private MVC.ServiceReferenceProducto.ClienteDTO ClienteField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int CodigoField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string NombreField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private decimal PesoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private decimal PrecioField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int StockField;
@@ -42,6 +54,19 @@ namespace MVC.ServiceReferenceProducto {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
+        public MVC.ServiceReferenceProducto.ClienteDTO Cliente {
+            get {
+                return this.ClienteField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ClienteField, value) != true)) {
+                    this.ClienteField = value;
+                    this.RaisePropertyChanged("Cliente");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public int Codigo {
             get {
                 return this.CodigoField;
@@ -50,6 +75,19 @@ namespace MVC.ServiceReferenceProducto {
                 if ((this.CodigoField.Equals(value) != true)) {
                     this.CodigoField = value;
                     this.RaisePropertyChanged("Codigo");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Id {
+            get {
+                return this.IdField;
+            }
+            set {
+                if ((this.IdField.Equals(value) != true)) {
+                    this.IdField = value;
+                    this.RaisePropertyChanged("Id");
                 }
             }
         }
@@ -68,6 +106,32 @@ namespace MVC.ServiceReferenceProducto {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
+        public decimal Peso {
+            get {
+                return this.PesoField;
+            }
+            set {
+                if ((this.PesoField.Equals(value) != true)) {
+                    this.PesoField = value;
+                    this.RaisePropertyChanged("Peso");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public decimal Precio {
+            get {
+                return this.PrecioField;
+            }
+            set {
+                if ((this.PrecioField.Equals(value) != true)) {
+                    this.PrecioField = value;
+                    this.RaisePropertyChanged("Precio");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public int Stock {
             get {
                 return this.StockField;
@@ -76,6 +140,115 @@ namespace MVC.ServiceReferenceProducto {
                 if ((this.StockField.Equals(value) != true)) {
                     this.StockField = value;
                     this.RaisePropertyChanged("Stock");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="ClienteDTO", Namespace="http://schemas.datacontract.org/2004/07/Servicio.DTO")]
+    [System.SerializableAttribute()]
+    public partial class ClienteDTO : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime AntiguedadField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string NombreField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private MVC.ServiceReferenceProducto.ProductoDTO[] ProductosField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string RutField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime Antiguedad {
+            get {
+                return this.AntiguedadField;
+            }
+            set {
+                if ((this.AntiguedadField.Equals(value) != true)) {
+                    this.AntiguedadField = value;
+                    this.RaisePropertyChanged("Antiguedad");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Id {
+            get {
+                return this.IdField;
+            }
+            set {
+                if ((this.IdField.Equals(value) != true)) {
+                    this.IdField = value;
+                    this.RaisePropertyChanged("Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Nombre {
+            get {
+                return this.NombreField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.NombreField, value) != true)) {
+                    this.NombreField = value;
+                    this.RaisePropertyChanged("Nombre");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public MVC.ServiceReferenceProducto.ProductoDTO[] Productos {
+            get {
+                return this.ProductosField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ProductosField, value) != true)) {
+                    this.ProductosField = value;
+                    this.RaisePropertyChanged("Productos");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Rut {
+            get {
+                return this.RutField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.RutField, value) != true)) {
+                    this.RutField = value;
+                    this.RaisePropertyChanged("Rut");
                 }
             }
         }

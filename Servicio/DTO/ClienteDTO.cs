@@ -23,7 +23,7 @@ namespace Servicio.DTO
         public DateTime Antiguedad { get; set; }
 
         [DataMember]
-        public List<Producto> Productos { get; set; }
+        public List<ProductoDTO> Productos { get; set; }
 
         
     }

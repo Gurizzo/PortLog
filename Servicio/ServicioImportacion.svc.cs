@@ -26,8 +26,8 @@ namespace Servicio
                 Precio = importacion.Producto.Precio,
                 FchIngreso = DateTime.Today,
                 FchSalida = importacion.FchSalida,
-                Producto = importacion.Producto,
-                Pais = importacion.Pais
+                /*Producto = importacion.Producto,
+                Pais = importacion.Pais*/
                 
                 
                 
@@ -61,7 +61,11 @@ namespace Servicio
 
             ProductoDTO dTO = new ProductoDTO()
             {
-                Cliente = producto.Cliente,
+                Cliente = new ClienteDTO
+                {
+                    Id=producto.Cliente.Id,
+                    Nombre=producto.Cliente.Nombre
+                },
                 Id=producto.Id,
                 Nombre=producto.Nombre,
                 Peso=producto.Peso,
@@ -85,11 +89,25 @@ namespace Servicio
                 {
                     ImportacionDTO dto = new ImportacionDTO()
                     {
-                        Producto = i.Producto,
+                        Producto = new ProductoDTO()
+                        {
+                            Id = i.Producto.Id,
+                            Nombre= i.Producto.Nombre,
+                            Cliente = new ClienteDTO()
+                            {
+                                Id= i.Producto.Cliente.Id,
+                                Nombre= i.Producto.Cliente.Nombre
+                            }
+                            
+                        },
+                        Pais = new PaisDTO()
+                        {
+                            IdPais= i.Pais.Id,
+                            NombrePais= i.Pais.Nombre
+                        },
                         Cantidad = i.Cantidad,
                         FchIngreso = i.FchIngreso,
                         FchSalida = i.FchSalida,
-                        Pais = i.Pais,
                         Enviado = i.Almacenado
                     };
                     importacionDTO.Add(dto);

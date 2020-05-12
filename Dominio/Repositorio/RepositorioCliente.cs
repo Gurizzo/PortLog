@@ -38,7 +38,11 @@ namespace Dominio.Repositorio
             try
             {
                 con = persistente.ObtenerConexion();
-                SqlCommand sqlCommand = new SqlCommand(@"SELECT * FROM IMPORTACION,CLIENTE WHERE PERSONAID=CLIENTE.Id and CLIENTE.Id=@ID", con);
+                SqlCommand sqlCommand = new SqlCommand(@"select i.Id as IdImportacion,i.FCHINGRESO, i.FCHSALIDA,i.PRODUCTOID,i.PRECIO,i.CANTIDAD,i.PAISID,i.ALMACENADO,
+                p.Id as ProductoID,p.CODIGO,p.CLIENTEID,p.NOMBRE,p.PESO,p.PRECIO,
+                c.ANTIGUEDAD,c.NOMBRE as NombreCliente,c.RUT 
+                from IMPORTACION i, PRODUCTO p,CLIENTE c 
+                where i.PRODUCTOID=p.Id and p.CLIENTEID=@ID and c.Id=@ID", con);
                 
                 sqlCommand.Parameters.Add(new SqlParameter("@ID", id));
                 con.Open();
@@ -48,20 +52,20 @@ namespace Dominio.Repositorio
                 {
                     Importacion importacion = new Importacion()
                     {
-                        Id= (int)reader["id"],
+                        Id= (int)reader["IdImportacion"],
                         FchIngreso=(DateTime)reader["FCHINGRESO"],
-                        FchSalida=(DateTime)reader["FchSalida"],
-                        Precio=(decimal)reader["Precio"],
-                        Cantidad=(int)reader["Cantidad"],
+                        FchSalida=(DateTime)reader["FCHSALIDA"],
+                        Precio=(decimal)reader["PRECIO"],
+                        Cantidad=(int)reader["CANTIDAD"],
                         Producto = new Producto()
                         {
                             Id=(int)reader["ProductoID"],
                             Cliente= new Cliente()
                             {
                                 
-                                Antiguedad=(DateTime)reader["Antiguedad"],
-                                Rut=(string)reader["Rut"],
-                                Nombre=(string)reader["Nombre"],
+                                Antiguedad=(DateTime)reader["ANTIGUEDAD"],
+                                Rut=(string)reader["RUT"],
+                                Nombre=(string)reader["NombreCliente"],
                                 
                             }
                         },
@@ -81,6 +85,56 @@ namespace Dominio.Repositorio
                 con.Close();
             }
             return importaciones;
+        }
+
+        public decimal PorcenGanancia()
+        {
+            Persistente persistente = new Persistente();
+
+            SqlConnection con = null;
+            SqlDataReader reader = null;
+            con = persistente.ObtenerConexion();
+            SqlCommand command = new SqlCommand("SELECT GANANCIA FROM DESCUENTO", con);
+            reader = persistente.EjecutarQuery(con, command, CommandType.Text, null);
+            while (reader.Read())
+            {
+                return (decimal)reader["GANANCIA"];
+            }
+            return 0;
+        }
+
+        public decimal TraerDescuento()
+        {
+            Persistente persistente = new Persistente();
+
+            SqlConnection con = null;
+            SqlDataReader reader = null;
+            con = persistente.ObtenerConexion();
+            SqlCommand command = new SqlCommand("SELECT DESCUENTO FROM DESCUENTO", con);
+            reader = persistente.EjecutarQuery(con, command, CommandType.Text, null);
+            while (reader.Read())
+            {
+                return (decimal)reader["DESCUENTO"];
+            }
+            return 0;
+        }
+
+        public int TraerTope()
+        {
+            Persistente persistente = new Persistente();
+            
+            SqlConnection con = null;
+            SqlDataReader reader = null;
+            con = persistente.ObtenerConexion();
+            SqlCommand command = new SqlCommand("SELECT ANIOS FROM DESCUENTO",con);
+            reader = persistente.EjecutarQuery(con, command, CommandType.Text, null);
+            while (reader.Read())
+            {
+                return (int)reader["ANIOS"];
+            }
+
+
+            return 0;
         }
 
         public bool Modificar(Cliente obj)

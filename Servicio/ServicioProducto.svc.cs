@@ -15,7 +15,7 @@ namespace Servicio
     // NOTA: para iniciar el Cliente de prueba WCF para probar este servicio, seleccione ServicioProducto.svc o ServicioProducto.svc.cs en el Explorador de soluciones e inicie la depuración.
     public class ServicioProducto : IServicioProducto
     {
-        IRepoProducto Repo = new RepositorioProducto();
+        RepositorioProducto Repo = new RepositorioProducto();
 
         public bool AltaProducto(ProductoDTO producto)
         {
@@ -41,20 +41,26 @@ namespace Servicio
         {
             List<ProductoDTO> dTOs = new List<ProductoDTO>();
 
-            var Productos = Repo.Todos();
+            var Productos = Repo.TodosConStock();
 
             foreach (Producto p in Productos)
             {
                 ProductoDTO dTO = new ProductoDTO()
                 {
-                    Codigo= p.Codigo,
-                    Nombre= p.Nombre,
+                    Codigo = p.Codigo,
+                    Nombre = p.Nombre,
                     Stock = p.Importaciones[0].Cantidad
                 };
                 dTOs.Add(dTO);
             }
 
             return dTOs;
+            
+        }
+
+        public List<ProductoDTO> TraerTodosStock()
+        {
+            throw new NotImplementedException();
         }
     }
 }

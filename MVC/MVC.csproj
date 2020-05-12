@@ -175,19 +175,6 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-    <None Include="Connected Services\ServiceReferenceCliente\ServicioCliente.wsdl" />
-    <None Include="Connected Services\ServiceReferenceCliente\ServicioCliente.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\ServiceReferenceCliente\ServicioCliente1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\ServiceReferenceCliente\ServicioCliente2.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\ServiceReferenceCliente\ServicioCliente3.xsd">
-      <SubType>Designer</SubType>
-    </None>
     <Content Include="Connected Services\ServiceReferenceImportacion\MVC.ServiceReferenceImportacion.ImportacionDTO.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
@@ -204,6 +191,16 @@
     <Content Include="Connected Services\ServiceReferencePais\MVC.ServiceReferencePais.PaisDTO.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <None Include="Connected Services\ServiceReferenceCliente\ServicioCliente.wsdl" />
+    <None Include="Connected Services\ServiceReferenceCliente\ServicioCliente.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ServiceReferenceCliente\ServicioCliente1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ServiceReferenceCliente\ServicioCliente2.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Connected Services\ServiceReferenceImportacion\ServicioImportacion.wsdl" />
     <None Include="Connected Services\ServiceReferenceImportacion\ServicioImportacion.xsd">
       <SubType>Designer</SubType>
@@ -214,9 +211,6 @@
     <None Include="Connected Services\ServiceReferenceImportacion\ServicioImportacion2.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\ServiceReferenceImportacion\ServicioImportacion3.xsd">
-      <SubType>Designer</SubType>
-    </None>
     <None Include="Connected Services\ServiceReferencePais\ServicioPais.disco" />
     <None Include="Connected Services\ServiceReferencePais\configuration91.svcinfo" />
     <None Include="Connected Services\ServiceReferencePais\configuration.svcinfo" />
@@ -224,9 +218,6 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-    <Content Include="Connected Services\ServiceReferenceProducto\MVC.ServiceReferenceProducto.ProductoDTO.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
     <None Include="Connected Services\ServiceReferencePais\ServicioPais.wsdl" />
     <None Include="Connected Services\ServiceReferencePais\ServicioPais.xsd">
       <SubType>Designer</SubType>
@@ -237,6 +228,9 @@
     <None Include="Connected Services\ServiceReferencePais\ServicioPais2.xsd">
       <SubType>Designer</SubType>
     </None>
+    <Content Include="Connected Services\ServiceReferenceProducto\MVC.ServiceReferenceProducto.ProductoDTO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <None Include="Connected Services\ServiceReferenceProducto\ServicioProducto.disco" />
     <None Include="Connected Services\ServiceReferenceProducto\configuration91.svcinfo" />
     <None Include="Connected Services\ServiceReferenceProducto\configuration.svcinfo" />
