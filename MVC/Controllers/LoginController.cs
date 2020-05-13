@@ -8,6 +8,7 @@ using MVC.ViewModels.Usuario;
 using System.Web.Mvc;
 using System.Web.WebPages.Html;
 using SelectListItem = System.Web.WebPages.Html.SelectListItem;
+using System.IO;
 
 namespace MVC.Controllers
 {
@@ -29,7 +30,8 @@ namespace MVC.Controllers
 
             return View(u);
         }
-        
+
+
 
         [HttpPost]
         public ActionResult Login(ViewModelLogin u)
@@ -43,11 +45,18 @@ namespace MVC.Controllers
             if (usuarioDto != null)
             {//Caso exitoso de login
                 Session["Rol"] = usuarioDto.Rol;
-                if (usuarioDto.Rol == "admin")
+                if (usuarioDto.Rol.ToUpper() == "ADMIN")
                 {
-                    return RedirectToAction("admin");//Redirigir a donde corresponda admin
+                    
+                    Session["Rol"] = usuarioDto.Rol.ToUpper();
+                    return RedirectToAction("Create","Login");//Redirigir a donde corresponda admin 
                 }
-                return RedirectToAction("Almacen");//Redirigir a donde corresponda almacen
+                else
+                {
+                    Session["Rol"] = usuarioDto.Rol.ToUpper();
+                    return RedirectToAction("Productos","Producto");//Redirigir a donde corresponda almacen
+                }
+                
 
             }
             //Caso de error al logear.
@@ -59,6 +68,10 @@ namespace MVC.Controllers
         [HttpGet]
         public ActionResult Create()
         {
+            if (Session["Rol"] == null || Session["Rol"].ToString().ToUpper() != "ADMIN")
+            {
+                return RedirectToAction("Login", "Login");
+            }
             //Dibujo la vista
             ViewModelUsuario u = new ViewModelUsuario();
 
@@ -128,6 +141,109 @@ namespace MVC.Controllers
             return View(model);
 
         }
+
+        public ActionResult LogOut()
+        {
+            Session["Rol"] = null;
+            return RedirectToAction("Login");
+        }
+
+        public ActionResult Archivos()
+        {
+            ServicioUsuarioClient proxy = new ServicioUsuarioClient();
+            proxy.Open();
+            var Clientes = proxy.DatosClientes();
+            var Usuario = proxy.DatosUsuarios();
+            var Importaciones = proxy.DatosImportacion();
+            var Productos = proxy.DatosProductos();
+            proxy.Close();
+
+            crearArchivoCliente(Clientes);
+            crearArchivoUsuario(Usuario);
+            crearArchivoImportacion(Importaciones);
+            crearArchivoProducto(Productos);
+
+
+
+            return RedirectToAction("List","Cliente");
+        }
+
+        #region 
+
+        private void crearArchivoProducto(ProductoDTO[] productos)
+        {
+            var ruta = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Archivos", "Productos.txt");
+            //Directorio raiz               //Carpeta //Nombre del archivo
+
+
+            using (StreamWriter sw = new StreamWriter(ruta, true)) //el true es para que agregue al final. Si el archivo no existe lo crea.
+            {
+                foreach (ProductoDTO p in productos)
+                {
+                    string datos = p.Codigo + "#" + p.Nombre + "#" + p.Precio + "#" + p.Peso + "#" + p.Cliente.Id;
+                    sw.WriteLine(datos);
+                }
+
+            }
+        }
+
+        private void crearArchivoImportacion(ImportacionDTO[] importaciones)
+        {
+            var ruta = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Archivos", "Importaciones.txt");
+            //Directorio raiz               //Carpeta //Nombre del archivo
+
+
+            using (StreamWriter sw = new StreamWriter(ruta, true)) //el true es para que agregue al final. Si el archivo no existe lo crea.
+            {
+                foreach (ImportacionDTO i in importaciones)
+                {
+                    string datos = i.FchIngreso.ToShortDateString() + "#" + i.FchSalida.ToShortDateString() + "#" + i.Producto.Id + "#" + i.Producto.Precio + "#" + i.Cantidad + "#" + i.Pais.IdPais + "#" + i.Enviado;
+                    sw.WriteLine(datos);
+                }
+
+            }
+        }
+
+        private void crearArchivoUsuario(UsuarioDTO[] usuario)
+        {
+            var ruta = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Archivos", "Usuario.txt");
+            //Directorio raiz               //Carpeta //Nombre del archivo
+
+
+            using (StreamWriter sw = new StreamWriter(ruta, true)) //el true es para que agregue al final. Si el archivo no existe lo crea.
+            {
+                foreach (UsuarioDTO u in usuario)
+                {
+                    string datos = u.CI + "#" + u.Password + "#" + u.Rol;
+                    sw.WriteLine(datos);
+                }
+
+            }
+
+
+        }
+
+        private void crearArchivoCliente(ClienteDTO[] clientes)
+        {
+            var ruta = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Archivos", "Cliente.txt");
+            //Directorio raiz               //Carpeta //Nombre del archivo
+
+
+            using (StreamWriter sw = new StreamWriter(ruta, true)) //el true es para que agregue al final. Si el archivo no existe lo crea.
+            {
+                foreach (ClienteDTO c in clientes)
+                {
+                    string datos = c.Rut + "#" + c.Nombre + "#" + c.Antiguedad.ToShortDateString();
+                    sw.WriteLine(datos);
+                }
+
+            }
+
+
+        }
+
+        #endregion//Archivos
     }
-    
+
+
 }

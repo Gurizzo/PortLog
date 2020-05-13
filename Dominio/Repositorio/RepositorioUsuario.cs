@@ -65,6 +65,40 @@ namespace Dominio.Repositorio
 
         public List<Usuario> Todos()
         {
+            Persistente persistente = new Persistente();
+            List<Usuario> usuarios = new List<Usuario>();
+            SqlConnection con = null;
+            SqlDataReader reader = null;
+
+            try
+            {
+                con = persistente.ObtenerConexion();
+                SqlCommand command = new SqlCommand("select * from USUARIO", con);
+                con.Open();
+                reader = persistente.EjecutarQuery(con, command, CommandType.Text, null);
+
+                while (reader.Read())
+                {
+                    Usuario u = new Usuario()
+                    {
+                        CI= (string)reader["ci"],
+                        Password=(string)reader["pass"],
+                        Rol=(string)reader["rol"]
+                    };
+                    usuarios.Add(u);
+                }
+
+                return usuarios;
+            }
+            catch
+            {
+                return usuarios;
+            }
+            finally
+            {
+                con.Close();
+            }
+
             throw new NotImplementedException();
         }
 
@@ -86,22 +120,29 @@ namespace Dominio.Repositorio
                 comando.Parameters.Add(new SqlParameter("@pass", password));
 
                 reader = persistente.EjecutarQuery(con, comando, CommandType.Text, null);
-
-                while (reader.Read())
+                if (reader.HasRows)
                 {
+                    while (reader.Read())
+                    {
 
-                    usuario.Id = reader.GetInt32(reader.GetOrdinal("id"));
-                    usuario.CI = reader["ci"].ToString();
-                    usuario.Password = reader["pass"].ToString();
-                    usuario.Rol = reader["rol"].ToString();
+                        usuario.Id = reader.GetInt32(reader.GetOrdinal("id"));
+                        usuario.CI = reader["ci"].ToString();
+                        usuario.Password = reader["pass"].ToString();
+                        usuario.Rol = reader["rol"].ToString();
 
 
 
 
+                    }
                 }
+                else
+                {
+                    usuario = null;
+                }
+                
 
             }
-            catch
+            catch(Exception)
             {
                 throw;
             }

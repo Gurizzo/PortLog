@@ -238,6 +238,15 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+    <Content Include="Connected Services\ServiceReferenceUsuario\MVC.ServiceReferenceUsuario.ClienteDTO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServiceReferenceUsuario\MVC.ServiceReferenceUsuario.ImportacionDTO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServiceReferenceUsuario\MVC.ServiceReferenceUsuario.ProductoDTO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <Content Include="Connected Services\ServiceReferenceUsuario\MVC.ServiceReferenceUsuario.UsuarioDTO.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
@@ -276,6 +285,9 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Connected Services\ServiceReferenceUsuario\ServicioUsuario2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ServiceReferenceUsuario\ServicioUsuario3.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />

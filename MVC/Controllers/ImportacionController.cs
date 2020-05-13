@@ -32,7 +32,6 @@ namespace MVC.Controllers
                 ViewModelImportacionList v = new ViewModelImportacionList()
                 {
                     Cantidad = i.Cantidad,
-                    Cliente = i.Producto.Cliente.Nombre,
                     Enviado = i.Enviado,
                     FchIngreso= i.FchIngreso,
                     FchSalida = i.FchSalida,
@@ -48,8 +47,11 @@ namespace MVC.Controllers
         [HttpGet]
         public ActionResult Create(int codigo)
         {
+            if (Session["Rol"] == null || Session["Rol"].ToString().ToUpper() != "ALMACEN")
+            {
+                return RedirectToAction("LogOut", "Login");
+            }
 
-            
             ServicioImportacionClient proxy = new ServicioImportacionClient();
             proxy.Open();
             var datos = proxy.TraerDatos(codigo);
@@ -94,7 +96,13 @@ namespace MVC.Controllers
         [HttpPost]
         public ActionResult Create(ViewModelImportacionAlta vm)
         {
-           if (vm.FchSalida <= DateTime.Today)
+
+            if (Session["Rol"] == null || Session["Rol"].ToString().ToUpper() != "ALMACEN")
+            {
+                return RedirectToAction("Login", "Login");
+            }
+
+            if (vm.FchSalida <= DateTime.Today && vm.Cantidad<=0)
             {
                 //No capo
             }
@@ -134,12 +142,14 @@ namespace MVC.Controllers
                 }
                 else
                 {
-                    //PUES NO
+                    TempData["Fail"] = "Error al crear verifique los datos";
+                    ViewBag.Paises = Paises();
+                    return View(vm);
                 }
             }
-            
-
-            return RedirectToAction("Lista");
+            TempData["Fail"] = "Error al crear verifique los datos";
+            ViewBag.Paises = Paises();
+            return View(vm);
         }
 
     }

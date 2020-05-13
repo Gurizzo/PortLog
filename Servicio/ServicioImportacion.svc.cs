@@ -93,12 +93,7 @@ namespace Servicio
                         {
                             Id = i.Producto.Id,
                             Nombre= i.Producto.Nombre,
-                            Cliente = new ClienteDTO()
-                            {
-                                Id= i.Producto.Cliente.Id,
-                                Nombre= i.Producto.Cliente.Nombre
-                            }
-                            
+                                                        
                         },
                         Pais = new PaisDTO()
                         {

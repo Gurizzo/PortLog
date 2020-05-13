@@ -42,7 +42,7 @@ namespace Dominio.Repositorio
                 p.Id as ProductoID,p.CODIGO,p.CLIENTEID,p.NOMBRE,p.PESO,p.PRECIO,
                 c.ANTIGUEDAD,c.NOMBRE as NombreCliente,c.RUT 
                 from IMPORTACION i, PRODUCTO p,CLIENTE c 
-                where i.PRODUCTOID=p.Id and p.CLIENTEID=@ID and c.Id=@ID", con);
+                where i.PRODUCTOID=p.Id and p.CLIENTEID=@ID and c.Id=@ID and i.ALMACENADO=1", con);
                 
                 sqlCommand.Parameters.Add(new SqlParameter("@ID", id));
                 con.Open();

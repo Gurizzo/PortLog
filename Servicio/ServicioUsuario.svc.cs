@@ -46,25 +46,137 @@ namespace Servicio
                 CI = ci,
                 Password = password
             };
-            
 
-            u = Repo.ValidarLogin(ci,password);
-            
-                if( u.CI!=null)
-                {
-                    usuario.Id = u.Id;
-                    usuario.CI = u.CI;
-                    usuario.Password = u.Password;
-                    usuario.Rol = u.Rol;
+
+            u = Repo.ValidarLogin(ci, password);
+
+            if (u.CI != null)
+            {
+                usuario.Id = u.Id;
+                usuario.CI = u.CI;
+                usuario.Password = u.Password;
+                usuario.Rol = u.Rol;
             }
             else
             {
                 usuario = null;
             }
-            
+
             return usuario;
-            
-            
+
+
         }
+
+
+
+        public List<ClienteDTO> DatosClientes()
+        {
+            RepositorioCliente Repo = new RepositorioCliente();
+            
+            List<ClienteDTO> dTOs = new List<ClienteDTO>();
+            var clientes = Repo.Todos();
+
+            foreach (Cliente i in clientes)
+            {
+                ClienteDTO dTO = new ClienteDTO()
+                {
+                    Antiguedad = i.Antiguedad,
+                    Id = i.Id,
+                    Nombre = i.Nombre,
+                    Rut = i.Rut
+                };
+                dTOs.Add(dTO);
+            }
+
+            return dTOs;
+        }
+
+        public List<string> DatosDescuentos()
+        {
+            //Hay que hacerlo?
+            throw new NotImplementedException();
+        }
+
+        public List<ImportacionDTO> DatosImportacion()
+        {
+            RepositorioImportacion repositorio = new RepositorioImportacion();
+            List<ImportacionDTO> dTOs = new List<ImportacionDTO>();
+            var Importaciones = repositorio.Todos();
+
+            foreach (Importacion i in Importaciones)
+            {
+                ImportacionDTO dTO = new ImportacionDTO()
+                {
+                    Cantidad = i.Cantidad,
+                    Enviado = i.Almacenado,
+                    FchIngreso = i.FchIngreso,
+                    FchSalida = i.FchSalida,
+                    Pais = new PaisDTO()
+                    {
+                        IdPais = i.Pais.Id
+                    },
+                    Producto = new ProductoDTO()
+                    {
+                        Id = i.Producto.Id
+                    }
+                };
+                dTOs.Add(dTO);
+            }
+
+            return dTOs;
+        }
+
+        public List<ProductoDTO> DatosProductos()
+        {
+            RepositorioProducto repoProducto = new RepositorioProducto();
+            List<ProductoDTO> dTOs = new List<ProductoDTO>();
+            var productos = repoProducto.Todos();// Falta implementar
+
+            foreach (Producto p in productos)
+            {
+                ProductoDTO dTO = new ProductoDTO()
+                {
+                    Codigo = p.Codigo,
+                    Id = p.Id,
+                    Nombre = p.Nombre,
+                    Peso = p.Peso,
+                    Precio = p.Precio,
+                    Cliente = new ClienteDTO()
+                    {
+                        Id = p.Cliente.Id
+                    }
+                };
+                dTOs.Add(dTO);
+            }
+
+
+            return dTOs;
+        }
+
+        public List<UsuarioDTO> DatosUsuarios()
+        {
+            List<UsuarioDTO> dTOs = new List<UsuarioDTO>();
+            var usuarios = Repo.Todos();//IMPLEMENTAR
+            foreach (Usuario u in usuarios)
+            {
+                UsuarioDTO dTO = new UsuarioDTO()
+                {
+                    CI= u.CI,
+                    Password= u.Password,
+                    Rol=u.Rol
+                };
+                dTOs.Add(dTO);
+            }
+
+
+
+
+            return dTOs;
+        }
+
+        
+
+
+
     }
 }

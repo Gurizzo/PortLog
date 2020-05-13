@@ -18,6 +18,12 @@ namespace MVC.Controllers
 
         public ActionResult Productos()
         {
+            if (Session["Rol"] == null )
+            {
+                return RedirectToAction("LogOut", "Login");
+            }
+
+
             List <ViewModelProducto>  vm = new List<ViewModelProducto>();
             List<ProductoDTO> dTOs = new List<ProductoDTO>();
             ServicioProductoClient proxy = new ServicioProductoClient();

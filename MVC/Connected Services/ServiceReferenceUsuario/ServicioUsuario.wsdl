@@ -5,6 +5,7 @@
       <xsd:import schemaLocation="http://localhost:56442/ServicioUsuario.svc?xsd=xsd0" namespace="http://tempuri.org/" />
       <xsd:import schemaLocation="http://localhost:56442/ServicioUsuario.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
       <xsd:import schemaLocation="http://localhost:56442/ServicioUsuario.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Servicio.DTO" />
+      <xsd:import schemaLocation="http://localhost:56442/ServicioUsuario.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IServicioUsuario_Alta_InputMessage">
@@ -19,6 +20,36 @@
   <wsdl:message name="IServicioUsuario_Logear_OutputMessage">
     <wsdl:part name="parameters" element="tns:LogearResponse" />
   </wsdl:message>
+  <wsdl:message name="IServicioUsuario_DatosImportacion_InputMessage">
+    <wsdl:part name="parameters" element="tns:DatosImportacion" />
+  </wsdl:message>
+  <wsdl:message name="IServicioUsuario_DatosImportacion_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DatosImportacionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicioUsuario_DatosProductos_InputMessage">
+    <wsdl:part name="parameters" element="tns:DatosProductos" />
+  </wsdl:message>
+  <wsdl:message name="IServicioUsuario_DatosProductos_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DatosProductosResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicioUsuario_DatosClientes_InputMessage">
+    <wsdl:part name="parameters" element="tns:DatosClientes" />
+  </wsdl:message>
+  <wsdl:message name="IServicioUsuario_DatosClientes_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DatosClientesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicioUsuario_DatosUsuarios_InputMessage">
+    <wsdl:part name="parameters" element="tns:DatosUsuarios" />
+  </wsdl:message>
+  <wsdl:message name="IServicioUsuario_DatosUsuarios_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DatosUsuariosResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicioUsuario_DatosDescuentos_InputMessage">
+    <wsdl:part name="parameters" element="tns:DatosDescuentos" />
+  </wsdl:message>
+  <wsdl:message name="IServicioUsuario_DatosDescuentos_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DatosDescuentosResponse" />
+  </wsdl:message>
   <wsdl:portType name="IServicioUsuario">
     <wsdl:operation name="Alta">
       <wsdl:input wsaw:Action="http://tempuri.org/IServicioUsuario/Alta" message="tns:IServicioUsuario_Alta_InputMessage" />
@@ -27,6 +58,26 @@
     <wsdl:operation name="Logear">
       <wsdl:input wsaw:Action="http://tempuri.org/IServicioUsuario/Logear" message="tns:IServicioUsuario_Logear_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IServicioUsuario/LogearResponse" message="tns:IServicioUsuario_Logear_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DatosImportacion">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicioUsuario/DatosImportacion" message="tns:IServicioUsuario_DatosImportacion_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicioUsuario/DatosImportacionResponse" message="tns:IServicioUsuario_DatosImportacion_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DatosProductos">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicioUsuario/DatosProductos" message="tns:IServicioUsuario_DatosProductos_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicioUsuario/DatosProductosResponse" message="tns:IServicioUsuario_DatosProductos_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DatosClientes">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicioUsuario/DatosClientes" message="tns:IServicioUsuario_DatosClientes_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicioUsuario/DatosClientesResponse" message="tns:IServicioUsuario_DatosClientes_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DatosUsuarios">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicioUsuario/DatosUsuarios" message="tns:IServicioUsuario_DatosUsuarios_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicioUsuario/DatosUsuariosResponse" message="tns:IServicioUsuario_DatosUsuarios_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DatosDescuentos">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicioUsuario/DatosDescuentos" message="tns:IServicioUsuario_DatosDescuentos_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicioUsuario/DatosDescuentosResponse" message="tns:IServicioUsuario_DatosDescuentos_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IServicioUsuario" type="tns:IServicioUsuario">
@@ -42,6 +93,51 @@
     </wsdl:operation>
     <wsdl:operation name="Logear">
       <soap:operation soapAction="http://tempuri.org/IServicioUsuario/Logear" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DatosImportacion">
+      <soap:operation soapAction="http://tempuri.org/IServicioUsuario/DatosImportacion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DatosProductos">
+      <soap:operation soapAction="http://tempuri.org/IServicioUsuario/DatosProductos" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DatosClientes">
+      <soap:operation soapAction="http://tempuri.org/IServicioUsuario/DatosClientes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DatosUsuarios">
+      <soap:operation soapAction="http://tempuri.org/IServicioUsuario/DatosUsuarios" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DatosDescuentos">
+      <soap:operation soapAction="http://tempuri.org/IServicioUsuario/DatosDescuentos" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

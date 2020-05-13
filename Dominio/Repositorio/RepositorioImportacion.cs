@@ -79,12 +79,11 @@ namespace Dominio.Repositorio
             try
             {
                 con = persistente.ObtenerConexion();
-                SqlCommand command = new SqlCommand(@"Select imp.id, imp.FCHINGRESO, imp.FCHSALIDA, imp.PRODUCTOID, imp.CANTIDAD, imp.PERSONAID, imp.PAISID, imp.ALMACENADO,
+                SqlCommand command = new SqlCommand(@"Select imp.id, imp.FCHINGRESO, imp.FCHSALIDA, imp.PRODUCTOID, imp.CANTIDAD, imp.PAISID, imp.ALMACENADO,
                   pa.CodPais, pa.NombrePais,
-                  cli.RUT, cli.NOMBRE, cli.ANTIGUEDAD,
                   pro.NOMBRE as NombreProducto,pro.CODIGO,pro.PESO
-                  from Importacion imp, Pais pa, Producto pro, CLIENTE cli
-                  where imp.PaisID = pa.id and imp.PRODUCTOID = pro.id and imp.PERSONAID = cli.Id", con);
+                  from Importacion imp, Pais pa, Producto pro
+                  where imp.PaisID = pa.id and imp.PRODUCTOID = pro.id", con);
                 con.Open();
                 reader = persistente.EjecutarQuery(con, command, CommandType.Text, null);
 
@@ -112,13 +111,7 @@ namespace Dominio.Repositorio
                             Nombre = (string)reader["NombreProducto"],
                             Codigo= (int)reader["codigo"],
                             Peso= (decimal)reader["peso"],
-                            Cliente  = new Cliente
-                            {
-                                Id = (int)reader["PERSONAID"],
-                                Rut = (string)reader["RUT"],
-                                Nombre = (string)reader["NOMBRE"],
-                                Antiguedad = (DateTime)reader["ANTIGUEDAD"]
-                            }
+                            
 
                         },
                         

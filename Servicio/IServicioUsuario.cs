@@ -19,5 +19,22 @@ namespace Servicio
         [OperationContract]
         UsuarioDTO Logear(string ci,string password);
 
+        [OperationContract]
+        List<ImportacionDTO> DatosImportacion();
+
+        [OperationContract]
+        List<ProductoDTO> DatosProductos();
+
+        [OperationContract]
+        List<ClienteDTO> DatosClientes();
+
+        [OperationContract]
+        List<UsuarioDTO> DatosUsuarios();
+
+        [OperationContract]
+        List<string> DatosDescuentos();
+
+
+
     }
 }

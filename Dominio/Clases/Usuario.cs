@@ -83,7 +83,7 @@ namespace Dominio.Clases
         {
 
 
-            Regex pass = new Regex(@"^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,16}$",
+            Regex pass = new Regex(@"^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{6,16}$",
             RegexOptions.Compiled | RegexOptions.IgnoreCase);
 
 

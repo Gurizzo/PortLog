@@ -18,8 +18,8 @@ namespace MVC.ViewModels.Usuario
 
         [Display(Name = "Contraseña"), Required]
         [DataType(DataType.Password)]
-        [MinLength(7, ErrorMessage = "La debe tener al menos 8 caracteres")]
-        [RegularExpression(@"^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,16}$", ErrorMessage = "La contraseña debe tener al menos 6 caracteres una mayuscula una minuscula y un numero")]
+        [MinLength(6, ErrorMessage = "La debe tener al menos 6 caracteres")]
+        [RegularExpression(@"^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{6,16}$", ErrorMessage = "La contraseña debe tener al menos 6 caracteres una mayuscula una minuscula y un numero")]
         public string Password { get; set; }
 
         [Display(Name = "Repita Contraseña"), Required]

@@ -82,6 +82,43 @@ namespace Dominio.Repositorio
 
         public List<Producto> Todos()
         {
+            Persistente persistente = new Persistente();
+            List<Producto> productos = new List<Producto>();
+            SqlConnection con = null;
+            SqlDataReader reader = null;
+
+            try
+            {
+                con = persistente.ObtenerConexion();
+                SqlCommand command = new SqlCommand("SELECT * FROM PRODUCTO", con);
+                con.Open();
+                reader = persistente.EjecutarQuery(con, command, CommandType.Text, null);
+
+                while (reader.Read())
+                {
+                    Producto p = new Producto()
+                    {
+                        Codigo = (int)reader["Codigo"],
+                        Nombre= (string)reader["Nombre"],
+                        Peso=(decimal)reader["Peso"],
+                        Precio=(decimal)reader["Precio"],
+                        Cliente = new Cliente()
+                        {
+                            Id= (int)reader["ClienteId"]
+                        }
+                    };
+                    productos.Add(p);
+                }
+                return productos;
+            }
+            catch(Exception)
+            {
+                return productos;
+            }
+            finally
+            {
+                con.Close();
+            }
             throw new NotImplementedException();
         }
 

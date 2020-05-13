@@ -19,7 +19,11 @@ namespace MVC.Controllers
         // GET: Cliente/Details/5
         public ActionResult Details(int id)
         {
-            
+            if (Session["Rol"] == null || Session["Rol"].ToString().ToUpper() != "ADMIN")
+            {
+                return RedirectToAction("Login", "Login");
+            }
+
             ServicioClienteClient proxy = new ServicioClienteClient();
             ViewModelClienteGanancia vm = new ViewModelClienteGanancia()
             {
@@ -31,6 +35,11 @@ namespace MVC.Controllers
 
         public ActionResult List()
         {
+            if (Session["Rol"] == null || Session["Rol"].ToString().ToUpper() != "ADMIN")
+            {
+                return RedirectToAction("Login", "Login");
+            }
+
             List<ViewModelClienteList> vml = new List<ViewModelClienteList>();
             try
             {
