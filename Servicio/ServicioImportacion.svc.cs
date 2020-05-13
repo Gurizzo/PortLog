@@ -22,12 +22,18 @@ namespace Servicio
             Importacion i = new Importacion()
             {
                 Cantidad = importacion.Cantidad,
-                Almacenado =true,
+                Almacenado = true,
                 Precio = importacion.Producto.Precio,
                 FchIngreso = DateTime.Today,
                 FchSalida = importacion.FchSalida,
-                /*Producto = importacion.Producto,
-                Pais = importacion.Pais*/
+                Producto = new Producto() {
+                    Id = importacion.Producto.Id,
+                    Precio= importacion.Producto.Precio
+                },
+                Pais = new Pais()
+                {
+                   Id=importacion.Pais.IdPais
+                }
                 
                 
                 

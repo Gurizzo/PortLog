@@ -21,7 +21,7 @@ namespace Dominio.Repositorio
             try
             {
                 con = persistente.ObtenerConexion();
-                SqlCommand sqlCommand = new SqlCommand(@"INSERT INTO IMPORTACION VALUES(@FCHENTRADA,@FCHSALIDA,@PRODUCTOID,@PRECIO,@CANTIDAD,@PERSONAID,@PAISID,@ALMACENADO)", con);
+                SqlCommand sqlCommand = new SqlCommand(@"INSERT INTO IMPORTACION VALUES(@FCHENTRADA,@FCHSALIDA,@PRODUCTOID,@PRECIO,@CANTIDAD,@PAISID,@ALMACENADO)", con);
                 List<SqlParameter> sqlParameters = new List<SqlParameter>()
                 {
                     new SqlParameter("@FCHENTRADA", obj.FchIngreso),
@@ -29,7 +29,6 @@ namespace Dominio.Repositorio
                     new SqlParameter("@PRODUCTOID", obj.Producto.Id),
                     new SqlParameter("@PRECIO", obj.Producto.Precio),
                     new SqlParameter("@CANTIDAD", obj.Cantidad),
-                    new SqlParameter("@PERSONAID", obj.Producto.Cliente.Id),
                     new SqlParameter("@PAISID", obj.Pais.Id),
                     new SqlParameter("@ALMACENADO", obj.Almacenado),
 

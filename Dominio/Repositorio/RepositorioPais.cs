@@ -69,9 +69,6 @@ namespace Dominio.Repositorio
             return paises;
         }
 
-        public bool Validar(Pais obj)
-        {
-            throw new NotImplementedException();
-        }
+       
     }
 }

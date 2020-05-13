@@ -183,9 +183,6 @@ namespace Dominio.Repositorio
             return clientes;
         }
 
-        public bool Validar(Cliente obj)
-        {
-            throw new NotImplementedException();
-        }
+       
     }
 }

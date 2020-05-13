@@ -58,6 +58,7 @@ namespace Dominio
             return this.EjecutarNoQuery(con, comando, tipo, parametros, null);
         }
 
+
         public int EjecutarNoQuery(SqlConnection con, SqlCommand comando,
             CommandType tipo, List<SqlParameter> parametros,
             SqlTransaction trans)

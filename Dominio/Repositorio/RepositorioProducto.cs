@@ -180,9 +180,6 @@ namespace Dominio.Repositorio
             return productos;
         }
 
-        public bool Validar(Producto obj)
-        {
-            throw new NotImplementedException();
-        }
+        
     }
 }

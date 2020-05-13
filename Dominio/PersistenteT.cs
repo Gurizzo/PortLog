@@ -9,7 +9,7 @@ namespace Dominio
     public abstract class Persistente<T> : Persistente
     {
         public abstract List<T> TraerTodo();
-        public abstract T BuscarPorId();
+        
         
     }
 }
