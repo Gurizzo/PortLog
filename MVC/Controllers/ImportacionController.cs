@@ -104,7 +104,8 @@ namespace MVC.Controllers
 
             if (vm.FchSalida <= DateTime.Today && vm.Cantidad<=0)
             {
-                //No capo
+                //toDo jaja
+                
             }
             else
             {

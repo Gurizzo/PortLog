@@ -50,7 +50,7 @@ namespace Servicio
 
             u = Repo.ValidarLogin(ci, password);
 
-            if (u.CI != null)
+            if (u != null)
             {
                 usuario.Id = u.Id;
                 usuario.CI = u.CI;
